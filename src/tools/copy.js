@@ -34,14 +34,13 @@ function copy(src, dest) {
 
   if (isDir(src)) {
     const srcDir = src;
+    const destDir = dest;
     const srcs = readDir(src, '**/*', true);
-    let plan = [];
 
-    srcs.forEach((src) => plan.push({src, dest: nodePath.join(dest, nodePath.relative(srcDir, src))}));
-    plan.forEach((step) => isFile(step.src) && exists(step.dest) && errors.pathExists(step.dest));
-    plan.forEach((step) => {
-      isDir(step.src) && fs.ensureDirSync(step.dest);
-      isFile(step.src) && copyFile(step.src, step.dest);
+    srcs.forEach((src) => {
+      const dest = nodePath.join(destDir, nodePath.relative(srcDir, src));
+      isDir(src) && fs.ensureDirSync(dest);
+      isFile(src) && copyFile(src, dest);
     });
   }
 }
