@@ -4,7 +4,7 @@ module.exports = {
     'dest': './dist',
     'static': './static',
     'data': './data',
-    'config': './config',
+    'globals': './globals',
     'template': './template',
     'partials': './template/partials',
   },

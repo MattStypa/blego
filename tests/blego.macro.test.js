@@ -1,4 +1,4 @@
-describe('blego.task', () => {
+describe('blego.macro', () => {
   const handlebars = require('handlebars');
   const Blego = require('Blego.js');
   let blego;
@@ -8,7 +8,7 @@ describe('blego.task', () => {
     blego = new Blego();
   });
 
-  it('Executes a task', () => {
+  it('Registers a helper', () => {
     const macro = jest.fn();
     blego.macro('macro', macro);
 

@@ -5,13 +5,13 @@ const tools = require('../tools.js');
  *
  * @instance
  * @memberof Store
- * @param {function} func Mapping function.
+ * @param {function} fn Mapping function.
  * @return {array}
  */
-function map(func) {
-  tools.validateType('func', 'function', func);
+function map(fn) {
+  tools.validateType('fn', 'function', fn);
 
-  return this.records.map(func);
+  return this.records.map(fn);
 }
 
 module.exports = map;

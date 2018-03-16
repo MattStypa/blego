@@ -1,5 +1,12 @@
 # Release Notes
 
+## v0.2.0
+
+### Changed
+- Added partial method.
+- Fixed the server by adding the dependencies.
+- Renamed config to globals to moved it up one layer in context.
+
 ## v0.1.1 (2018-03-13)
 
 ### Changed

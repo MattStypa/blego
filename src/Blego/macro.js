@@ -6,13 +6,13 @@ const handlebars = require('handlebars');
  * @instance
  * @memberof Blego
  * @param {string} name Name of the helper.
- * @param {function} func Helper function.
+ * @param {function} fn Helper function.
  */
-function macro(name, func) {
+function macro(name, fn) {
   this.tools.validateType('name', 'string', name);
-  this.tools.validateType('func', 'function', func);
+  this.tools.validateType('fn', 'function', fn);
 
-  handlebars.registerHelper(name, func);
+  handlebars.registerHelper(name, fn);
 }
 
 module.exports = macro;

@@ -6,7 +6,7 @@ describe('blego.init', () => {
     console.log = jest.fn();
     blego = new Blego();
     blego.tasks.setCoreMacros = jest.fn();
-    blego.tasks.loadConfig = jest.fn();
+    blego.tasks.loadGlobals = jest.fn();
     blego.tasks.loadPartials = jest.fn();
     blego.tasks.loadData = jest.fn();
     blego.tasks.cleanUp = jest.fn();
@@ -17,7 +17,7 @@ describe('blego.init', () => {
     blego.init();
 
     expect(blego.tasks.setCoreMacros).toHaveBeenCalled();
-    expect(blego.tasks.loadConfig).toHaveBeenCalled();
+    expect(blego.tasks.loadGlobals).toHaveBeenCalled();
     expect(blego.tasks.loadPartials).toHaveBeenCalled();
     expect(blego.tasks.loadData).toHaveBeenCalled();
     expect(blego.tasks.cleanUp).toHaveBeenCalled();

@@ -22,7 +22,7 @@ function loadOptions() {
     this.tools.validateType('paths.dest', 'string', this.options.paths.dest);
     this.tools.validateType('paths.static', 'string', this.options.paths.static);
     this.tools.validateType('paths.data', 'string', this.options.paths.data);
-    this.tools.validateType('paths.config', 'string', this.options.paths.config);
+    this.tools.validateType('paths.globals', 'string', this.options.paths.globals);
     this.tools.validateType('paths.template', 'string', this.options.paths.template);
     this.tools.validateType('paths.partials', 'string', this.options.paths.partials);
   });

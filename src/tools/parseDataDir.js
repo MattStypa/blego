@@ -21,7 +21,7 @@ function parseDataDir(path) {
 
   files.forEach((file) => {
     const parsedPath = nodePath.parse(nodePath.relative(path, file));
-    const key = (parsedPath.dir && parsedPath.dir + nodePath.sep) + parsedPath.name;
+    const key = (parsedPath.dir && (parsedPath.dir + nodePath.sep)) + parsedPath.name;
     records.push(new Record(key, parseDataFile(file)));
   });
 

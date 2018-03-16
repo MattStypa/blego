@@ -7,7 +7,7 @@
  */
 function init() {
   this.tasks.setCoreMacros();
-  this.tasks.loadConfig();
+  this.tasks.loadGlobals();
   this.tasks.loadPartials();
   this.tasks.loadData();
   this.tasks.cleanUp();

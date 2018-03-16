@@ -5,12 +5,12 @@ const tools = require('../tools.js');
  *
  * @instance
  * @memberof Store
- * @param {function} func Function to be called.
+ * @param {function} fn Function to be called.
  */
-function each(func) {
-  tools.validateType('func', 'function', func);
+function each(fn) {
+  tools.validateType('fn', 'function', fn);
 
-  this.records.forEach(func);
+  this.records.forEach(fn);
 }
 
 module.exports = each;

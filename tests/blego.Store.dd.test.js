@@ -1,4 +1,4 @@
-describe('blego.Store.count', () => {
+describe('blego.Store.dd', () => {
   const Blego = require('Blego.js');
   let blego;
   let consoleLog;

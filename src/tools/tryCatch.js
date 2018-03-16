@@ -1,15 +1,20 @@
+const validateType = require('./validateType.js');
+
 /**
  * Tries to run a function. If it throws, the error function will be run.
  *
  * @alias module:tools.tryCatch
- * @param {function} func Function to run.
- * @param {function} [errorFunc] Function to run if the main function throws.
+ * @param {function} fn Function to run.
+ * @param {function} [errorFn] Function to run if the main function throws.
  */
-function tryCatch(func, errorFunc = () => {}) {
+function tryCatch(fn, errorFn = () => {}) {
+  validateType('fn', 'function', fn);
+  validateType('errorFn', 'function', errorFn);
+
   try {
-    func();
+    fn();
   } catch(e) {
-    errorFunc(e);
+    errorFn(e);
   }
 }
 

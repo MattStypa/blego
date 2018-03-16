@@ -26,7 +26,7 @@ function page(path, templatePath, context) {
 
   const templateSource = this.tools.readFile(templatePath);
   const templateCompiled = handlebars.compile(templateSource);
-  const rendered = templateCompiled(_.merge({}, {config: this.config}, context));
+  const rendered = templateCompiled(_.merge({}, this.global, context));
   fs.ensureFileSync(path);
   fs.writeFileSync(path, rendered);
 };

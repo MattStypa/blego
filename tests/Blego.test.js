@@ -26,7 +26,7 @@ describe('Blego', () => {
         'dest': 'test-dist',
         'static': 'test-static',
         'data': 'test-data',
-        'config': 'test-config',
+        'globals': 'test-globals',
         'template': 'test-template',
         'partials': 'test-partials',
       }
@@ -40,7 +40,7 @@ describe('Blego', () => {
     expect(blego.options.paths.dest).toBe(options.paths.dest);
     expect(blego.options.paths.static).toBe(options.paths.static);
     expect(blego.options.paths.data).toBe(options.paths.data);
-    expect(blego.options.paths.config).toBe(options.paths.config);
+    expect(blego.options.paths.globals).toBe(options.paths.globals);
     expect(blego.options.paths.template).toBe(options.paths.template);
     expect(blego.options.paths.partials).toBe(options.paths.partials);
   });
@@ -67,7 +67,7 @@ describe('Blego', () => {
         expect(invalidTypeSpy).toHaveBeenCalledWith('paths', 'object', 'number');
       });
 
-      ['dest', 'static', 'data', 'config', 'template', 'partials'].forEach((key) => {
+      ['dest', 'static', 'data', 'globals', 'template', 'partials'].forEach((key) => {
         describe(key, () => {
           it('Must be a strings', () => {
             const keyPath = ['paths', key].join('.');
@@ -95,7 +95,7 @@ describe('Blego', () => {
     expect(typeof options.paths.dest).toBe('string');
     expect(typeof options.paths.static).toBe('string');
     expect(typeof options.paths.data).toBe('string');
-    expect(typeof options.paths.config).toBe('string');
+    expect(typeof options.paths.globals).toBe('string');
     expect(typeof options.paths.template).toBe('string');
     expect(typeof options.paths.partials).toBe('string');
   }
