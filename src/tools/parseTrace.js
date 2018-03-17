@@ -1,7 +1,6 @@
 const nodePath = require('path');
 const stackTrace = require('stack-trace');
 const isFile = require('./isFile.js');
-const longestCommonPrefix = require('./longestCommonPrefix.js');
 const validateType = require('./validateType.js');
 
 /**
@@ -14,12 +13,10 @@ const validateType = require('./validateType.js');
 function parseTrace(error) {
   validateType('error', Error, error);
 
-  let basePath;
   const trace = stackTrace.parse(error).filter((item) => item.fileName && isFile(item.fileName));
-  trace.forEach((item) => basePath = basePath === undefined ? item.fileName : longestCommonPrefix(basePath, item.fileName));
 
   return trace.map((item) => ({
-    file: nodePath.relative(basePath, item.fileName),
+    file: nodePath.relative(process.cwd(), item.fileName),
     line: item.lineNumber,
     function: item.methodName || 'Anonymous',
   }));
