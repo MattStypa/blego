@@ -20,7 +20,6 @@ function linkToMany(prop, relatedStore) {
 
     if (!refs) return;
 
-    tools.validateType(prop, Array, refs);
     tools.validateTypeInArray(prop, 'string', refs);
 
     refs.forEach((ref) => {
