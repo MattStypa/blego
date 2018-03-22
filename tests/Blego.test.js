@@ -16,7 +16,7 @@ describe('Blego', () => {
 
   it('Initializes without paths', () => {
     expect(blego.isBlego).toBe(true);
-    expectValidPaths(blego.paths);
+    expectValidPaths(blego.internal.paths);
   });
 
   it('Initializes with paths', () => {
@@ -31,13 +31,13 @@ describe('Blego', () => {
 
     const blego = new Blego(paths);
 
-    expectValidPaths(blego.paths);
-    expect(blego.paths.dest).toBe(paths.dest);
-    expect(blego.paths.static).toBe(paths.static);
-    expect(blego.paths.data).toBe(paths.data);
-    expect(blego.paths.globals).toBe(paths.globals);
-    expect(blego.paths.template).toBe(paths.template);
-    expect(blego.paths.partials).toBe(paths.partials);
+    expectValidPaths(blego.internal.paths);
+    expect(blego.internal.paths.dest).toBe(paths.dest);
+    expect(blego.internal.paths.static).toBe(paths.static);
+    expect(blego.internal.paths.data).toBe(paths.data);
+    expect(blego.internal.paths.globals).toBe(paths.globals);
+    expect(blego.internal.paths.template).toBe(paths.template);
+    expect(blego.internal.paths.partials).toBe(paths.partials);
   });
 
   describe('Paths', () => {

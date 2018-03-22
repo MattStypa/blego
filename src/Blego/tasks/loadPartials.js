@@ -10,7 +10,7 @@ const parseDataDir = require('../../tools/parseDataDir.js');
  */
 function loadPartials() {
   this.task('Load partials', () => {
-    parseDataDir(this.paths.partials).each((file) => handlebars.registerPartial(file.key, file.body));
+    parseDataDir(this.internal.paths.partials).each((file) => handlebars.registerPartial(file.key, file.body));
   });
 }
 

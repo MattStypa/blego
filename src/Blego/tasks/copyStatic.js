@@ -7,7 +7,7 @@
  */
 function copyStatic() {
   this.task('Copy static files', () => {
-    this.tools.copy(this.paths.static, this.paths.dest);
+    this.tools.copy(this.internal.paths.static, this.internal.paths.dest);
   });
 }
 

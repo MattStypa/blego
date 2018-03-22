@@ -14,7 +14,7 @@ function partial(name, templatePath) {
   this.tools.validateType('templatePath', 'string', templatePath);
 
   templatePath = this.tools.jailPath(templatePath);
-  templatePath = nodePath.resolve(this.paths.partials, templatePath);
+  templatePath = nodePath.resolve(this.internal.paths.partials, templatePath);
 
   const templateSource = this.tools.readFile(templatePath);
 

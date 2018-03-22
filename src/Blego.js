@@ -16,7 +16,7 @@ function Blego(paths = {}) {
   this.isBlego = true;
   this.store = {};
   this.global = {};
-  this.paths = paths;
+  this.internal = {paths};
 
   this.init = require('./Blego/init.js');
   this.macro = require('./Blego/macro.js');
