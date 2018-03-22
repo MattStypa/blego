@@ -7,7 +7,7 @@
  */
 function cleanUp() {
   this.task('Clean destination directory', () => {
-    this.tools.cleanDir(this.options.paths.dest);
+    this.tools.cleanDir(this.paths.dest);
   });
 }
 

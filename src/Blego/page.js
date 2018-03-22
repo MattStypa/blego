@@ -20,8 +20,8 @@ function page(path, templatePath, context) {
 
   path = this.tools.jailPath(path);
   templatePath = this.tools.jailPath(templatePath);
-  path = nodePath.resolve(this.options.paths.dest, path);
-  templatePath = nodePath.resolve(this.options.paths.template, templatePath);
+  path = nodePath.resolve(this.paths.dest, path);
+  templatePath = nodePath.resolve(this.paths.template, templatePath);
   this.tools.exists(path) && errors.pathExists(path);
 
   const templateSource = this.tools.readFile(templatePath);

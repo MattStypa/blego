@@ -5,8 +5,10 @@
 ### Changed
 - Added partial method.
 - Fixed the server by adding the dependencies.
-- Renamed config to globals to moved it up one layer in context.
+- Renamed config to globals and moved it up one layer in context.
 - Reported errors will no longer obfuscate file paths in some cases.
+- Removed builtin plugin initialization.
+- Simplified configuration.
 
 ## v0.1.1 (2018-03-13)
 

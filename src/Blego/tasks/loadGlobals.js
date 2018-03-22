@@ -9,7 +9,7 @@ const parseDataDir = require('../../tools/parseDataDir.js');
  */
 function loadGlobals() {
   this.task('Load globals', () => {
-    this.global = parseDataDir(this.options.paths.globals).cast();
+    this.global = parseDataDir(this.paths.globals).cast();
   });
 }
 
