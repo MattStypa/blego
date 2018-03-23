@@ -12,11 +12,11 @@ const tools = require('../tools.js');
 function where(prop, value) {
   tools.validateType('prop', 'string', prop);
 
-  const records = this.records.filter((record) => {
+  const records = this.collection.filter((record) => {
     return Array.isArray(record[prop]) ? record[prop].includes(value) : record[prop] === value;
   });
 
-  return new this.constructor(records);
+  return new this.constructor(records.all());
 }
 
 module.exports = where;

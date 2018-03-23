@@ -1,7 +1,7 @@
 const nodePath = require('path');
-const _ = require('lodash');
 const frontMatter = require('front-matter');
 const marked = require('marked');
+const merge = require('lodash.merge');
 const yaml = require('js-yaml');
 const errors = require('../errors.js');
 const readFile = require('./readFile.js');
@@ -53,7 +53,7 @@ function parseDataFile(path) {
 function markdownParser(str) {
   const parsedFrontMatter = frontMatter(str);
 
-  return _.merge(
+  return merge(
     {},
     parsedFrontMatter.attributes,
     {body: marked(parsedFrontMatter.body)}
@@ -70,7 +70,7 @@ function markdownParser(str) {
 function htmlParser(str) {
   const parsedFrontMatter = frontMatter(str);
 
-  return _.merge(
+  return merge(
     {},
     parsedFrontMatter.attributes,
     {body: parsedFrontMatter.body}

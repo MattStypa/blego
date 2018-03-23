@@ -1,4 +1,4 @@
-describe('blego.Store.get', () => {
+describe('blego.Store.keyed', () => {
   const Blego = require('Blego.js');
   let blego;
 
@@ -7,19 +7,13 @@ describe('blego.Store.get', () => {
     blego = new Blego();
   });
 
-  it('Gets the record with specified key', () => {
+  it('Gets an object with Record keys as property names', () => {
     const store = new blego.Store([
       new blego.Record('1', {}),
       new blego.Record('2', {}),
       new blego.Record('3', {}),
     ]);
 
-    expect(store.get('2').key).toEqual('2');
-  });
-
-  it('Gets undefined if the key does not exist', () => {
-    const store = new blego.Store([]);
-
-    expect(store.get('2')).toEqual(null);
+    expect(Object.keys(store.keyed())).toEqual(['1', '2', '3']);
   });
 });

@@ -1,4 +1,4 @@
-const _ = require('lodash');
+const merge = require('lodash.merge');
 const errors = require('./errors.js');
 const tools = require('./tools.js');
 
@@ -15,7 +15,7 @@ function Record(key, props = {}) {
 
   key = key.trim();
   !key && errors.keyRequired();
-  _.merge(this, props);
+  merge(this, props);
   this.key = key;
 }
 

@@ -9,6 +9,7 @@
 - Reported errors will no longer obfuscate file paths in some cases.
 - Removed builtin plugin initialization.
 - Simplified configuration.
+- Added new Store methods.
 
 ## v0.1.1 (2018-03-13)
 

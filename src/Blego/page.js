@@ -1,7 +1,7 @@
 const nodePath = require('path');
-const _ = require('lodash');
 const fs = require('fs-extra');
 const handlebars = require('handlebars');
+const merge = require('lodash.merge');
 const errors = require('../errors.js');
 
 /**
@@ -26,7 +26,7 @@ function page(path, templatePath, context) {
 
   const templateSource = this.tools.readFile(templatePath);
   const templateCompiled = handlebars.compile(templateSource);
-  const rendered = templateCompiled(_.merge({}, this.global, context));
+  const rendered = templateCompiled(merge({}, this.global, context));
   fs.ensureFileSync(path);
   fs.writeFileSync(path, rendered);
 };
