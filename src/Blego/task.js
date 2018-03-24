@@ -9,7 +9,7 @@ const EMOJI = {
 };
 
 /**
- * Runs specified task.
+ * Runs given task.
  *
  * @instance
  * @memberof Blego

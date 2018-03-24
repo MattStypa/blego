@@ -1,7 +1,7 @@
 const tools = require('../tools.js');
 
 /**
- * Gets a new store with records having the specified property equal to specified value.
+ * Gets a new store with records having the given property equal to given value.
  *
  * @instance
  * @memberof Store

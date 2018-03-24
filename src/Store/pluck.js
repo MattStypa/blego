@@ -2,12 +2,12 @@ const collect = require('collect.js');
 const tools = require('../tools.js');
 
 /**
- * Gets an array of all used propery values.
+ * Gets all of the values for a given property.
  *
  * @instance
  * @memberof Store
  * @param {string} prop Record property to extract.
- * @return {store}
+ * @return {array}
  */
 function pluck(prop) {
   tools.validateType('prop', 'string', prop);
