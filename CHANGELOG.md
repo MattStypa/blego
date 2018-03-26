@@ -10,6 +10,7 @@
 - Removed builtin plugin initialization.
 - Simplified configuration.
 - Added new Store methods.
+- Added CLI tool.
 
 ## v0.1.1 (2018-03-13)
 

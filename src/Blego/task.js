@@ -4,7 +4,7 @@ const parseTrace = require('../tools/parseTrace.js');
 
 const EMOJI = {
   wait: emoji.get('construction') + ' ',
-  finish: emoji.get('white_check_mark') + ' ',
+  finish: emoji.get('checkered_flag') + ' ',
   fail: emoji.get('no_entry_sign') + ' ',
 };
 

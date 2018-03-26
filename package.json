@@ -18,6 +18,9 @@
     "url": "https://github.com/MattStypa/blego"
   },
   "main": "src/Blego.js",
+  "bin" : {
+    "blego" : "src/cli.js"
+  },
   "engines": {
     "node": ">=6.0.0"
   },

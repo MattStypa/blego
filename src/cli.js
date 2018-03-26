@@ -7,6 +7,7 @@ const isFile = require('./tools/isFile.js');
 
 const EMOJI = {
   rocket: emoji.get('rocket') + ' ',
+  fail: emoji.get('no_entry_sign') + ' ',
 };
 
 program
@@ -27,22 +28,21 @@ program
 program.parse(process.argv);
 
 if (program.args.length === 0) {
-  program.help();
-  process.exit();
+  build();
 }
 
 function build(path = 'blego.js') {
-  !isFile(path) && !isFile(path + '.js') && error('Unable to find ' + path);
+  !isFile(path) && !isFile(path + '.js') && error('Unable to find ' + quote(chalk.cyan(path)));
   !isFile(path) && (path = path + '.js');
 
   console.log(EMOJI.rocket, 'Building from', quote(chalk.cyan(path)));
   console.log();
-  
+
   require(nodePath.resolve(path));
 }
 
 function error(message = '') {
-  console.error(message);
+  console.error(EMOJI.fail, message);
   process.exit(1);
 }
 
