@@ -3,7 +3,7 @@ const emoji = require('node-emoji');
 const parseTrace = require('../tools/parseTrace.js');
 
 const EMOJI = {
-  wait: emoji.get('clock3') + ' ',
+  wait: emoji.get('construction') + ' ',
   finish: emoji.get('white_check_mark') + ' ',
   fail: emoji.get('no_entry_sign') + ' ',
 };
