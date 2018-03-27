@@ -1,10 +1,4 @@
-const chalk = require('chalk');
-const emoji = require('node-emoji');
-const errors = require('../errors.js');
-
-const EMOJI = {
-  info: emoji.get('thought_balloon') + ' ',
-};
+const cliUtils = require('../cli/utils.js');
 
 /**
  * Writes log message to console.
@@ -15,7 +9,7 @@ const EMOJI = {
  */
 function log(message) {
   this.tools.validateType('message', 'string', message);
-  console.log(' ', EMOJI.info, message);
+  console.log(' ', cliUtils.emoji.info, message);
 }
 
 module.exports = log;

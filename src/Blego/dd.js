@@ -5,8 +5,8 @@
  * @memberof Blego
  * @param {mixed} data Data to write to console.
  */
-function dd(data) {
-  console.log(data);
+function dd(...data) {
+  console.log(...data);
   process.exit(1);
 }
 

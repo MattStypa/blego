@@ -1,10 +1,4 @@
-const chalk = require('chalk');
-const emoji = require('node-emoji');
-const errors = require('../errors.js');
-
-const EMOJI = {
-  warn: emoji.get('warning') + ' ',
-};
+const cliUtils = require('../cli/utils.js');
 
 /**
  * Writes warning message to console.
@@ -15,7 +9,7 @@ const EMOJI = {
  */
 function warn(message) {
   this.tools.validateType('message', 'string', message);
-  console.log(' ', EMOJI.warn, chalk.bold.underline(message));
+  console.log(' ', cliUtils.emoji.warn, cliUtils.strong(message));
 }
 
 module.exports = warn;
