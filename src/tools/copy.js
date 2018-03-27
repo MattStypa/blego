@@ -35,7 +35,7 @@ function copy(src, dest) {
   if (isDir(src)) {
     const srcDir = src;
     const destDir = dest;
-    const srcs = readDir(src, '**/*', true);
+    const srcs = readDir(src, '**/*', true, true);
 
     srcs.forEach((src) => {
       const dest = nodePath.join(destDir, nodePath.relative(srcDir, src));

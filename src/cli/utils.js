@@ -6,6 +6,7 @@ const emoji = {
   construction: nodeEmoji.get('construction') + ' ',
   fail: nodeEmoji.get('no_entry_sign') + ' ',
   finish: nodeEmoji.get('checkered_flag') + ' ',
+  gift: nodeEmoji.get('gift') + ' ',
   info: nodeEmoji.get('thought_balloon') + ' ',
   rocket: nodeEmoji.get('rocket') + ' ',
   warn: nodeEmoji.get('warning') + ' ',

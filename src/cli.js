@@ -1,11 +1,17 @@
 const program = require('commander');
 const package = require('../package.json');
 const build = require('./cli/build.js');
+const newProject = require('./cli/new.js');
 const serve = require('./cli/serve.js');
 
 program
   .version(package.version, '-v, --version')
   .usage('<command> [args]');
+
+program
+  .command('new <path>')
+  .description('creates new Blego project')
+  .action(newProject);
 
 program
   .command('build [path]')

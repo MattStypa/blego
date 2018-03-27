@@ -14,9 +14,10 @@ const validateType = require('./validateType.js');
  * @param {string} path Path to a directory.
  * @param {string} [pattern='** / *'] Glob pattern. Default value is without spaces.
  * @param {boolean} [includeDirs=false] Should directories be included.
+ * @param {boolean} [includeDotFiles=false] Should dot file be included.
  * @returns {array}
  */
-function readDir(path, pattern = '**/*', includeDirs = false) {
+function readDir(path, pattern = '**/*', includeDirs = false, includeDotFiles = false) {
   validateType('path', 'string', path);
   validateType('pattern', 'string', pattern);
 
@@ -26,7 +27,7 @@ function readDir(path, pattern = '**/*', includeDirs = false) {
   let content;
 
   tryCatch(
-    () => content = glob.sync(nodePath.join(path, pattern), {nodir: !includeDirs}),
+    () => content = glob.sync(nodePath.join(path, pattern), {nodir: !includeDirs, dot: includeDotFiles}),
     () => errors.cantReadPath(path)
   );
 

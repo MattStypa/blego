@@ -41,13 +41,13 @@ function Blego(paths = {}) {
   this.tasks.setPaths();
 }
 
-/** @see {@link module:tools|tools} */
-Blego.prototype.tools = require('./tools.js');
-
 /** @see Store */
 Blego.prototype.Store = require('./Store.js');
 
 /** @see Record */
 Blego.prototype.Record = require('./Record.js');
+
+/** @see {@link module:tools|tools} */
+Blego.prototype.tools = require('./tools.js');
 
 module.exports = Blego;

@@ -12,6 +12,7 @@ describe('blego.tools.readDir', () => {
     notDirSpy.mockClear();
     blego = new Blego();
     mockFs({
+      '/fake/directory1/.hidden': '',
       '/fake/directory1/file1': '',
       '/fake/directory1/file2': '',
       '/fake/directory2/file1': '',
@@ -44,6 +45,14 @@ describe('blego.tools.readDir', () => {
       '/fake/directory1/file2',
       '/fake/directory2',
       '/fake/directory2/file1',
+    ]);
+  });
+
+  it('Reads a directory including dot files', () => {
+    expect(blego.tools.readDir('/fake/directory1', '**/*', true, true)).toEqual([
+      '/fake/directory1/.hidden',
+      '/fake/directory1/file1',
+      '/fake/directory1/file2',
     ]);
   });
 

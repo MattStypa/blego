@@ -8,20 +8,23 @@ const isDir = require('../tools/isDir.js');
  * Starts a web server.
  *
  * @private
- * @param {string} path Path to the served directory.
+ * @param {string} [path='dist'] Path to the served directory.
+ * @param {command} command Command object from Commander.
  * @returns {Promise}
  */
 function serve(path = 'dist', command) {
-  !isDir(path) && cliUtils.error('Unable to find', cliUtils.quote(path));
-  path = nodePath.resolve(path);
+  const fullPath = nodePath.resolve(path);
+
+  !isDir(fullPath) && cliUtils.error('Unable to find', cliUtils.quote(path));
+
   const deferred = Promise.defer();
 
-  console.log('Serving from', cliUtils.quote(path));
+  console.log('Serving from', cliUtils.quote(fullPath));
 
-  if (command.port !== undefined) {
-    deferred.resolve(startServer(path, parseInt(command.port)));
+  if (command.port === undefined) {
+    detectPort(3000, (err, port) => deferred.resolve(startServer(fullPath, port)));
   } else {
-    detectPort(3000, (err, port) => deferred.resolve(startServer(path, port)));
+    deferred.resolve(startServer(fullPath, parseInt(command.port)));
   }
 
   return deferred.promise;
