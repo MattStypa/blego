@@ -1,15 +1,14 @@
 const cliUtils = require('../cli/utils.js');
 
 /**
- * Writes log message to console.
+ * Writes log messages to console.
  *
  * @instance
  * @memberof Blego
- * @param {string} message Message to write to console.
+ * @param {string} messages Messages to write to console.
  */
-function log(message) {
-  this.tools.validateType('message', 'string', message);
-  console.log(' ', cliUtils.emoji.info, message);
+function log(...messages) {
+  console.log(' ', cliUtils.emoji.info, ...messages);
 }
 
 module.exports = log;

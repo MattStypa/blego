@@ -43,6 +43,7 @@
   },
   "devDependencies": {
     "jest": "^21.2.1",
+    "request-promise": "^4.2.2",
     "strip-ansi": "^4.0.0"
   },
   "scripts": {
