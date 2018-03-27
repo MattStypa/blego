@@ -14,7 +14,6 @@ const isDir = require('../tools/isDir.js');
 function serve(path = 'dist', command) {
   !isDir(path) && cliUtils.error('Unable to find', cliUtils.quote(path));
   path = nodePath.resolve(path);
-
   const deferred = Promise.defer();
 
   console.log('Serving from', cliUtils.quote(path));
@@ -22,9 +21,7 @@ function serve(path = 'dist', command) {
   if (command.port !== undefined) {
     deferred.resolve(startServer(path, parseInt(command.port)));
   } else {
-    detectPort(3000, (err, port) => {
-      deferred.resolve(startServer(path, port));
-    });
+    detectPort(3000, (err, port) => deferred.resolve(startServer(path, port)));
   }
 
   return deferred.promise;
@@ -41,7 +38,6 @@ function serve(path = 'dist', command) {
 function startServer(path, port) {
   const app = express();
   app.use(express.static(path));
-
   const server = app.listen(port, () => console.log(cliUtils.emoji.rocket, 'Listening on port', cliUtils.magenta(port)));
   server.on('error', (e) => cliUtils.error('Unable to listen on port', cliUtils.magenta(port), `[${e.code}]`));
 
