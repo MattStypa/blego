@@ -1,5 +1,10 @@
 # Release Notes
 
+## v0.2.3 (2018-03-27)
+
+### Changed
+- More fixes related to __TEST__
+
 ## v0.2.2 (2018-03-27)
 
 ### Changed

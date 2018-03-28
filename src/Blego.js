@@ -14,6 +14,8 @@
  * @property {object} global Global context.
  */
 function Blego(paths = {}, init = true) {
+  const isTest = typeof __TEST__ !== 'undefined' && !!__TEST__;
+
   this.isBlego = true;
   this.store = {};
   this.global = {};
@@ -40,7 +42,7 @@ function Blego(paths = {}, init = true) {
   };
 
   this.tasks.setPaths();
-  init && !__TEST__ && this.init();
+  init && !isTest && this.init();
 }
 
 /** @see Store */
