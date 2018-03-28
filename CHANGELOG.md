@@ -4,6 +4,7 @@
 
 ### Changed
 - New Blego projects will now include a gitignore file.
+- Improved the welcome page.
 
 ## v0.2.3 (2018-03-27)
 
