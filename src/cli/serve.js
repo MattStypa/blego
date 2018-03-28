@@ -40,12 +40,13 @@ function serve(path = 'dist', command) {
  * @returns {server}
  */
 function startServer(path, port) {
+  const isTest = typeof __TEST__ !== 'undefined' && !!__TEST__;
   const app = express();
   app.use(express.static(path));
   const server = app.listen(port, () => console.log(cliUtils.emoji.rocket, 'Listening on port', cliUtils.magenta(port)));
   server.on('error', (e) => cliUtils.error('Unable to listen on port', cliUtils.magenta(port), `[${e.code}]`));
 
-  if (!__TEST__) {
+  if (!isTest) {
     port == 80 ? opn('http://localhost') : opn(`http://localhost:${port}`);
   }
 
