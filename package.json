@@ -50,6 +50,10 @@
     "test": "jest"
   },
   "jest": {
+    "testEnvironment": "node",
+    "globals": {
+      "__TEST__": true
+    },
     "modulePaths": [
       "<rootDir>/src/"
     ],

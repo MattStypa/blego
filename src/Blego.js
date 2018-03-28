@@ -9,10 +9,11 @@
  * @param {string} paths.globals Directory from which files will be parsed and put into global context.
  * @param {string} paths.template Directory from which template files will be read.
  * @param {string} paths.partials Directory from which template partials will be read.
+ * @param {boolean} [init=true] Should initialize on instantiation.
  * @property {object} store Parsed data.
  * @property {object} global Global context.
  */
-function Blego(paths = {}) {
+function Blego(paths = {}, init = true) {
   this.isBlego = true;
   this.store = {};
   this.global = {};
@@ -39,6 +40,7 @@ function Blego(paths = {}) {
   };
 
   this.tasks.setPaths();
+  init && !__TEST__ && this.init();
 }
 
 /** @see Store */
