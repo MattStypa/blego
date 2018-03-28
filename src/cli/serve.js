@@ -1,6 +1,7 @@
 const nodePath = require('path');
 const detectPort = require('detect-port-alt');
 const express = require('express');
+const opn = require('opn');
 const cliUtils = require('./utils.js');
 const isDir = require('../tools/isDir.js');
 
@@ -43,6 +44,7 @@ function startServer(path, port) {
   app.use(express.static(path));
   const server = app.listen(port, () => console.log(cliUtils.emoji.rocket, 'Listening on port', cliUtils.magenta(port)));
   server.on('error', (e) => cliUtils.error('Unable to listen on port', cliUtils.magenta(port), `[${e.code}]`));
+  port == 80 ? opn('http://localhost') : opn(`http://localhost:${port}`);
 
   return server;
 }
