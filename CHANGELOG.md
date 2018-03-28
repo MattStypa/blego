@@ -1,6 +1,6 @@
 # Release Notes
 
-## v0.2.1 (wip)
+## v0.2.1 (2018-03-27)
 
 ### Changed
 - Fixed the CLI tool.
