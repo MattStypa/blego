@@ -4,6 +4,7 @@ const express = require('express');
 const opn = require('opn');
 const cliUtils = require('./utils.js');
 const isDir = require('../tools/isDir.js');
+const isTest = require('../tools/isTest.js');
 
 /**
  * Starts a web server.
@@ -40,15 +41,11 @@ function serve(path = 'dist', command) {
  * @returns {server}
  */
 function startServer(path, port) {
-  const isTest = typeof __TEST__ !== 'undefined' && !!__TEST__;
   const app = express();
   app.use(express.static(path));
   const server = app.listen(port, () => console.log(cliUtils.emoji.rocket, 'Listening on port', cliUtils.magenta(port)));
   server.on('error', (e) => cliUtils.error('Unable to listen on port', cliUtils.magenta(port), `[${e.code}]`));
-
-  if (!isTest) {
-    port == 80 ? opn('http://localhost') : opn(`http://localhost:${port}`);
-  }
+  !isTest() && opn(port == 80 ? 'http://localhost' : `http://localhost:${port}`);
 
   return server;
 }

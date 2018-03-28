@@ -1,5 +1,10 @@
 # Release Notes
 
+## v0.2.4 (wip)
+
+### Changed
+- New Blego projects will now include a gitignore file.
+
 ## v0.2.3 (2018-03-27)
 
 ### Changed

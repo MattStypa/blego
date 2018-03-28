@@ -1,3 +1,5 @@
+const isTest = require('./tools/isTest.js');
+
 /**
  * Creates a Blego object.
  *
@@ -14,8 +16,6 @@
  * @property {object} global Global context.
  */
 function Blego(paths = {}, init = true) {
-  const isTest = typeof __TEST__ !== 'undefined' && !!__TEST__;
-
   this.isBlego = true;
   this.store = {};
   this.global = {};
@@ -42,7 +42,7 @@ function Blego(paths = {}, init = true) {
   };
 
   this.tasks.setPaths();
-  init && !isTest && this.init();
+  init && !isTest() && this.init();
 }
 
 /** @see Store */
