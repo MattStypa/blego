@@ -1,13 +1,12 @@
 # Release Notes
 
-## v0.2.0 (wip)
+## v0.2.0 (2018-03-27)
 
 ### Changed
 - Added partial method.
-- Fixed the server by adding the dependencies.
 - Renamed config to globals and moved it up one layer in context.
 - Reported errors will no longer obfuscate file paths in some cases.
-- Removed builtin plugin initialization.
+- Removed built-in plugin initialization.
 - Simplified configuration.
 - Added new Store methods.
 - Added CLI tool.
