@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const program = require('commander');
 const package = require('../package.json');
 const build = require('./cli/build.js');

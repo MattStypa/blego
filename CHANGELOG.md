@@ -1,5 +1,11 @@
 # Release Notes
 
+## v0.2.1 (wip)
+
+### Changed
+- Fixed the CLI tool.
+- Improved CLI output.
+
 ## v0.2.0 (2018-03-27)
 
 ### Changed

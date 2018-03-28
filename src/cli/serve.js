@@ -44,7 +44,10 @@ function startServer(path, port) {
   app.use(express.static(path));
   const server = app.listen(port, () => console.log(cliUtils.emoji.rocket, 'Listening on port', cliUtils.magenta(port)));
   server.on('error', (e) => cliUtils.error('Unable to listen on port', cliUtils.magenta(port), `[${e.code}]`));
-  port == 80 ? opn('http://localhost') : opn(`http://localhost:${port}`);
+
+  if (!__TEST__) {
+    port == 80 ? opn('http://localhost') : opn(`http://localhost:${port}`);
+  }
 
   return server;
 }

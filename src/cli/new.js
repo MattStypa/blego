@@ -25,6 +25,7 @@ function newProject(path) {
 
   childProcess.spawnSync('npm', ['install', 'blego', '--save'], {stdio: 'inherit'});
 
+  console.log();
   console.log(cliUtils.emoji.gift, 'New Blego project is ready in', cliUtils.quote(fullPath));
 }
 
