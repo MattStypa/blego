@@ -3,6 +3,7 @@
 ## v0.2.4 (wip)
 
 ### Changed
+- Javascript data files are now parsable.
 - New Blego projects will now include a gitignore file.
 - Improved the welcome page.
 

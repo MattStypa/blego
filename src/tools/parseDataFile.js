@@ -30,11 +30,10 @@ function parseDataFile(path) {
   !type && errors.noType(path);
   !PARSERS[type] && errors.noParser(path);
 
-  const source = readFile(path);
   let content;
 
   tryCatch(
-    () => content = PARSERS[type](source),
+    () => content = PARSERS[type](path),
     () => errors.cantParse(path)
   );
 
@@ -44,14 +43,14 @@ function parseDataFile(path) {
 }
 
 /**
- * Parses markdown.
+ * Parses markdown file.
  *
  * @private
- * @param {string} str String to be parsed.
+ * @param {string} path File to be parsed.
  * @returns {object}
  */
-function markdownParser(str) {
-  const parsedFrontMatter = frontMatter(str);
+function markdownParser(path) {
+  const parsedFrontMatter = frontMatter(readFile(path));
 
   return merge(
     {},
@@ -61,14 +60,14 @@ function markdownParser(str) {
 }
 
 /**
- * Parses HTML.
+ * Parses HTML file.
  *
  * @private
- * @param {string} str String to be parsed.
+ * @param {string} path File to be parsed.
  * @returns {object}
  */
-function htmlParser(str) {
-  const parsedFrontMatter = frontMatter(str);
+function htmlParser(path) {
+  const parsedFrontMatter = frontMatter(readFile(path));
 
   return merge(
     {},
@@ -78,25 +77,39 @@ function htmlParser(str) {
 }
 
 /**
- * Parses JSON.
+ * Parses JavaScript file.
  *
  * @private
- * @param {string} str String to be parsed.
+ * @param {string} path File to be parsed.
  * @returns {object}
  */
-function jsonParser(str) {
-  return JSON.parse(str);
+function jsParser(path) {
+  return merge(
+    {body: ''},
+    require(path)
+  );
 }
 
 /**
- * Parses YAML.
+ * Parses JSON file.
  *
  * @private
- * @param {string} str String to be parsed.
+ * @param {string} path File to be parsed.
  * @returns {object}
  */
-function yamlParser(str) {
-  return yaml.safeLoad(str);
+function jsonParser(path) {
+  return JSON.parse(readFile(path));
+}
+
+/**
+ * Parses YAML file.
+ *
+ * @private
+ * @param {string} path File to be parsed.
+ * @returns {object}
+ */
+function yamlParser(path) {
+  return yaml.safeLoad(readFile(path));
 }
 
 module.exports = parseDataFile;

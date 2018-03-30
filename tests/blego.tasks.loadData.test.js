@@ -10,7 +10,6 @@ describe('blego.tasks.loadData', () => {
     mockFs({
       'data/authors/matt.json': '{"name": "matt"}',
       'data/posts/a.json': '{"id": "a"}',
-      'data/posts/b.json': '{"id": "b"}',
     });
   });
 
@@ -22,9 +21,8 @@ describe('blego.tasks.loadData', () => {
     blego.tasks.loadData();
 
     expect(blego.store.authors.count()).toEqual(1);
-    expect(blego.store.posts.count()).toEqual(2);
+    expect(blego.store.posts.count()).toEqual(1);
     expect(blego.store.authors.get('matt').name).toEqual('matt');
     expect(blego.store.posts.get('a').id).toEqual('a');
-    expect(blego.store.posts.get('b').id).toEqual('b');
   });
 });
