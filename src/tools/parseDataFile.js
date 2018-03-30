@@ -11,6 +11,7 @@ const validateType = require('./validateType.js');
 const PARSERS = {
   'md': markdownParser,
   'html': htmlParser,
+  'js': jsParser,
   'json': jsonParser,
   'yaml': yamlParser,
 };
