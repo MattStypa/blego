@@ -19,17 +19,15 @@ function serve(path = 'dist', command) {
 
   !isDir(fullPath) && cliUtils.error('Unable to find', cliUtils.quote(path));
 
-  const deferred = Promise.defer();
-
   console.log('Serving from', cliUtils.quote(fullPath));
 
-  if (command.port === undefined) {
-    detectPort(3000, (err, port) => deferred.resolve(startServer(fullPath, port)));
-  } else {
-    deferred.resolve(startServer(fullPath, parseInt(command.port)));
-  }
-
-  return deferred.promise;
+  return new Promise((resolve) => {
+    if (command.port === undefined) {
+      detectPort(3000, (err, port) => resolve(startServer(fullPath, port)));
+    } else {
+      resolve(startServer(fullPath, parseInt(command.port)));
+    }
+  });
 }
 
 /**
