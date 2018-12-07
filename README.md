@@ -1,4 +1,4 @@
-<p align="center"><img src="https://cdn.rawgit.com/MattStypa/blego/master/src/cli/blueprint/static/logo.svg"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/MattStypa/blego/src/cli/blueprint/static/logo.svg"></p>
 
 # Blego
 
