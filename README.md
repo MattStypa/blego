@@ -1,5 +1,5 @@
-<p align="center"><img src="https://cdn.rawgit.com/MattStypa/blego/master/src/cli/blueprint/static/logo.svg"></p>
-
 # Blego
+
+![Blego](https://raw.githubusercontent.com/MattStypa/assets/master/blego/blego.svg)
 
 Static site generator powered by collections and relationships.
