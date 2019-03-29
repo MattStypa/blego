@@ -19,7 +19,7 @@ describe('blego.Store.dd', () => {
 
     store.dd();
 
-    expect(consoleLog.mock.calls.pop().pop().length).toEqual(3);
+    expect(consoleLog.mock.calls.pop().pop().items.length).toEqual(3);
   });
 
   it('Stops the process', () => {

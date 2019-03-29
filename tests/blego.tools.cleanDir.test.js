@@ -1,6 +1,7 @@
 describe('blego.tools.cleanDir', () => {
+  const nodePath = require('path');
   const fs = require('fs-extra');
-  const mockFs = require('mock-fs');
+  const tempDir = require('../tools/tempDir.js');
   const Blego = require('Blego.js');
   const errors = require('errors.js');
   const pathDoesNotExistSpy = jest.spyOn(errors, 'pathDoesNotExist');
@@ -12,34 +13,34 @@ describe('blego.tools.cleanDir', () => {
     pathDoesNotExistSpy.mockClear();
     notDirSpy.mockClear();
     blego = new Blego();
-    mockFs({
-      '/fake/directory/file': '',
+    tempDir({
+      'fake/directory/file': '',
     });
   });
 
   afterEach(() => {
-    mockFs.restore();
+    tempDir.restore();
   });
 
   it('Cleans a directory', () => {
-    blego.tools.cleanDir('/fake/directory');
+    blego.tools.cleanDir('fake/directory');
 
-    expect(fs.readdirSync('/fake/directory')).toEqual([]);
+    expect(fs.readdirSync('fake/directory')).toEqual([]);
   });
 
   it('Throws if path does not exist', () => {
     expect(() => {
-      blego.tools.cleanDir('/fake/file');
+      blego.tools.cleanDir('fake/file');
     }).toThrow();
 
-    expect(pathDoesNotExistSpy).toHaveBeenCalledWith('/fake/file');
+    expect(pathDoesNotExistSpy).toHaveBeenCalledWith(nodePath.resolve('fake/file'));
   });
 
   it('Throws if path is not a directory', () => {
     expect(() => {
-      blego.tools.readDir('/fake/directory/file');
+      blego.tools.readDir('fake/directory/file');
     }).toThrow();
 
-    expect(notDirSpy).toHaveBeenCalledWith('/fake/directory/file');
+    expect(notDirSpy).toHaveBeenCalledWith(nodePath.resolve('fake/directory/file'));
   });
 });

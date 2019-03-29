@@ -1,21 +1,21 @@
 describe('blego.tasks.copyStatic', () => {
   const fs = require('fs-extra');
-  const mockFs = require('mock-fs');
+  const tempDir = require('../tools/tempDir.js');
   const Blego = require('Blego.js');
   let blego;
 
   beforeEach(() => {
     console.log = jest.fn();
     blego = new Blego();
-    mockFs({
-      'dist': {},
+    tempDir({
+      'dist': null,
       'static/file': '',
       'static/directory/file': '',
     });
   });
 
   afterEach(() => {
-    mockFs.restore();
+    tempDir.restore();
   });
 
   it('Copies static directory to destination directory', () => {

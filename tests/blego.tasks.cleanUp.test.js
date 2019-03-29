@@ -1,19 +1,19 @@
 describe('blego.tasks.cleanUp', () => {
   const fs = require('fs-extra');
-  const mockFs = require('mock-fs');
+  const tempDir = require('../tools/tempDir.js');
   const Blego = require('Blego.js');
   let blego;
 
   beforeEach(() => {
     console.log = jest.fn();
     blego = new Blego();
-    mockFs({
+    tempDir({
       'dist/file': 'file content',
     });
   });
 
   afterEach(() => {
-    mockFs.restore();
+    tempDir.restore();
   });
 
   it('Clean up the destination directory', () => {

@@ -1,5 +1,6 @@
 describe('blego.tools.readDir', () => {
-  const mockFs = require('mock-fs');
+  const nodePath = require('path');
+  const tempDir = require('../tools/tempDir.js');
   const Blego = require('Blego.js');
   const errors = require('errors.js');
   const pathDoesNotExistSpy = jest.spyOn(errors, 'pathDoesNotExist');
@@ -11,64 +12,64 @@ describe('blego.tools.readDir', () => {
     pathDoesNotExistSpy.mockClear();
     notDirSpy.mockClear();
     blego = new Blego();
-    mockFs({
-      '/fake/directory1/.hidden': '',
-      '/fake/directory1/file1': '',
-      '/fake/directory1/file2': '',
-      '/fake/directory2/file1': '',
+    tempDir({
+      'fake/directory1/.hidden': '',
+      'fake/directory1/file1': '',
+      'fake/directory1/file2': '',
+      'fake/directory2/file1': '',
     });
   });
 
   afterEach(() => {
-    mockFs.restore();
+    tempDir.restore();
   });
 
   it('Reads a directory', () => {
-    expect(blego.tools.readDir('/fake')).toEqual([
-      '/fake/directory1/file1',
-      '/fake/directory1/file2',
-      '/fake/directory2/file1',
+    expect(blego.tools.readDir('fake')).toEqual([
+      nodePath.resolve('fake/directory1/file1'),
+      nodePath.resolve('fake/directory1/file2'),
+      nodePath.resolve('fake/directory2/file1'),
     ]);
   });
 
   it('Reads a directory for glob matches', () => {
-    expect(blego.tools.readDir('/fake', '**/*1')).toEqual([
-      '/fake/directory1/file1',
-      '/fake/directory2/file1',
+    expect(blego.tools.readDir('fake', '**/*1')).toEqual([
+      nodePath.resolve('fake/directory1/file1'),
+      nodePath.resolve('fake/directory2/file1'),
     ]);
   });
 
   it('Reads a directory including subdirectories', () => {
-    expect(blego.tools.readDir('/fake', '**/*', true)).toEqual([
-      '/fake/directory1',
-      '/fake/directory1/file1',
-      '/fake/directory1/file2',
-      '/fake/directory2',
-      '/fake/directory2/file1',
+    expect(blego.tools.readDir('fake', '**/*', true)).toEqual([
+      nodePath.resolve('fake/directory1'),
+      nodePath.resolve('fake/directory1/file1'),
+      nodePath.resolve('fake/directory1/file2'),
+      nodePath.resolve('fake/directory2'),
+      nodePath.resolve('fake/directory2/file1'),
     ]);
   });
 
   it('Reads a directory including dot files', () => {
-    expect(blego.tools.readDir('/fake/directory1', '**/*', true, true)).toEqual([
-      '/fake/directory1/.hidden',
-      '/fake/directory1/file1',
-      '/fake/directory1/file2',
+    expect(blego.tools.readDir('fake/directory1', '**/*', true, true)).toEqual([
+      nodePath.resolve('fake/directory1/.hidden'),
+      nodePath.resolve('fake/directory1/file1'),
+      nodePath.resolve('fake/directory1/file2'),
     ]);
   });
 
   it('Throws if path does not exist', () => {
     expect(() => {
-      blego.tools.readDir('/fake/file');
+      blego.tools.readDir('fake/file');
     }).toThrow();
 
-    expect(pathDoesNotExistSpy).toHaveBeenCalledWith('/fake/file');
+    expect(pathDoesNotExistSpy).toHaveBeenCalledWith(nodePath.resolve('fake/file'));
   });
 
   it('Throws if path is not a directory', () => {
     expect(() => {
-      blego.tools.readDir('/fake/directory1/file1');
+      blego.tools.readDir('fake/directory1/file1');
     }).toThrow();
 
-    expect(notDirSpy).toHaveBeenCalledWith('/fake/directory1/file1');
+    expect(notDirSpy).toHaveBeenCalledWith(nodePath.resolve('fake/directory1/file1'));
   });
 });

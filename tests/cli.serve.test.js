@@ -1,18 +1,18 @@
 describe('cli.serve', () => {
-  const mockFs = require('mock-fs');
   const request = require('request-promise');
+  const tempDir = require('../tools/tempDir.js');
   const serve = require('cli/serve.js');
 
   beforeEach(() => {
     console.log = jest.fn();
-    mockFs({
+    tempDir({
       'dist/test.txt': '1',
       'web/test.txt': '2',
     });
   });
 
   afterEach(() => {
-    mockFs.restore();
+    tempDir.restore();
   });
 
   it('Serves from default directory', () => {

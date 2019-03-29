@@ -1,19 +1,19 @@
 describe('blego.partial', () => {
-  const mockFs = require('mock-fs');
   const handlebars = require('handlebars');
+  const tempDir = require('../tools/tempDir.js');
   const Blego = require('Blego.js');
   let blego;
 
   beforeEach(() => {
     console.log = jest.fn();
     blego = new Blego();
-    mockFs({
+    tempDir({
       'template/partials/file.html': 'file content',
     });
   });
 
   afterEach(() => {
-    mockFs.restore();
+    tempDir.restore();
   });
 
   it('Registers a partial', () => {

@@ -57,8 +57,8 @@ function copyFile(src, dest) {
   exists(dest) && errors.pathExists(dest);
 
   tryCatch(
-    () => fs.copySync(src, dest),
-    () => errors.cantCopy(src, dest)
+     () => fs.copySync(src, dest),
+     () => errors.cantCopy(src, dest)
   );
 }
 

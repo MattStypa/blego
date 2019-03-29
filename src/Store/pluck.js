@@ -15,7 +15,9 @@ function pluck(prop) {
   let props = collect([]);
 
   this.collection.each((record) => record[prop] && (
-    Array.isArray(record[prop]) ? props.concat(record[prop]) : props.push(record[prop])
+    Array.isArray(record[prop])
+      ? (props = props.concat(record[prop]))
+      : props.push(record[prop])
   ));
 
   return props.all();

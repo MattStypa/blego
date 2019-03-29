@@ -1,22 +1,20 @@
 describe('blego.page', () => {
-  const fs = require('fs');
-  const mockFs = require('mock-fs');
+  const fs = require('fs-extra');
+  const tempDir = require('../tools/tempDir.js');
   const Blego = require('Blego.js');
   let blego;
 
   beforeEach(() => {
     console.log = jest.fn();
     blego = new Blego();
-    mockFs({
-      'dist': {},
-      'template': {
-        'testTemplate.html': 'Hello {{data}}',
-      },
+
+    tempDir({
+      'template/testTemplate.html': 'Hello {{data}}',
     });
   });
 
   afterEach(() => {
-    mockFs.restore();
+    tempDir.restore();
   });
 
   it('Creates a file from template and context', () => {

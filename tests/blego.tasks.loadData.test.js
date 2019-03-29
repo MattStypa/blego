@@ -1,5 +1,5 @@
 describe('blego.tasks.loadData', () => {
-  const mockFs = require('mock-fs');
+  const tempDir = require('../tools/tempDir.js');
   const Blego = require('Blego.js');
   let blego;
 
@@ -7,14 +7,14 @@ describe('blego.tasks.loadData', () => {
     console.log = jest.fn();
     blego = new Blego();
     new blego.Store([]);
-    mockFs({
+    tempDir({
       'data/authors/matt.json': '{"name": "matt"}',
       'data/posts/a.json': '{"id": "a"}',
     });
   });
 
   afterEach(() => {
-    mockFs.restore();
+    tempDir.restore();
   });
 
   it('Loads data into stores', () => {
