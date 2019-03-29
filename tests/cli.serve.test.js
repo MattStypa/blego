@@ -1,6 +1,6 @@
 describe('cli.serve', () => {
   const request = require('request-promise');
-  const tempDir = require('../tools/tempDir.js');
+  const tempDir = require('../jest/tempDir.js');
   const serve = require('cli/serve.js');
 
   beforeEach(() => {

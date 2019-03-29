@@ -1,6 +1,6 @@
 describe('cli.build', () => {
   const nodePath = require('path');
-  const tempDir = require('../tools/tempDir.js');
+  const tempDir = require('../jest/tempDir.js');
   const build = require('cli/build.js');
   let blegoJsMock;
   let buildJsMock;

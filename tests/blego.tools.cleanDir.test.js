@@ -1,7 +1,7 @@
 describe('blego.tools.cleanDir', () => {
   const nodePath = require('path');
   const fs = require('fs-extra');
-  const tempDir = require('../tools/tempDir.js');
+  const tempDir = require('../jest/tempDir.js');
   const Blego = require('Blego.js');
   const errors = require('errors.js');
   const pathDoesNotExistSpy = jest.spyOn(errors, 'pathDoesNotExist');

@@ -1,6 +1,6 @@
 describe('blego.tasks.copyStatic', () => {
   const fs = require('fs-extra');
-  const tempDir = require('../tools/tempDir.js');
+  const tempDir = require('../jest/tempDir.js');
   const Blego = require('Blego.js');
   let blego;
 

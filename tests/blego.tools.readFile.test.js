@@ -1,6 +1,6 @@
 describe('blego.tools.readFile', () => {
   const nodePath = require('path');
-  const tempDir = require('../tools/tempDir.js');
+  const tempDir = require('../jest/tempDir.js');
   const Blego = require('Blego.js');
   const errors = require('errors.js');
   const pathDoesNotExistSpy = jest.spyOn(errors, 'pathDoesNotExist');

@@ -1,6 +1,6 @@
 describe('blego.tasks.loadPartials', () => {
   const handlebars = require('handlebars');
-  const tempDir = require('../tools/tempDir.js');
+  const tempDir = require('../jest/tempDir.js');
   const Blego = require('Blego.js');
   let blego;
 
