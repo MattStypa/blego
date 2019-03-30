@@ -20,8 +20,8 @@ function newProject(path) {
   console.log();
 
   fs.ensureDirSync(fullPath);
-  copy(nodePath.join(__dirname, 'blueprint'), fullPath);
-  copy(nodePath.join(__dirname, '../../.gitignore'), fullPath);
+  copy(nodePath.resolve(__dirname, 'blueprint'), fullPath);
+  fs.moveSync(nodePath.resolve(fullPath, '.gitignore.blueprint'), nodePath.resolve(fullPath, '.gitignore'))
   process.chdir(fullPath);
 
   childProcess.spawnSync('npm', ['install', 'blego', '--save'], {stdio: 'inherit'});

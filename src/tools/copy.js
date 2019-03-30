@@ -23,7 +23,7 @@ function copy(src, dest) {
 
   src = nodePath.resolve(src);
   dest = nodePath.resolve(dest);
-  const destFilePath = nodePath.join(dest, nodePath.basename(src));
+  const destFilePath = nodePath.resolve(dest, nodePath.basename(src));
 
   !exists(src) && errors.pathDoesNotExist(src);
   isFile(dest) && errors.pathExists(dest);
@@ -38,7 +38,7 @@ function copy(src, dest) {
     const srcs = readDir(src, '**/*', true, true);
 
     srcs.forEach((src) => {
-      const dest = nodePath.join(destDir, nodePath.relative(srcDir, src));
+      const dest = nodePath.resolve(destDir, nodePath.relative(srcDir, src));
       isDir(src) && fs.ensureDirSync(dest);
       isFile(src) && copyFile(src, dest);
     });

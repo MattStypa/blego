@@ -27,7 +27,7 @@ function readDir(path, pattern = '**/*', includeDirs = false, includeDotFiles = 
   let content;
 
   tryCatch(
-    () => content = glob.sync(nodePath.join(path, pattern), {nodir: !includeDirs, dot: includeDotFiles}),
+    () => content = glob.sync(nodePath.resolve(path, pattern), {nodir: !includeDirs, dot: includeDotFiles}),
     () => errors.cantReadPath(path)
   );
 
