@@ -7,9 +7,9 @@
  */
 function dump() {
   // collect.js native dump function does not work as intended. PR opened
-  console.log(this.collection.all());
+  //console.log(this.collection.all());
 
-  return this;
+  return this.collection.dump();
 }
 
 module.exports = dump;

@@ -17,6 +17,6 @@ describe('blego.Store.dump', () => {
 
     store.dump();
 
-    expect(consoleLog.mock.calls.pop().pop().length).toEqual(3);
+    expect(consoleLog.mock.calls.pop().pop().items.length).toEqual(3);
   });
 });
