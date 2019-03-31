@@ -1,4 +1,5 @@
 describe('blego.tools.tryCatch', () => {
+  const throwingMock = require('../jest/throwingMock.js');
   const Blego = require('Blego.js');
   let blego;
 
@@ -18,12 +19,15 @@ describe('blego.tools.tryCatch', () => {
   });
 
   it('Runs the error function if the main function throws', () => {
-    const func = jest.fn(() => {throw new Error()});
     const errorFunc = jest.fn();
 
-    blego.tools.tryCatch(func, errorFunc);
+    blego.tools.tryCatch(throwingMock, errorFunc);
 
-    expect(func).toHaveBeenCalled();
+    expect(throwingMock).toHaveBeenCalled();
     expect(errorFunc).toHaveBeenCalled();
+  });
+
+  it('Does not require the error function', () => {
+    blego.tools.tryCatch(throwingMock);
   });
 });

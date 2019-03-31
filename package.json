@@ -59,6 +59,10 @@
     ],
     "testMatch": [
       "<rootDir>/tests/**/*.test.js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/cli/blueprint/**/*"
     ]
   }
 }

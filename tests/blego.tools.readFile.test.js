@@ -1,10 +1,13 @@
 describe('blego.tools.readFile', () => {
   const nodePath = require('path');
+  const fs = require('fs-extra');
   const tempDir = require('../jest/tempDir.js');
+  const throwingMock = require('../jest/throwingMock.js');
   const Blego = require('Blego.js');
   const errors = require('errors.js');
   const pathDoesNotExistSpy = jest.spyOn(errors, 'pathDoesNotExist');
   const notFileSpy = jest.spyOn(errors, 'notFile');
+  const cantReadPathSpy = jest.spyOn(errors, 'cantReadPath');
   let blego;
 
   beforeEach(() => {
@@ -39,5 +42,18 @@ describe('blego.tools.readFile', () => {
     }).toThrow();
 
     expect(notFileSpy).toHaveBeenCalledWith(nodePath.resolve('fake/directory'));
+  });
+
+  it('Throws if path cannot be read', () => {
+    const original = fs.readFileSync;
+    fs.readFileSync = throwingMock;
+
+    expect(() => {
+      blego.tools.readFile('fake/directory/file');
+    }).toThrow();
+
+    fs.readFileSync = original;
+
+    expect(cantReadPathSpy).toHaveBeenCalledWith(nodePath.resolve('fake/directory/file'));
   });
 });

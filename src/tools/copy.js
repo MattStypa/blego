@@ -53,7 +53,6 @@ function copy(src, dest) {
  * @param {string} dest Destination path.
  */
 function copyFile(src, dest) {
-  !isFile(src) && errors.notFile(src);
   exists(dest) && errors.pathExists(dest);
 
   tryCatch(

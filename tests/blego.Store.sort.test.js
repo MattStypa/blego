@@ -1,4 +1,4 @@
-describe('blego.Store.sortBy', () => {
+describe('blego.Store.sort', () => {
   const Blego = require('Blego.js');
   let blego;
 

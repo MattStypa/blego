@@ -2,10 +2,12 @@ describe('blego.tools.copy', () => {
   const nodePath = require('path');
   const fs = require('fs-extra');
   const tempDir = require('../jest/tempDir.js');
+  const throwingMock = require('../jest/throwingMock.js');
   const Blego = require('Blego.js');
   const errors = require('errors.js');
   const pathDoesNotExistSpy = jest.spyOn(errors, 'pathDoesNotExist');
   const pathExistsSpy = jest.spyOn(errors, 'pathExists');
+  const cantCopySpy = jest.spyOn(errors, 'cantCopy');
   let blego;
 
   beforeEach(() => {
@@ -85,5 +87,21 @@ describe('blego.tools.copy', () => {
     }).toThrow();
 
     expect(pathExistsSpy).toHaveBeenCalledWith(nodePath.resolve('fake/directory4/file1'));
+  });
+
+  it('Throws if copy fails', () => {
+    const original = fs.copySync;
+    fs.copySync = throwingMock;
+
+    expect(() => {
+      blego.tools.copy('fake/directory1/file1', 'fake/directory1/file3');
+    }).toThrow();
+
+    fs.copySync = original;
+
+    expect(cantCopySpy).toHaveBeenCalledWith(
+      nodePath.resolve('fake/directory1/file1'),
+      nodePath.resolve('fake/directory1/file3')
+    );
   });
 });

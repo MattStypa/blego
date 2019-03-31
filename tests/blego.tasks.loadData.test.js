@@ -1,15 +1,26 @@
 describe('blego.tasks.loadData', () => {
+  const nodePath = require('path');
   const tempDir = require('../jest/tempDir.js');
+  const throwingMock = require('../jest/throwingMock.js');
   const Blego = require('Blego.js');
+  const errors = require('errors.js');
+  const parsers = require('tools/parsers.js');
+  const noTypeSpy = jest.spyOn(errors, 'noType');
+  const noParserSpy = jest.spyOn(errors, 'noParser');
+  const cantParseSpy = jest.spyOn(errors, 'cantParse');
   let blego;
 
   beforeEach(() => {
     console.log = jest.fn();
+    console.error = jest.fn();
     blego = new Blego();
     new blego.Store([]);
     tempDir({
-      'data/authors/matt.json': '{"name": "matt"}',
-      'data/posts/a.json': '{"id": "a"}',
+      'data/authors/joe.json': '{"name": "joe"}',
+      'data/authors/bob.yaml': 'name: bob',
+      'data/authors/editors/matt.js': `module.exports = {name: 'matt'}`,
+      'data/posts/a.md': '# Title',
+      'data/posts/b.html': '<h1>Title</h1>',
     });
   });
 
@@ -20,9 +31,99 @@ describe('blego.tasks.loadData', () => {
   it('Loads data into stores', () => {
     blego.tasks.loadData();
 
-    expect(blego.store.authors.count()).toEqual(1);
-    expect(blego.store.posts.count()).toEqual(1);
-    expect(blego.store.authors.get('matt').name).toEqual('matt');
-    expect(blego.store.posts.get('a').id).toEqual('a');
+    expect(blego.store.authors.count()).toEqual(3);
+    expect(blego.store.posts.count()).toEqual(2);
+  });
+
+  it('Loads data from sub directories', () => {
+    blego.tasks.loadData();
+
+    expect(blego.store.authors.get('editors/matt').name).toEqual('matt');
+  });
+
+  it('parses json files', () => {
+    blego.tasks.loadData();
+
+    expect(blego.store.authors.get('joe').name).toEqual('joe');
+  });
+
+  it('parses yaml files', () => {
+    blego.tasks.loadData();
+
+    expect(blego.store.authors.get('bob').name).toEqual('bob');
+  });
+
+  it('parses js files', () => {
+    blego.tasks.loadData();
+
+    expect(blego.store.authors.get('editors/matt').name).toEqual('matt');
+  });
+
+  it('parses md files', () => {
+    blego.tasks.loadData();
+
+    expect(blego.store.posts.get('a').body).toEqual(expect.stringMatching(/<h1.*>Title<\/h1>/));
+  });
+
+  it('parses html files', () => {
+    blego.tasks.loadData();
+
+    expect(blego.store.posts.get('b').body).toEqual(expect.stringMatching(/<h1>Title<\/h1>/));
+  });
+
+  it('Dies if data file has no type', () => {
+    tempDir({
+      'data/authors/matt': '{"name": "matt"}',
+    });
+
+    const restoreExit = mockExit();
+
+    blego.tasks.loadData();
+
+    const exitMock = restoreExit();
+
+    expect(exitMock).toHaveBeenCalled();
+    expect(noTypeSpy).toHaveBeenCalledWith(nodePath.resolve('data/authors/matt'));
+  });
+
+  it('Dies if data file has unknown type', () => {
+    tempDir({
+      'data/authors/matt.data': '{"name": "matt"}',
+    });
+
+    const restoreExit = mockExit();
+
+    blego.tasks.loadData();
+
+    const exitMock = restoreExit();
+
+    expect(exitMock).toHaveBeenCalled();
+    expect(noParserSpy).toHaveBeenCalledWith(nodePath.resolve('data/authors/matt.data'));
+  });
+
+  it('Dies if parsing fails', () => {
+    const restoreExit = mockExit();
+    const original = parsers.json;
+    parsers.json = throwingMock
+
+    blego.tasks.loadData();
+
+    const exitMock = restoreExit();
+    parsers.json = original
+
+    expect(exitMock).toHaveBeenCalled();
+    expect(cantParseSpy).toHaveBeenCalledWith(nodePath.resolve('data/authors/joe.json'));
   });
 });
+
+function mockExit() {
+  const exitMock = jest.fn();
+  const original = process.exit;
+  process.exit = exitMock;
+
+  return () => {
+    process.exit = original;
+
+    return exitMock;
+  }
+}
