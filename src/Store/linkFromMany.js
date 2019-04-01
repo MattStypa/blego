@@ -33,7 +33,7 @@ function linkFromMany(prop, relatedStore, relatedProp) {
         return;
       }
 
-      typeof(ref) !== 'string' && errors.invalidPropTypeInArray(relatedProp, 'string', record.key);
+      typeof(ref) !== 'string' && errors.invalidTypeInArray(relatedProp, 'string', record.key);
 
       const link = this.get(ref);
       !link && errors.recordNotFound(ref, prop, record.key);

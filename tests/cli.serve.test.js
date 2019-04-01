@@ -1,10 +1,12 @@
 describe('cli.serve', () => {
   const request = require('request-promise');
   const tempDir = require('../jest/tempDir.js');
+  const exitMock = require('../jest/exitMock.js');
   const serve = require('cli/serve.js');
 
   beforeEach(() => {
     console.log = jest.fn();
+    console.error = jest.fn();
     tempDir({
       'dist/test.txt': '1',
       'web/test.txt': '2',
@@ -40,5 +42,17 @@ describe('cli.serve', () => {
         expect(body).toBe('2');
       });
     });
+  });
+
+  it('Dies if the given path does not exist', () => {
+    const [restore, mockExit] = exitMock(() => { throw new Error() });
+
+    expect(() => {
+      serve('test', {port: undefined});
+    }).toThrow();
+
+    restore();
+
+    expect(mockExit).toHaveBeenCalled()
   });
 });

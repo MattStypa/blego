@@ -10,7 +10,6 @@ describe('blego.page', () => {
   beforeEach(() => {
     console.log = jest.fn();
     blego = new Blego();
-
     tempDir({
       'template/testTemplate.html': 'Hello {{data}}',
     });

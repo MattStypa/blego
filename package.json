@@ -51,6 +51,7 @@
   },
   "jest": {
     "testEnvironment": "node",
+    "clearMocks": true,
     "globals": {
       "__TEST__": true
     },
@@ -62,7 +63,8 @@
     ],
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
-      "!src/cli/blueprint/**/*"
+      "!src/cli/blueprint/**/*",
+      "!src/cli.js"
     ]
   }
 }

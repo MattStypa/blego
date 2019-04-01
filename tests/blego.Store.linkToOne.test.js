@@ -1,5 +1,7 @@
 describe('blego.Store.linkToOne', () => {
   const Blego = require('Blego.js');
+  const errors = require('errors.js');
+  const recordNotFoundSpy = jest.spyOn(errors, 'recordNotFound');
   let blego;
 
   beforeEach(() => {
@@ -12,6 +14,7 @@ describe('blego.Store.linkToOne', () => {
       new blego.Record('1', {link: 'c'}),
       new blego.Record('2', {link: 'b'}),
       new blego.Record('3', {link: 'a'}),
+      new blego.Record('4', {link: null}),
     ]);
     const toStore = new blego.Store([
       new blego.Record('a', {}),
@@ -24,6 +27,7 @@ describe('blego.Store.linkToOne', () => {
     expect(fromStore.get('1').link.key).toEqual('c');
     expect(fromStore.get('2').link.key).toEqual('b');
     expect(fromStore.get('3').link.key).toEqual('a');
+    expect(fromStore.get('4').link).toEqual(undefined);
   });
 
   it('Throws if a Record is mising', () => {
@@ -37,5 +41,7 @@ describe('blego.Store.linkToOne', () => {
     expect(() => {
       fromStore.linkToOne('link', toStore);
     }).toThrow();
+
+    expect(recordNotFoundSpy).toHaveBeenCalledWith('b', 'link', '1');
   });
 });
