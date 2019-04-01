@@ -8,4 +8,4 @@ function isTest() {
   return typeof __TEST__ !== 'undefined' && !!__TEST__;
 }
 
-module.exports = isTest
+module.exports = isTest;

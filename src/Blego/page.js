@@ -29,6 +29,6 @@ function page(path, templatePath, context) {
   const rendered = templateCompiled(merge({}, this.global, context));
   fs.ensureFileSync(path);
   fs.writeFileSync(path, rendered);
-};
+}
 
 module.exports = page;

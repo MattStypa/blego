@@ -14,8 +14,8 @@ const isTest = require('../tools/isTest.js');
  * @param {command} command Command object from Commander.
  * @returns {Promise}
  */
-function serve(path = 'dist', command) {
-  const fullPath = nodePath.resolve(path);
+function serve(path, command) {
+  const fullPath = nodePath.resolve(path || 'dist');
 
   !isDir(fullPath) && cliUtils.error('Unable to find', cliUtils.quote(path));
 

@@ -1,6 +1,5 @@
 const nodePath = require('path');
 const fs = require('fs-extra');
-const glob = require('glob');
 const errors = require('../errors.js');
 const exists = require('./exists.js');
 const isDir = require('./isDir.js');

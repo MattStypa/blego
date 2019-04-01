@@ -24,6 +24,9 @@
   "engines": {
     "node": ">=8.0.0"
   },
+  "scripts": {
+    "test": "eslint src && jest -i --coverage"
+  },
   "dependencies": {
     "chalk": "^2.4.2",
     "collect.js": "^4.6.4",
@@ -42,12 +45,10 @@
     "stack-trace": "^0.0.10"
   },
   "devDependencies": {
+    "eslint": "^5.16.0",
     "jest": "^24.5.0",
     "request-promise": "^4.2.4",
     "strip-ansi": "^5.2.0"
-  },
-  "scripts": {
-    "test": "jest -i"
   },
   "jest": {
     "testEnvironment": "node",

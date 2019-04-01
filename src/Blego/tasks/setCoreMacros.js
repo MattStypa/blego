@@ -1,6 +1,3 @@
-const util = require('util');
-const handlebars = require('handlebars');
-
 /**
  * Registers Handlebars helpers.
  *

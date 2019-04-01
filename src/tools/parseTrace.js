@@ -22,4 +22,4 @@ function parseTrace(error) {
   }));
 }
 
-module.exports = parseTrace
+module.exports = parseTrace;
