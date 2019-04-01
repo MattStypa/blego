@@ -1,8 +1,13 @@
 describe('cli.serve', () => {
+  jest.mock('opn');
+
+  const opnMock = require('opn');
   const request = require('request-promise');
   const tempDir = require('../jest/tempDir.js');
-  const exitMock = require('../jest/exitMock.js');
+  const mockExit = require('../jest/mockExit.js');
   const serve = require('cli/serve.js');
+  const cliUtils = require('cli/utils.js');
+  const cliErrorSpy = jest.spyOn(cliUtils, 'error');
 
   beforeEach(() => {
     console.log = jest.fn();
@@ -44,15 +49,51 @@ describe('cli.serve', () => {
     });
   });
 
+  it('Opens the browser', () => {
+    __TEST__ = false;
+
+    return serve('web', {port: undefined}).then((server) => {
+      server.close();
+      expect(opnMock).toHaveBeenCalledWith(`http://localhost:3000`);
+    });
+  });
+
+  it('Opens the browser on port 80', () => {
+    __TEST__ = false;
+
+    return serve('web', {port: 80}).then((server) => {
+      server.close();
+      expect(opnMock).toHaveBeenCalledWith(`http://localhost`);
+    });
+  });
+
   it('Dies if the given path does not exist', () => {
-    const [restore, mockExit] = exitMock(() => { throw new Error() });
-
-    expect(() => {
+    const mock = mockExit(() => {
       serve('test', {port: undefined});
-    }).toThrow();
+    });
 
-    restore();
+    expect(cliErrorSpy).toHaveBeenCalled();
+  });
 
-    expect(mockExit).toHaveBeenCalled()
+  it('Dies if it cannot serve', () => {
+    let server;
+    let resolve;
+    const original = cliUtils.error;
+    const promise = new Promise((newResolve) => resolve = newResolve);
+
+    cliUtils.error = jest.fn(() => {
+      server.close();
+      resolve();
+    })
+
+    serve('web', {port: 1234}).then((newServer) => {
+        server = newServer;
+        serve('web', {port: 1234});
+    });
+
+    return promise.then(() => {
+      expect(cliUtils.error).toHaveBeenCalled();
+      cliUtils.error = original;
+    });
   });
 });

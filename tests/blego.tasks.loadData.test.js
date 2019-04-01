@@ -1,7 +1,7 @@
 describe('blego.tasks.loadData', () => {
   const nodePath = require('path');
   const tempDir = require('../jest/tempDir.js');
-  const exitMock = require('../jest/exitMock.js');
+  const mockExit = require('../jest/mockExit.js');
   const throwingMock = require('../jest/throwingMock.js');
   const Blego = require('Blego.js');
   const errors = require('errors.js');
@@ -77,13 +77,11 @@ describe('blego.tasks.loadData', () => {
       'data/authors/matt': '{"name": "matt"}',
     });
 
-    const [restoreExit, mockExit] = exitMock();
+    const mock = mockExit(() => {
+      blego.tasks.loadData();
+    });
 
-    blego.tasks.loadData();
-
-    restoreExit();
-
-    expect(mockExit).toHaveBeenCalled();
+    expect(mock).toHaveBeenCalled();
     expect(noTypeSpy).toHaveBeenCalledWith(nodePath.resolve('data/authors/matt'));
   });
 
@@ -92,27 +90,25 @@ describe('blego.tasks.loadData', () => {
       'data/authors/matt.data': '{"name": "matt"}',
     });
 
-    const [restoreExit, mockExit] = exitMock();
+    const mock = mockExit(() => {
+      blego.tasks.loadData();
+    });
 
-    blego.tasks.loadData();
-
-    restoreExit();
-
-    expect(mockExit).toHaveBeenCalled();
+    expect(mock).toHaveBeenCalled();
     expect(noParserSpy).toHaveBeenCalledWith(nodePath.resolve('data/authors/matt.data'));
   });
 
   it('Dies if parsing fails', () => {
-    const [restoreExit, mockExit] = exitMock();
     const original = parsers.json;
     parsers.json = throwingMock
 
-    blego.tasks.loadData();
+    const mock = mockExit(() => {
+      blego.tasks.loadData();
+    });
 
-    restoreExit();
     parsers.json = original
 
-    expect(mockExit).toHaveBeenCalled();
+    expect(mock).toHaveBeenCalled();
     expect(cantParseSpy).toHaveBeenCalledWith(nodePath.resolve('data/authors/joe.json'));
   });
 });

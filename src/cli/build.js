@@ -1,7 +1,6 @@
 const nodePath = require('path');
 const cliUtils = require('./utils.js');
 const isFile = require('../tools/isFile.js');
-const errors = require('../errors.js');
 
 /**
  * Build project from the given build file.

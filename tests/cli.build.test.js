@@ -1,9 +1,11 @@
 describe('cli.build', () => {
   const nodePath = require('path');
   const tempDir = require('../jest/tempDir.js');
-  const exitMock = require('../jest/exitMock.js');
+  const mockExit = require('../jest/mockExit.js');
   const throwingMock = require('../jest/throwingMock.js');
   const build = require('cli/build.js');
+  const cliUtils = require('cli/utils.js');
+  const cliErrorSpy = jest.spyOn(cliUtils, 'error');
   let blegoJsMock;
   let buildJsMock;
 
@@ -42,15 +44,11 @@ describe('cli.build', () => {
     expect(buildJsMock).toHaveBeenCalled();
   });
 
-  it('Dies if the given files does not exist', () => {
-    const [restoreExit, mockExit] = exitMock(() => { throw new Error() });
-
-    expect(() => {
+  it('Dies if the given file does not exist', () => {
+    const mock = mockExit(() => {
       build('test');
-    }).toThrow();
+    });
 
-    restoreExit();
-
-    expect(mockExit).toHaveBeenCalled();
+    expect(cliErrorSpy).toHaveBeenCalled();
   });
 });
