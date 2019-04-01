@@ -1,6 +1,14 @@
 # Release Notes
 
-## v0.2.4 (wip)
+## v0.3.0 (WIP)
+
+### Changed
+- Quality of life tweaks.
+
+### TODO
+- Users can add custom parsers.
+
+## v0.2.4 (2018-04-01)
 
 ### Changed
 - Javascript data files are now parsable.

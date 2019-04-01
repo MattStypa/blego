@@ -16,7 +16,7 @@ function newProject(path) {
 
   exists(fullPath) && cliUtils.error(cliUtils.quote(fullPath), 'already exists');
 
-  console.log(cliUtils.emoji.construction, 'Creating new Blego project');
+  console.log(cliUtils.emoji.rocket, 'Creating new Blego project');
   console.log();
 
   fs.ensureDirSync(fullPath);
