@@ -6,7 +6,7 @@
  * @memberof Blego
  */
 function setCoreMacros() {
-  this.task('Setting core macros', () => {
+  this.task('Set core macros', () => {
     this.macro('dd', this.dd);
     this.macro('dump', this.dump);
   });
