@@ -1,14 +1,12 @@
 # Release Notes
 
-## v0.3.0 (WIP)
+## v0.3.0 (2019-05-22)
 
 ### Changed
 - Quality of life tweaks.
 - Add JSDoc system.
 - Users can add custom parsers.
 - Updated dependencies.
-
-### TODO
 
 ## v0.2.4 (2018-04-01)
 
