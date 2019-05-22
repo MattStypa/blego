@@ -4,10 +4,11 @@
 
 ### Changed
 - Quality of life tweaks.
+- Add JSDoc system.
+- Users can add custom parsers.
+- Updated dependencies.
 
 ### TODO
-- Users can add custom parsers.
-- Add JSDoc system
 
 ## v0.2.4 (2018-04-01)
 

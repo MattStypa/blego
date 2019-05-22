@@ -54,4 +54,7 @@ Blego.prototype.Record = require('./Record.js');
 /** @see {@link module:tools|tools} */
 Blego.prototype.tools = require('./tools.js');
 
+/** @see {@link module:parsers|parsers} */
+Blego.prototype.parsers = require('./parsers.js');
+
 module.exports = Blego;

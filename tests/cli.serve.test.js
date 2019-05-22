@@ -1,7 +1,7 @@
 describe('cli.serve', () => {
-  jest.mock('opn');
+  jest.mock('open');
 
-  const opnMock = require('opn');
+  const openMock = require('open');
   const request = require('request-promise');
   const tempDir = require('../jest/tempDir.js');
   const mockExit = require('../jest/mockExit.js');
@@ -54,7 +54,7 @@ describe('cli.serve', () => {
 
     return serve('web', {port: undefined}).then((server) => {
       server.close();
-      expect(opnMock).toHaveBeenCalledWith(`http://localhost:3000`);
+      expect(openMock).toHaveBeenCalledWith(`http://localhost:3000`);
     });
   });
 
@@ -63,7 +63,7 @@ describe('cli.serve', () => {
 
     return serve('web', {port: 80}).then((server) => {
       server.close();
-      expect(opnMock).toHaveBeenCalledWith(`http://localhost`);
+      expect(openMock).toHaveBeenCalledWith(`http://localhost`);
     });
   });
 

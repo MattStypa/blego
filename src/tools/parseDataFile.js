@@ -1,5 +1,5 @@
 const nodePath = require('path');
-const parsers = require('./parsers.js');
+const parsers = require('../parsers.js');
 const errors = require('../errors.js');
 const tryCatch = require('./tryCatch.js');
 const validateType = require('./validateType.js');

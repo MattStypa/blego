@@ -4,6 +4,9 @@
 # System
 .DS_Store
 
+# Generated
+docs
+
 # Temp files
 __temp
 

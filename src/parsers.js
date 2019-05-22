@@ -1,13 +1,16 @@
+/**
+ * @module parsers
+ */
+
 const frontMatter = require('front-matter');
 const marked = require('marked');
 const merge = require('lodash.merge');
 const yaml = require('js-yaml');
-const readFile = require('./readFile.js');
+const readFile = require('./tools/readFile.js');
 
 /**
  * Parses markdown file.
  *
- * @private
  * @param {string} path File to be parsed.
  * @returns {object}
  */
@@ -24,7 +27,6 @@ function markdownParser(path) {
 /**
  * Parses HTML file.
  *
- * @private
  * @param {string} path File to be parsed.
  * @returns {object}
  */
@@ -41,7 +43,6 @@ function htmlParser(path) {
 /**
  * Parses JavaScript file.
  *
- * @private
  * @param {string} path File to be parsed.
  * @returns {object}
  */
@@ -55,7 +56,6 @@ function jsParser(path) {
 /**
  * Parses JSON file.
  *
- * @private
  * @param {string} path File to be parsed.
  * @returns {object}
  */
@@ -66,7 +66,6 @@ function jsonParser(path) {
 /**
  * Parses YAML file.
  *
- * @private
  * @param {string} path File to be parsed.
  * @returns {object}
  */
@@ -75,9 +74,9 @@ function yamlParser(path) {
 }
 
 module.exports = {
-  'md': markdownParser,
-  'html': htmlParser,
-  'js': jsParser,
-  'json': jsonParser,
-  'yaml': yamlParser,
+  md: markdownParser,
+  html: htmlParser,
+  js: jsParser,
+  json: jsonParser,
+  yaml: yamlParser,
 };
