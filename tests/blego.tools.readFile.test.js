@@ -9,9 +9,6 @@ describe('blego.tools.readFile', () => {
   const cantReadPathSpy = jest.spyOn(blego.tools.errors, 'cantReadPath');
 
   beforeEach(() => {
-    pathDoesNotExistSpy.mockClear();
-    notFileSpy.mockClear();
-    cantReadPathSpy.mockClear();
     tempDir({
       'fake/directory/file': 'file content',
     });

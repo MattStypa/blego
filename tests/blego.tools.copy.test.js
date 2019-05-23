@@ -9,9 +9,6 @@ describe('blego.tools.copy', () => {
   const cantCopySpy = jest.spyOn(blego.tools.errors, 'cantCopy');
 
   beforeEach(() => {
-    pathDoesNotExistSpy.mockClear();
-    pathExistsSpy.mockClear();
-    cantCopySpy.mockClear();
     tempDir({
       'fake/directory1/file1': 'file content',
       'fake/directory1/file2': '',

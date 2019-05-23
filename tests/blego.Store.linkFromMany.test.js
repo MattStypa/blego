@@ -3,11 +3,6 @@ describe('blego.Store.linkFromMany', () => {
   const recordNotFoundSpy = jest.spyOn(blego.tools.errors, 'recordNotFound');
   const invalidTypeInArraySpy = jest.spyOn(blego.tools.errors, 'invalidTypeInArray');
 
-  beforeEach(() => {
-    recordNotFoundSpy.mockClear();
-    invalidTypeInArraySpy.mockClear();
-  });
-
   it('Creates a links to many Records from a different Store', () => {
     const fromStore = new blego.Store([
       new blego.Record('1', {links: ['a', 'b']}),

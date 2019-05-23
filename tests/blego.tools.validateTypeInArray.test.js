@@ -2,10 +2,6 @@ describe('blego.tools.validateTypeInArray', () => {
   const blego = require('Blego.js');
   const invalidTypeInArraySpy = jest.spyOn(blego.tools.errors, 'invalidTypeInArray');
 
-  beforeEach(() => {
-    invalidTypeInArraySpy.mockClear();
-  });
-
   it('Validates types', () => {
     blego.tools.validateTypeInArray(null, 'string', ['abc', 'def']);
     blego.tools.validateTypeInArray(null, 'object', [{}, []]);
