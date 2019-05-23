@@ -1,5 +1,3 @@
-const handlebars = require('handlebars');
-
 /**
  * Registers Handlebars helper.
  *
@@ -12,7 +10,7 @@ function macro(name, fn) {
   this.tools.validateType('name', 'string', name);
   this.tools.validateType('fn', 'function', fn);
 
-  handlebars.registerHelper(name, fn);
+  this.handlebars.registerHelper(name, fn);
 }
 
 module.exports = macro;

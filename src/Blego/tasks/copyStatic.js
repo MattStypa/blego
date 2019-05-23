@@ -1,7 +1,6 @@
 /**
  * Copies the static files.
  *
- * @private
  * @instance
  * @memberof Blego
  */

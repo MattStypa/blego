@@ -1,4 +1,3 @@
-const errors = require('../errors.js');
 const Record = require('../Record.js');
 const tools = require('../tools.js');
 
@@ -33,11 +32,11 @@ function linkFromOne(prop, relatedStore, relatedProp) {
         return;
       }
 
-      typeof(ref) !== 'string' && errors.invalidTypeInArray(relatedProp, 'string', record.key);
+      typeof(ref) !== 'string' && tools.errors.invalidTypeInArray(relatedProp, 'string', record.key);
 
       const link = this.get(ref);
-      !link && errors.recordNotFound(ref, prop, record.key);
-      link[prop] && errors.recordLinked(ref, prop, record.key, link[prop].key);
+      !link && tools.errors.recordNotFound(ref, prop, record.key);
+      link[prop] && tools.errors.recordLinked(ref, prop, record.key, link[prop].key);
       link[prop] = record;
     });
   });

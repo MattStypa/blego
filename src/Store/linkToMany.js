@@ -1,4 +1,3 @@
-const errors = require('../errors.js');
 const tools = require('../tools.js');
 
 /**
@@ -23,7 +22,7 @@ function linkToMany(prop, relatedStore) {
 
     refs.forEach((ref) => {
       const link = relatedStore.get(ref);
-      !link && errors.recordNotFound(ref, prop, record.key);
+      !link && tools.errors.recordNotFound(ref, prop, record.key);
       record[prop].push(link);
     });
   });

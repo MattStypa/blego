@@ -1,9 +1,8 @@
 /**
  * Cleans the destination directory.
  *
- * @private
  * @instance
- * @memberof Blego
+ * @alias module:tasks.cleanDir
  */
 function cleanUp() {
   this.task('Clean destination directory', () => {

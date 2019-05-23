@@ -1,8 +1,6 @@
 const nodePath = require('path');
 const fs = require('fs-extra');
-const handlebars = require('handlebars');
 const merge = require('lodash.merge');
-const errors = require('../errors.js');
 
 /**
  * Creates a rendered page.
@@ -22,10 +20,10 @@ function page(path, templatePath, context) {
   templatePath = this.tools.jailPath(templatePath);
   path = nodePath.resolve(this.internal.paths.dest, path);
   templatePath = nodePath.resolve(this.internal.paths.template, templatePath);
-  this.tools.exists(path) && errors.pathExists(path);
+  this.tools.exists(path) && this.errors.pathExists(path);
 
   const templateSource = this.tools.readFile(templatePath);
-  const templateCompiled = handlebars.compile(templateSource);
+  const templateCompiled = this.handlebars.compile(templateSource);
   const rendered = templateCompiled(merge({}, this.global, context));
   fs.ensureFileSync(path);
   fs.writeFileSync(path, rendered);

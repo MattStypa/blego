@@ -1,6 +1,6 @@
 const nodePath = require('path');
 const fs = require('fs-extra');
-const errors = require('../errors.js');
+const errors = require('./errors.js');
 const tryCatch = require('./tryCatch.js');
 const validateType = require('./validateType.js');
 

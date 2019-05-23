@@ -1,5 +1,3 @@
-const isTest = require('./tools/isTest.js');
-
 /**
  * Creates a Blego object.
  *
@@ -11,27 +9,26 @@ const isTest = require('./tools/isTest.js');
  * @param {string} paths.globals Directory from which files will be parsed and put into global context.
  * @param {string} paths.template Directory from which template files will be read.
  * @param {string} paths.partials Directory from which template partials will be read.
- * @param {boolean} [init=true] Should initialize on instantiation.
  * @property {object} store Parsed data.
  * @property {object} global Global context.
  */
-function Blego(paths = {}, init = true) {
-  this.isBlego = true;
+function Blego(paths = {}) {
   this.store = {};
   this.global = {};
   this.internal = {paths};
 
-  this.init = require('./Blego/init.js');
-  this.macro = require('./Blego/macro.js');
-  this.partial = require('./Blego/partial.js');
-  this.task = require('./Blego/task.js');
-  this.page = require('./Blego/page.js');
-  this.log = require('./Blego/log.js');
-  this.warn = require('./Blego/warn.js');
-  this.dump = require('./Blego/dump.js');
-  this.dd = require('./Blego/dd.js');
+  this.init = require('./Blego/init.js').bind(this);
+  this.task = require('./Blego/task.js').bind(this);
+  this.page = require('./Blego/page.js').bind(this);
+  this.macro = require('./Blego/macro.js').bind(this);
+  this.partial = require('./Blego/partial.js').bind(this);
+  this.log = require('./Blego/log.js').bind(this);
+  this.warn = require('./Blego/warn.js').bind(this);
+  this.dump = require('./Blego/dump.js').bind(this);
+  this.dd = require('./Blego/dd.js').bind(this);
 
-  this.tasks = {
+  /** @module tasks */
+  const tasks = {
     setPaths: require('./Blego/tasks/setPaths.js').bind(this),
     setCoreMacros: require('./Blego/tasks/setCoreMacros.js').bind(this),
     loadGlobals: require('./Blego/tasks/loadGlobals.js').bind(this),
@@ -39,22 +36,27 @@ function Blego(paths = {}, init = true) {
     loadData: require('./Blego/tasks/loadData.js').bind(this),
     cleanUp: require('./Blego/tasks/cleanUp.js').bind(this),
     copyStatic: require('./Blego/tasks/copyStatic.js').bind(this),
-  };
+  }
+
+  /** @see Record */
+  this.Record = require('./Record.js');
+
+  /** @see Store */
+  this.Store = require('./Store.js');
+
+  /** @see {@link module:tools|tools} */
+  this.tools = require('./tools.js');
+
+  /** @see {@link module:parsers|parsers} */
+  this.parsers = require('./parsers.js');
+
+  /** @see {@link http://handlebarsjs.com} */
+  this.handlebars = require('handlebars');
+
+  /** @see {@link module:tasks|tasks} */
+  this.tasks = tasks;
 
   this.tasks.setPaths();
-  init && !isTest() && this.init();
 }
 
-/** @see Store */
-Blego.prototype.Store = require('./Store.js');
-
-/** @see Record */
-Blego.prototype.Record = require('./Record.js');
-
-/** @see {@link module:tools|tools} */
-Blego.prototype.tools = require('./tools.js');
-
-/** @see {@link module:parsers|parsers} */
-Blego.prototype.parsers = require('./parsers.js');
-
-module.exports = Blego;
+module.exports = new Blego();

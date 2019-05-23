@@ -1,16 +1,13 @@
-const handlebars = require('handlebars');
-const parseDataDir = require('../../tools/parseDataDir.js');
-
 /**
  * Registers partials with Handlebars.
  *
- * @private
  * @instance
  * @memberof Blego
  */
 function loadPartials() {
   this.task('Load partials', () => {
-    parseDataDir(this.internal.paths.partials).each((file) => handlebars.registerPartial(file.key, file.body));
+    this.tools.parseDataDir(this.internal.paths.partials)
+      .each((file) => this.handlebars.registerPartial(file.key, file.body));
   });
 }
 

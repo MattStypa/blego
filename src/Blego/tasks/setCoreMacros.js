@@ -1,7 +1,6 @@
 /**
  * Registers Handlebars helpers.
  *
- * @private
  * @instance
  * @memberof Blego
  */

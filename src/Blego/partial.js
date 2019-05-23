@@ -1,5 +1,4 @@
 const nodePath = require('path');
-const handlebars = require('handlebars');
 
 /**
  * Registers Handlebars partial.
@@ -18,7 +17,7 @@ function partial(name, templatePath) {
 
   const templateSource = this.tools.readFile(templatePath);
 
-  handlebars.registerPartial(name, templateSource);
+  this.handlebars.registerPartial(name, templateSource);
 }
 
 module.exports = partial;

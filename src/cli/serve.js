@@ -3,8 +3,7 @@ const detectPort = require('detect-port-alt');
 const express = require('express');
 const open = require('open');
 const cliUtils = require('./utils.js');
-const isDir = require('../tools/isDir.js');
-const isTest = require('../tools/isTest.js');
+const tools = require('../tools.js');
 
 /**
  * Starts a web server.
@@ -17,7 +16,7 @@ const isTest = require('../tools/isTest.js');
 function serve(path, command) {
   const fullPath = nodePath.resolve(path || 'dist');
 
-  !isDir(fullPath) && cliUtils.error('Unable to find', cliUtils.quote(path));
+  !tools.isDir(fullPath) && cliUtils.error('Unable to find', cliUtils.quote(path));
 
   console.log('Serving from', cliUtils.quote(fullPath));
 
@@ -43,7 +42,7 @@ function startServer(path, port) {
   app.use(express.static(path));
   const server = app.listen(port, () => console.log(cliUtils.emoji.rocket, 'Listening on port', cliUtils.magenta(port)));
   server.on('error', (e) => cliUtils.error('Unable to listen on port', cliUtils.magenta(port), `[${e.code}]`));
-  !isTest() && open(port == 80 ? 'http://localhost' : `http://localhost:${port}`);
+  open(port == 80 ? 'http://localhost' : `http://localhost:${port}`);
 
   return server;
 }

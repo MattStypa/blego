@@ -1,4 +1,4 @@
-const errors = require('../errors.js');
+const errors = require('./errors.js');
 const getTypesString = require('./getTypesString.js');
 
 /**

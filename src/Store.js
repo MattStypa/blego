@@ -1,6 +1,6 @@
 const collect = require('collect.js');
-const errors = require('./errors.js');
 const Record = require('./Record.js');
+const tools = require('./tools.js');
 
 /**
  * Creates a Store object. All records must have a unique key.
@@ -47,8 +47,8 @@ function validateRecords(records) {
   let keys = {};
 
   records.forEach((record) => {
-    record instanceof Record || errors.invalidRecordType();
-    keys[record.key] ? errors.recordKeyDupe() : keys[record.key] = true;
+    record instanceof Record || tools.errors.invalidRecordType();
+    keys[record.key] ? tools.errors.recordKeyDupe() : keys[record.key] = true;
   });
 }
 

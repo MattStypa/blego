@@ -1,6 +1,6 @@
 const chalk = require('chalk');
 const nodeEmoji = require('node-emoji');
-const parseTrace = require('../tools/parseTrace.js');
+const tools = require('../tools.js');
 
 const emoji = {
   construction: nodeEmoji.get('construction') + ' ',
@@ -30,7 +30,7 @@ function error(...messages) {
  * @param {error} error Error object to be printed.
  */
 function printTrace(error) {
-  const trace = parseTrace(error);
+  const trace = tools.parseTrace(error);
   console.error(' ', emoji.fail, chalk.bold.bgRed.whiteBright('', error.name, ''), strong(error.message));
   trace.forEach((item) => console.log('    ', '-', chalk.cyan(item.file) + ':' + chalk.magenta(item.line), chalk.green(item.function)));
 }

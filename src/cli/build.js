@@ -1,6 +1,6 @@
 const nodePath = require('path');
 const cliUtils = require('./utils.js');
-const isFile = require('../tools/isFile.js');
+const tools = require('../tools.js');
 
 /**
  * Build project from the given build file.
@@ -11,8 +11,8 @@ const isFile = require('../tools/isFile.js');
 function build(path = 'blego.js') {
   let fullPath = nodePath.resolve(path);
 
-  !isFile(fullPath) && !isFile(fullPath + '.js') && cliUtils.error('Unable to find', cliUtils.quote(path));
-  !isFile(fullPath) && (fullPath = fullPath + '.js');
+  !tools.isFile(fullPath) && !tools.isFile(fullPath + '.js') && cliUtils.error('Unable to find', cliUtils.quote(path));
+  !tools.isFile(fullPath) && (fullPath = fullPath + '.js');
 
 
   console.log(cliUtils.emoji.rocket, 'Building from', cliUtils.quote(fullPath));

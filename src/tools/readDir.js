@@ -1,6 +1,6 @@
 const nodePath = require('path');
 const glob = require('glob');
-const errors = require('../errors.js');
+const errors = require('./errors.js');
 const exists = require('./exists.js');
 const isDir = require('./isDir.js');
 const tryCatch = require('./tryCatch.js');

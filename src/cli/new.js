@@ -2,8 +2,7 @@ const childProcess = require('child_process');
 const nodePath = require('path');
 const fs = require('fs-extra');
 const cliUtils = require('./utils.js');
-const copy = require('../tools/copy.js');
-const exists = require('../tools/exists.js');
+const tools = require('../tools.js');
 
 /**
  * Creates new Blego project.
@@ -14,13 +13,13 @@ const exists = require('../tools/exists.js');
 function newProject(path) {
   const fullPath = nodePath.resolve(path);
 
-  exists(fullPath) && cliUtils.error(cliUtils.quote(fullPath), 'already exists');
+  tools.exists(fullPath) && cliUtils.error(cliUtils.quote(fullPath), 'already exists');
 
   console.log(cliUtils.emoji.rocket, 'Creating new Blego project');
   console.log();
 
   fs.ensureDirSync(fullPath);
-  copy(nodePath.resolve(__dirname, 'blueprint'), fullPath);
+  tools.copy(nodePath.resolve(__dirname, 'blueprint'), fullPath);
   fs.moveSync(nodePath.resolve(fullPath, '.gitignore.blueprint'), nodePath.resolve(fullPath, '.gitignore'));
   process.chdir(fullPath);
 

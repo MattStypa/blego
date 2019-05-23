@@ -1,5 +1,4 @@
 const merge = require('lodash.merge');
-const errors = require('./errors.js');
 const tools = require('./tools.js');
 
 /**
@@ -14,7 +13,7 @@ function Record(key, props = {}) {
   tools.validateType('props', Object, props);
 
   key = key.trim();
-  !key && errors.keyRequired();
+  !key && tools.errors.keyRequired();
   merge(this, props);
   this.key = key;
 }

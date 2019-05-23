@@ -1,9 +1,15 @@
-const defaultPaths = require('../defaultPaths.js');
+const defaultPaths = {
+  'dest': './dist',
+  'static': './static',
+  'data': './data',
+  'globals': './globals',
+  'template': './template',
+  'partials': './template/partials',
+};
 
 /**
  * Validates and applies blego paths.
  *
- * @private
  * @instance
  * @memberof Blego
  */

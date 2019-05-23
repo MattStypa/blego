@@ -1,10 +1,8 @@
 const nodePath = require('path');
-const parseDataDir = require('../../tools/parseDataDir.js');
 
 /**
  * Parses the data files.
  *
- * @private
  * @instance
  * @memberof Blego
  */
@@ -14,7 +12,7 @@ function loadData() {
 
     storePaths.forEach((storePath) => {
       const storeName = nodePath.parse(storePath).name;
-      this.store[storeName] = parseDataDir(storePath);
+      this.store[storeName] = this.tools.parseDataDir(storePath);
     });
   });
 }

@@ -1,4 +1,3 @@
-const errors = require('../errors.js');
 const tools = require('../tools.js');
 
 /**
@@ -22,7 +21,7 @@ function linkToOne(prop, relatedStore) {
     tools.validateType(prop, 'string', ref);
 
     const link = relatedStore.get(ref);
-    !link && errors.recordNotFound(ref, prop, record.key);
+    !link && tools.errors.recordNotFound(ref, prop, record.key);
     record[prop] = link;
   });
 }
