@@ -18,7 +18,7 @@ function Blego() {
   this.global = {};
 
   /**
-   * Global context.
+   * Paths used by Blego for various purposes.
    * @member {Object}
    * @prop {string} dest Directory to which Blego will write.
    * @prop {string} static Directory from which files will be copied.
@@ -56,20 +56,33 @@ function Blego() {
     copyStatic: require('./Blego/tasks/copyStatic.js').bind(this),
   }
 
-  /** @see Record */
+  /**
+   * Record constructor.
+   * @member {Class}
+   * @see Record
+   */
   this.Record = require('./Record.js');
 
-  /** @see Store */
+  /**
+   * Store constructor.
+   * @member {Class}
+   * @see Store
+   */
   this.Store = require('./Store.js');
 
   /** @see {@link module:tools|tools} */
   this.tools = require('./tools.js');
 
-  /** @see {@link module:parsers|parsers} */
+  /**
+   * Available data file parsers.
+   * @member {Object}
+   * @see {@link module:parsers|parsers}
+   */
   this.parsers = require('./parsers.js');
 
   /**
    * Handlebars environment.
+   * @member {Handlebars}
    * @see {@link http://handlebarsjs.com}
    */
   this.handlebars = require('handlebars');
