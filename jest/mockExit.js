@@ -1,6 +1,8 @@
+const throwingMock = require('./throwingMock.js');
+
 module.exports = function(fn) {
-  const mock = jest.fn(() => { throw new Error() });
   const original = process.exit;
+  const mock = throwingMock;
   process.exit = mock;
 
   expect(fn).toThrow();

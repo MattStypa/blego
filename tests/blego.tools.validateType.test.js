@@ -1,13 +1,9 @@
 describe('blego.tools.validateType', () => {
-  const Blego = require('Blego.js');
-  const errors = require('errors.js');
-  const invalidTypeSpy = jest.spyOn(errors, 'invalidType');
-  let blego;
+  const blego = require('Blego.js');
+  const invalidTypeSpy = jest.spyOn(blego.tools.errors, 'invalidType');
 
   beforeEach(() => {
-    console.log = jest.fn();
     invalidTypeSpy.mockClear();
-    blego = new Blego();
   });
 
   it('Validates types', () => {

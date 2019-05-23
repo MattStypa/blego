@@ -2,7 +2,7 @@
  * Creates a Blego object.
  *
  * @constructor
- * @param {object} paths
+ * @param {object} [paths={}]
  * @param {string} paths.dest Directory to which Blego will write.
  * @param {string} paths.static Directory from which files will be copied.
  * @param {string} paths.data Directory from which files will be parsed and put into the store.

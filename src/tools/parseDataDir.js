@@ -2,8 +2,6 @@ const nodePath = require('path');
 const isFile = require('./isFile.js');
 const parseDataFile = require('./parseDataFile.js');
 const readDir = require('./readDir.js');
-const Record = require('../Record.js');
-const Store = require('../Store.js');
 const validateType = require('./validateType.js');
 
 /**
@@ -16,18 +14,14 @@ const validateType = require('./validateType.js');
 function parseDataDir(path) {
   validateType('path', 'string', path);
 
-  const files = readDir(path).filter(isFile);
-  let records = [];
-
-  files.forEach((file) => {
+  return readDir(path).filter(isFile).map((file) => {
     const parsedPath = nodePath.parse(nodePath.relative(path, file));
-    const key = (parsedPath.dir && (parsedPath.dir + nodePath.sep)) + parsedPath.name;
-    records.push(new Record(key, parseDataFile(file)));
+
+    return {
+      key: (parsedPath.dir && (parsedPath.dir + nodePath.sep)) + parsedPath.name,
+      props: parseDataFile(file),
+    };
   });
-
-  const store = new Store(records);
-
-  return store.sortBy('key');
 }
 
 module.exports = parseDataDir;

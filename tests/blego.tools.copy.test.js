@@ -3,18 +3,15 @@ describe('blego.tools.copy', () => {
   const fs = require('fs-extra');
   const tempDir = require('../jest/tempDir.js');
   const throwingMock = require('../jest/throwingMock.js');
-  const Blego = require('Blego.js');
-  const errors = require('errors.js');
-  const pathDoesNotExistSpy = jest.spyOn(errors, 'pathDoesNotExist');
-  const pathExistsSpy = jest.spyOn(errors, 'pathExists');
-  const cantCopySpy = jest.spyOn(errors, 'cantCopy');
-  let blego;
+  const blego = require('Blego.js');
+  const pathDoesNotExistSpy = jest.spyOn(blego.tools.errors, 'pathDoesNotExist');
+  const pathExistsSpy = jest.spyOn(blego.tools.errors, 'pathExists');
+  const cantCopySpy = jest.spyOn(blego.tools.errors, 'cantCopy');
 
   beforeEach(() => {
-    console.log = jest.fn();
     pathDoesNotExistSpy.mockClear();
     pathExistsSpy.mockClear();
-    blego = new Blego();
+    cantCopySpy.mockClear();
     tempDir({
       'fake/directory1/file1': 'file content',
       'fake/directory1/file2': '',

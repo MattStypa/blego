@@ -11,7 +11,7 @@ const defaultPaths = {
  * Validates and applies blego paths.
  *
  * @instance
- * @memberof Blego
+ * @alias module:tasks.setPaths
  */
 function setPaths() {
   this.task('Set paths', () => {

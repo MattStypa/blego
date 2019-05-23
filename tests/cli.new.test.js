@@ -8,8 +8,6 @@ describe('cli.new', () => {
   const cliErrorSpy = jest.spyOn(cliUtils, 'error');
 
   beforeEach(() => {
-    console.log = jest.fn();
-    console.error = jest.fn();
     childProcess.spawnSync = jest.fn();
     tempDir({
       'exists': null,
@@ -28,7 +26,7 @@ describe('cli.new', () => {
   });
 
   it('Dies if the path already exists', () => {
-    const mock = mockExit(() => {
+    mockExit(() => {
       cliNew('exists');
     });
 

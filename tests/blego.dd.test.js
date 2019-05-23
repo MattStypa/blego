@@ -1,5 +1,4 @@
 describe('blego.dd', () => {
-  const stripAnsi = require('strip-ansi');
   const Blego = require('Blego.js');
   let blego;
   let consoleLog;

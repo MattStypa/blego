@@ -1,12 +1,6 @@
 describe('blego.tools.tryCatch', () => {
   const throwingMock = require('../jest/throwingMock.js');
-  const Blego = require('Blego.js');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
 
   it('runs the main function', () => {
     const func = jest.fn();

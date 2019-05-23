@@ -2,7 +2,7 @@
  * Copies the static files.
  *
  * @instance
- * @memberof Blego
+ * @alias module:tasks.copyStatic
  */
 function copyStatic() {
   this.task('Copy static files', () => {

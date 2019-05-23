@@ -10,8 +10,6 @@ describe('cli.serve', () => {
   const cliErrorSpy = jest.spyOn(cliUtils, 'error');
 
   beforeEach(() => {
-    console.log = jest.fn();
-    console.error = jest.fn();
     tempDir({
       'dist/test.txt': '1',
       'web/test.txt': '2',
@@ -50,8 +48,6 @@ describe('cli.serve', () => {
   });
 
   it('Opens the browser', () => {
-    __TEST__ = false;
-
     return serve('web', {port: undefined}).then((server) => {
       server.close();
       expect(openMock).toHaveBeenCalledWith(`http://localhost:3000`);
@@ -59,8 +55,6 @@ describe('cli.serve', () => {
   });
 
   it('Opens the browser on port 80', () => {
-    __TEST__ = false;
-
     return serve('web', {port: 80}).then((server) => {
       server.close();
       expect(openMock).toHaveBeenCalledWith(`http://localhost`);
@@ -68,7 +62,7 @@ describe('cli.serve', () => {
   });
 
   it('Dies if the given path does not exist', () => {
-    const mock = mockExit(() => {
+    mockExit(() => {
       serve('test', {port: undefined});
     });
 

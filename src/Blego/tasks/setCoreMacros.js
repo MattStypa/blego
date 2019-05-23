@@ -2,7 +2,7 @@
  * Registers Handlebars helpers.
  *
  * @instance
- * @memberof Blego
+ * @alias module:tasks.setCoreMacros
  */
 function setCoreMacros() {
   this.task('Set core macros', () => {

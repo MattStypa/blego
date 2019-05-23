@@ -9,7 +9,7 @@ const yaml = require('js-yaml');
 const readFile = require('./tools/readFile.js');
 
 /**
- * Parses markdown file.
+ * Parses Markdown file.
  *
  * @param {string} path File to be parsed.
  * @returns {object}

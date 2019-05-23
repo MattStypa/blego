@@ -3,18 +3,16 @@ describe('blego.tools.cleanDir', () => {
   const fs = require('fs-extra');
   const tempDir = require('../jest/tempDir.js');
   const throwingMock = require('../jest/throwingMock.js');
-  const Blego = require('Blego.js');
-  const errors = require('errors.js');
-  const pathDoesNotExistSpy = jest.spyOn(errors, 'pathDoesNotExist');
-  const notDirSpy = jest.spyOn(errors, 'notDir');
-  const cantCleanSpy = jest.spyOn(errors, 'cantClean');
-  let blego;
+  const blego = require('Blego.js');
+  const pathDoesNotExistSpy = jest.spyOn(blego.tools.errors, 'pathDoesNotExist');
+  const notDirSpy = jest.spyOn(blego.tools.errors, 'notDir');
+  const cantCleanSpy = jest.spyOn(blego.tools.errors, 'cantClean');
 
   beforeEach(() => {
     console.log = jest.fn();
     pathDoesNotExistSpy.mockClear();
     notDirSpy.mockClear();
-    blego = new Blego();
+    cantCleanSpy.mockClear();
     tempDir({
       'fake/directory/file': '',
     });

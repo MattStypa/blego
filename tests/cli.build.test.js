@@ -2,7 +2,6 @@ describe('cli.build', () => {
   const nodePath = require('path');
   const tempDir = require('../jest/tempDir.js');
   const mockExit = require('../jest/mockExit.js');
-  const throwingMock = require('../jest/throwingMock.js');
   const build = require('cli/build.js');
   const cliUtils = require('cli/utils.js');
   const cliErrorSpy = jest.spyOn(cliUtils, 'error');
@@ -10,8 +9,6 @@ describe('cli.build', () => {
   let buildJsMock;
 
   beforeEach(() => {
-    console.log = jest.fn();
-    console.error = jest.fn();
     tempDir({
       'blego.js': '',
       'build.js': '',
@@ -45,7 +42,7 @@ describe('cli.build', () => {
   });
 
   it('Dies if the given file does not exist', () => {
-    const mock = mockExit(() => {
+    mockExit(() => {
       build('test');
     });
 

@@ -1,26 +1,19 @@
 jest.mock('Blego/init.js');
 
 describe('Blego', () => {
-  const Blego = require('Blego.js');
-  const errors = require('errors.js');
+  const blego = require('Blego.js');
   const init = require('Blego/init.js');
   const invalidTypeSpy = jest.spyOn(errors, 'invalidType');
   const invalidTypeInArraySpy = jest.spyOn(errors, 'invalidTypeInArray');
-  let blego;
 
   beforeEach(() => {
-    console.log = jest.fn();
-    console.error = jest.fn();
     process.exit = jest.fn();
     invalidTypeSpy.mockClear();
     invalidTypeInArraySpy.mockClear();
-    blego = new Blego();
   });
 
   it('Runs init', () => {
-    __TEST__ = false;
-    blego = new Blego();
-    __TEST__ = true;
+    blego.init();
 
     expect(init).toHaveBeenCalled();
   });

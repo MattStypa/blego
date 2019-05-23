@@ -3,14 +3,10 @@ describe('blego.tools.isFile', () => {
   const fs = require('fs-extra');
   const tempDir = require('../jest/tempDir.js');
   const throwingMock = require('../jest/throwingMock.js');
-  const Blego = require('Blego.js');
-  const errors = require('errors.js');
-  const cantReadPathSpy = jest.spyOn(errors, 'cantReadPath');
-  let blego;
+  const blego = require('Blego.js');
+  const cantReadPathSpy = jest.spyOn(blego.tools.errors, 'cantReadPath');
 
   beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
     tempDir({
       'fake/directory/file': '',
     });

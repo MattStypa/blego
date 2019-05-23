@@ -2,12 +2,11 @@
  * Registers partials with Handlebars.
  *
  * @instance
- * @memberof Blego
+ * @alias module:tasks.loadPartials
  */
 function loadPartials() {
   this.task('Load partials', () => {
-    this.tools.parseDataDir(this.internal.paths.partials)
-      .each((file) => this.handlebars.registerPartial(file.key, file.body));
+    this.tools.parseDataDir(this.internal.paths.partials).forEach((file) => this.handlebars.registerPartial(file.key, file.props.body));
   });
 }
 
