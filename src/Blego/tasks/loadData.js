@@ -2,7 +2,6 @@ const nodePath = require('path');
 
 /**
  * Parses the data files.
- *
  * @instance
  * @alias module:tasks.loadData
  */

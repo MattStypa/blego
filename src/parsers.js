@@ -10,7 +10,6 @@ const readFile = require('./tools/readFile.js');
 
 /**
  * Parses Markdown file.
- *
  * @param {string} path File to be parsed.
  * @returns {object}
  */
@@ -26,7 +25,6 @@ function markdownParser(path) {
 
 /**
  * Parses HTML file.
- *
  * @param {string} path File to be parsed.
  * @returns {object}
  */
@@ -42,7 +40,6 @@ function htmlParser(path) {
 
 /**
  * Parses JavaScript file.
- *
  * @param {string} path File to be parsed.
  * @returns {object}
  */
@@ -55,7 +52,6 @@ function jsParser(path) {
 
 /**
  * Parses JSON file.
- *
  * @param {string} path File to be parsed.
  * @returns {object}
  */
@@ -65,7 +61,6 @@ function jsonParser(path) {
 
 /**
  * Parses YAML file.
- *
  * @param {string} path File to be parsed.
  * @returns {object}
  */

@@ -1,6 +1,5 @@
 /**
  * Runs built-in tasks.
- *
  * @instance
  * @memberof Blego
  */

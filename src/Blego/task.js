@@ -2,7 +2,6 @@ const cliUtils = require('../cli/utils.js');
 
 /**
  * Runs given task.
- *
  * @instance
  * @memberof Blego
  * @param {string} label Label of the task.

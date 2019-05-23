@@ -2,7 +2,6 @@ const tools = require('../tools.js');
 
 /**
  * Gets a new store with records having the given property equal to given value.
- *
  * @instance
  * @memberof Store
  * @param {string} prop Record property to check.

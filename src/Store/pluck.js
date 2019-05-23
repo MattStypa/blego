@@ -3,7 +3,6 @@ const tools = require('../tools.js');
 
 /**
  * Gets all of the values for a given property.
- *
  * @instance
  * @memberof Store
  * @param {string} prop Record property to extract.

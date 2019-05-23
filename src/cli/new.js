@@ -6,7 +6,6 @@ const tools = require('../tools.js');
 
 /**
  * Creates new Blego project.
- *
  * @private
  * @param {string} path Path to the project directory.
  */

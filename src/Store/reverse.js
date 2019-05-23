@@ -1,6 +1,5 @@
 /**
  * Gets Store with the Records in reverse order.
- *
  * @instance
  * @memberof Store
  * @return {Store}

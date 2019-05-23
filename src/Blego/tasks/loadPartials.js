@@ -1,6 +1,5 @@
 /**
  * Registers partials with Handlebars.
- *
  * @instance
  * @alias module:tasks.loadPartials
  */

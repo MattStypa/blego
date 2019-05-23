@@ -5,11 +5,11 @@ const readDir = require('./readDir.js');
 const validateType = require('./validateType.js');
 
 /**
- * Reads data from a directory and creates a Store.
+ * Reads data from a directory.
  *
  * @private
  * @param {string} path Directory to be parsed.
- * @returns {Store}
+ * @returns {array}
  */
 function parseDataDir(path) {
   validateType('path', 'string', path);

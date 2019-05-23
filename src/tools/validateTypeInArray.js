@@ -5,7 +5,6 @@ const validateType = require('./validateType.js');
 
 /**
  * Checks if all items in the array are of expected type.
- *
  * @alias module:tools.validateTypeInArray
  * @param {string} name Name of the variable. Used in the error message.
  * @param {mixed} expectedTypes Expected type or types.

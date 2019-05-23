@@ -1,6 +1,5 @@
 /**
  * Registers Handlebars helpers.
- *
  * @instance
  * @alias module:tasks.setCoreMacros
  */

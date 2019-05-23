@@ -7,9 +7,8 @@ const tryCatch = require('./tryCatch.js');
 const validateType = require('./validateType.js');
 
 /**
- * Recursively reads files from a directory that match a pattern. Optionally can include
- * directories.
- *
+ * Recursively reads files from a directory that match a pattern.
+ * Optionally can include directories.
  * @alias module:tools.readDir
  * @param {string} path Path to a directory.
  * @param {string} [pattern='** / *'] Glob pattern. Default value is without spaces.

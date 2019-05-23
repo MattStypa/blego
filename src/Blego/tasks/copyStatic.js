@@ -1,6 +1,5 @@
 /**
  * Copies the static files.
- *
  * @instance
  * @alias module:tasks.copyStatic
  */

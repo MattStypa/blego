@@ -3,8 +3,8 @@ const Record = require('./Record.js');
 const tools = require('./tools.js');
 
 /**
- * Creates a Store object. All records must have a unique key.
- *
+ * Store object.
+ * All records must have a unique key.
  * @class
  * @param {array} records Records to be added to the store.
  */
@@ -39,7 +39,6 @@ function Store(records) {
 
 /**
  * Checks for duplicate keys and correct type.
- *
  * @private
  * @param {array} records Records to be validated.
  */

@@ -1,6 +1,5 @@
 /**
  * Gets Store with Records sorted by the given prop.
- *
  * @instance
  * @memberof Store
  * @param {string|function} prop Property name or function that returns a value to sort by.

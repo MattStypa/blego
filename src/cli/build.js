@@ -4,7 +4,6 @@ const tools = require('../tools.js');
 
 /**
  * Build project from the given build file.
- *
  * @private
  * @param {string} [path='blego.js'] Path to the build file.
  */

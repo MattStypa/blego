@@ -3,7 +3,6 @@ const getTypesString = require('./getTypesString.js');
 
 /**
  * Checks if the variable is of expected type.
- *
  * @alias module:tools.validateType
  * @param {string} name Name of the variable. Used in the error message.
  * @param {mixed} expectedTypes Expected type or types.

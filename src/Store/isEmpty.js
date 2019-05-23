@@ -1,6 +1,5 @@
 /**
  * Checks if the Store is empty.
- *
  * @instance
  * @memberof Store
  * @return {boolean}

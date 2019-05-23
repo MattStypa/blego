@@ -4,7 +4,6 @@ const merge = require('lodash.merge');
 
 /**
  * Creates a rendered page.
- *
  * @instance
  * @memberof Blego
  * @param {string} path Path to a rendered file.

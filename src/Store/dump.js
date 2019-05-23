@@ -1,6 +1,5 @@
 /**
  * Dumps the records to the console.
- *
  * @instance
  * @memberof Store
  * @return {Store}

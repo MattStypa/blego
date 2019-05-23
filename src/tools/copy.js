@@ -9,9 +9,9 @@ const tryCatch = require('./tryCatch.js');
 const validateType = require('./validateType.js');
 
 /**
- * Copies files or directories. If source is a file and destination exists, it must be a directory.
+ * Copies files or directories.
+ * If source is a file and destination exists, it must be a directory.
  * If source is a directory, the destination must be an existing directory.
- *
  * @alias module:tools.copy
  * @param {string} src Source path.
  * @param {string} dest Destination path.
@@ -46,7 +46,6 @@ function copy(src, dest) {
 
 /**
  * Copies a file without overwritting.
- *
  * @private
  * @param {string} src Source path.
  * @param {string} dest Destination path.

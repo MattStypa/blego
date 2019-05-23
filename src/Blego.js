@@ -1,25 +1,12 @@
 /**
  * Creates a Blego object.
- *
  * @class
  * @hideconstructor
  */
 function Blego() {
   /**
-   * Parsed data.
-   * @member {Object}
-   */
-  this.store = {};
-
-  /**
-   * Global context.
-   * @member {Object}
-   */
-  this.global = {};
-
-  /**
    * Paths used by Blego for various purposes.
-   * @member {Object}
+   * @member {object}
    * @prop {string} dest Directory to which Blego will write.
    * @prop {string} static Directory from which files will be copied.
    * @prop {string} data Directory from which files will be parsed and put into the store.
@@ -36,17 +23,9 @@ function Blego() {
     partials: './template/partials',
   };
 
-  this.init = require('./Blego/init.js').bind(this);
-  this.task = require('./Blego/task.js').bind(this);
-  this.page = require('./Blego/page.js').bind(this);
-  this.macro = require('./Blego/macro.js').bind(this);
-  this.partial = require('./Blego/partial.js').bind(this);
-  this.log = require('./Blego/log.js').bind(this);
-  this.warn = require('./Blego/warn.js').bind(this);
-  this.dump = require('./Blego/dump.js').bind(this);
-  this.dd = require('./Blego/dd.js').bind(this);
-
-  /** @module tasks */
+  /**
+   * @module tasks
+   */
   const tasks = {
     setCoreMacros: require('./Blego/tasks/setCoreMacros.js').bind(this),
     loadGlobals: require('./Blego/tasks/loadGlobals.js').bind(this),
@@ -55,6 +34,18 @@ function Blego() {
     cleanUp: require('./Blego/tasks/cleanUp.js').bind(this),
     copyStatic: require('./Blego/tasks/copyStatic.js').bind(this),
   }
+
+  /**
+   * Parsed data.
+   * @member {object}
+   */
+  this.store = {};
+
+  /**
+   * Global context.
+   * @member {object}
+   */
+  this.global = {};
 
   /**
    * Record constructor.
@@ -70,12 +61,14 @@ function Blego() {
    */
   this.Store = require('./Store.js');
 
-  /** @see {@link module:tools|tools} */
+  /**
+   * @see {@link module:tools|tools}
+   */
   this.tools = require('./tools.js');
 
   /**
    * Available data file parsers.
-   * @member {Object}
+   * @member {object}
    * @see {@link module:parsers|parsers}
    */
   this.parsers = require('./parsers.js');
@@ -87,8 +80,20 @@ function Blego() {
    */
   this.handlebars = require('handlebars');
 
-  /** @see {@link module:tasks|tasks} */
+  /**
+   * @see {@link module:tasks|tasks}
+   */
   this.tasks = tasks;
+
+  this.init = require('./Blego/init.js').bind(this);
+  this.task = require('./Blego/task.js').bind(this);
+  this.page = require('./Blego/page.js').bind(this);
+  this.macro = require('./Blego/macro.js').bind(this);
+  this.partial = require('./Blego/partial.js').bind(this);
+  this.log = require('./Blego/log.js').bind(this);
+  this.warn = require('./Blego/warn.js').bind(this);
+  this.dump = require('./Blego/dump.js').bind(this);
+  this.dd = require('./Blego/dd.js').bind(this);
 }
 
 module.exports = new Blego();

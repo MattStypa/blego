@@ -6,7 +6,6 @@ const validateType = require('./validateType.js');
 
 /**
  * Checks if path exists.
- *
  * @alias module:tools.exists
  * @param {string} path Path to be checked.
  * @returns {boolean}

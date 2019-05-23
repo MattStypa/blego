@@ -1,6 +1,5 @@
 /**
  * Gets array of Records processed by the given function.
- *
  * @instance
  * @memberof Store
  * @param {function} fn Function to run for every Record.

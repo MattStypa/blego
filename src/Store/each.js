@@ -1,6 +1,5 @@
 /**
  * Dumps the records to the console.
- *
  * @instance
  * @memberof Store
  * @param {function} fn Function to run for every Record.

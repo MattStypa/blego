@@ -6,10 +6,9 @@ const validateType = require('./validateType.js');
 
 /**
  * Reads data from a file and creates a Record.
- *
  * @private
  * @param {string} path File to be parsed.
- * @returns {Record}
+ * @returns {object}
  */
 function parseDataFile(path) {
   validateType('path', 'string', path);

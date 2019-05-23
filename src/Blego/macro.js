@@ -1,6 +1,5 @@
 /**
  * Registers Handlebars helper.
- *
  * @instance
  * @memberof Blego
  * @param {string} name Name of the helper.

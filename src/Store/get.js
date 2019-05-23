@@ -1,6 +1,5 @@
 /**
  * Gets Record with the given key.
- *
  * @instance
  * @memberof Store
  * @param {string} key Record identifier.

@@ -7,9 +7,8 @@ const tryCatch = require('./tryCatch.js');
 const validateType = require('./validateType.js');
 
 /**
- * Deletes everything from a given directory. This can not be undone. Be sure that you know what
- * you are doing.
- *
+ * Deletes everything from a given directory.
+ * This can not be undone. Be sure that you know what you are doing.
  * @alias module:tools.cleanDir
  * @param {string} path Path to a directory.
  */

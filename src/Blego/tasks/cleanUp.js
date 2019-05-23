@@ -1,6 +1,5 @@
 /**
  * Cleans the destination directory.
- *
  * @instance
  * @alias module:tasks.cleanDir
  */

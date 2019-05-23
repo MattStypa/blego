@@ -7,7 +7,6 @@ const tools = require('../tools.js');
 
 /**
  * Starts a web server.
- *
  * @private
  * @param {string} [path='dist'] Path to the served directory.
  * @param {command} command Command object from Commander.

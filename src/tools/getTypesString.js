@@ -1,6 +1,5 @@
 /**
  * Converts type or array of types to a comma seperated string representation.
- *
  * @private
  * @param {mixed} types Type or types to be converted to a string representation.
  * @returns {string}
@@ -15,7 +14,6 @@ function getTypesString(types) {
 
 /**
  * Converts type to a string representation.
- *
  * @private
  * @param {mixed} type Type to be converted to a string representation.
  * @returns {string}

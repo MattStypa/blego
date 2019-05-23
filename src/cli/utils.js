@@ -14,7 +14,6 @@ const emoji = {
 
 /**
  * Writes an error to console and exits the process.
- *
  * @private
  * @param {string} messages Messages to write to console.
  */
@@ -25,7 +24,6 @@ function error(...messages) {
 
 /**
  * Prints trace to console.
- *
  * @private
  * @param {error} error Error object to be printed.
  */
@@ -37,7 +35,6 @@ function printTrace(error) {
 
 /**
  * Gets quoted string.
- *
  * @private
  * @param {string} str String to quote.
  * @returns {string}
@@ -48,7 +45,6 @@ function quote(str) {
 
 /**
  * Gets stylized string.
- *
  * @private
  * @param {string} str String to stylized.
  * @returns {string}
@@ -59,7 +55,6 @@ function magenta(str) {
 
 /**
  * Gets stylized string.
- *
  * @private
  * @param {string} str String to stylized.
  * @returns {string}

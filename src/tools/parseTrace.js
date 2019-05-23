@@ -5,7 +5,6 @@ const validateType = require('./validateType.js');
 
 /**
  * Converts stack trace into a simpler object.
- *
  * @private
  * @param {error} error Error object to be converted.
  * @returns {object}

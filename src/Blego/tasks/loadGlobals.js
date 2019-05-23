@@ -1,6 +1,5 @@
 /**
  * Parses the globals files.
- *
  * @instance
  * @alias module:tasks.loadGlobals
  */

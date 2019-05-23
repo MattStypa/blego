@@ -3,7 +3,6 @@ const tools = require('../tools.js');
 
 /**
  * Creates a link from Records to one Record from a related Store.
- *
  * @instance
  * @memberof Store
  * @param {string} prop Property that will store the related Record.
