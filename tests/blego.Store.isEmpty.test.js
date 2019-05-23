@@ -1,11 +1,5 @@
 describe('blego.Store.isEmpty', () => {
-  const Blego = require('Blego.js');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
 
   it('Checks if Store is empty', () => {
     const emptyStore = new blego.Store([ ]);

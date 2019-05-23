@@ -1,11 +1,5 @@
 describe('blego.Store.chunk', () => {
-  const Blego = require('Blego.js');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
 
   it('Gets an array of array of specified length', () => {
     const store = new blego.Store([

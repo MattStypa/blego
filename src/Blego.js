@@ -1,21 +1,40 @@
 /**
  * Creates a Blego object.
  *
- * @constructor
- * @param {object} [paths={}]
- * @param {string} paths.dest Directory to which Blego will write.
- * @param {string} paths.static Directory from which files will be copied.
- * @param {string} paths.data Directory from which files will be parsed and put into the store.
- * @param {string} paths.globals Directory from which files will be parsed and put into global context.
- * @param {string} paths.template Directory from which template files will be read.
- * @param {string} paths.partials Directory from which template partials will be read.
- * @property {object} store Parsed data.
- * @property {object} global Global context.
+ * @class
+ * @hideconstructor
  */
-function Blego(paths = {}) {
+function Blego() {
+  /**
+   * Parsed data.
+   * @member {Object}
+   */
   this.store = {};
+
+  /**
+   * Global context.
+   * @member {Object}
+   */
   this.global = {};
-  this.internal = {paths};
+
+  /**
+   * Global context.
+   * @member {Object}
+   * @prop {string} dest Directory to which Blego will write.
+   * @prop {string} static Directory from which files will be copied.
+   * @prop {string} data Directory from which files will be parsed and put into the store.
+   * @prop {string} globals Directory from which files will be parsed and put into global context.
+   * @prop {string} template Directory from which template files will be read.
+   * @prop {string} partials Directory from which template partials will be read.
+   */
+  this.paths = {
+    dest: './dist',
+    static: './static',
+    data: './data',
+    globals: './globals',
+    template: './template',
+    partials: './template/partials',
+  };
 
   this.init = require('./Blego/init.js').bind(this);
   this.task = require('./Blego/task.js').bind(this);
@@ -29,7 +48,6 @@ function Blego(paths = {}) {
 
   /** @module tasks */
   const tasks = {
-    setPaths: require('./Blego/tasks/setPaths.js').bind(this),
     setCoreMacros: require('./Blego/tasks/setCoreMacros.js').bind(this),
     loadGlobals: require('./Blego/tasks/loadGlobals.js').bind(this),
     loadPartials: require('./Blego/tasks/loadPartials.js').bind(this),
@@ -50,13 +68,14 @@ function Blego(paths = {}) {
   /** @see {@link module:parsers|parsers} */
   this.parsers = require('./parsers.js');
 
-  /** @see {@link http://handlebarsjs.com} */
+  /**
+   * Handlebars environment.
+   * @see {@link http://handlebarsjs.com}
+   */
   this.handlebars = require('handlebars');
 
   /** @see {@link module:tasks|tasks} */
   this.tasks = tasks;
-
-  this.tasks.setPaths();
 }
 
 module.exports = new Blego();

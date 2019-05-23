@@ -1,10 +1,7 @@
 describe('blego.init', () => {
-  const Blego = require('Blego.js');
-  let blego;
+  const blego = require('Blego.js');
 
   beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
     blego.tasks.setCoreMacros = jest.fn();
     blego.tasks.loadGlobals = jest.fn();
     blego.tasks.loadPartials = jest.fn();

@@ -1,12 +1,8 @@
 describe('blego.tasks.loadGlobals', () => {
   const tempDir = require('../jest/tempDir.js');
-  const Blego = require('Blego.js');
-  let blego;
+  const blego = require('Blego.js');
 
   beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-    new blego.Store([]);
     tempDir({
       'globals/config.json': '{"siteName": "test"}',
     });

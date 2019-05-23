@@ -1,11 +1,5 @@
 describe('blego.Store.keyed', () => {
-  const Blego = require('Blego.js');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
 
   it('Gets an object with Record keys as property names', () => {
     const store = new blego.Store([

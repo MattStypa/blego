@@ -8,7 +8,7 @@ const nodePath = require('path');
  */
 function loadData() {
   this.task('Load data', () => {
-    const storePaths = this.tools.readDir(this.internal.paths.data, '*', 'true').filter(this.tools.isDir);
+    const storePaths = this.tools.readDir(this.paths.data, '*', 'true').filter(this.tools.isDir);
 
     storePaths.forEach((storePath) => {
       const storeName = nodePath.parse(storePath).name;

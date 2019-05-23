@@ -1,11 +1,5 @@
 describe('blego.Store.each', () => {
-  const Blego = require('Blego.js');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
 
   it('Calls a function on each record', () => {
     const fn = jest.fn();

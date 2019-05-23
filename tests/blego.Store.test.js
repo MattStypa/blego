@@ -1,14 +1,7 @@
 describe('blego.Store', () => {
-  const Blego = require('Blego.js');
-  const errors = require('errors.js');
-  const invalidRecordTypeSpy = jest.spyOn(errors, 'invalidRecordType');
-  const recordKeyDupeSpy = jest.spyOn(errors, 'recordKeyDupe');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
+  const invalidRecordTypeSpy = jest.spyOn(blego.tools.errors, 'invalidRecordType');
+  const recordKeyDupeSpy = jest.spyOn(blego.tools.errors, 'recordKeyDupe');
 
   it('Creates a store from Records', () => {
     const store = new blego.Store([

@@ -1,15 +1,8 @@
 describe('blego.Store.linkFromOne', () => {
-  const Blego = require('Blego.js');
-  const errors = require('errors.js');
-  const recordNotFoundSpy = jest.spyOn(errors, 'recordNotFound');
-  const invalidTypeInArraySpy = jest.spyOn(errors, 'invalidTypeInArray');
-  const recordLinkedSpy = jest.spyOn(errors, 'recordLinked');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
+  const recordNotFoundSpy = jest.spyOn(blego.tools.errors, 'recordNotFound');
+  const invalidTypeInArraySpy = jest.spyOn(blego.tools.errors, 'invalidTypeInArray');
+  const recordLinkedSpy = jest.spyOn(blego.tools.errors, 'recordLinked');
 
   it('Creates a link to one Record from a different Store', () => {
     const fromStore = new blego.Store([

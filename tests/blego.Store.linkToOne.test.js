@@ -1,13 +1,6 @@
 describe('blego.Store.linkToOne', () => {
-  const Blego = require('Blego.js');
-  const errors = require('errors.js');
-  const recordNotFoundSpy = jest.spyOn(errors, 'recordNotFound');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
+  const recordNotFoundSpy = jest.spyOn(blego.tools.errors, 'recordNotFound');
 
   it('Creates a link to one Record from a different Store', () => {
     const fromStore = new blego.Store([

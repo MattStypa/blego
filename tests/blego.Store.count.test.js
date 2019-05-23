@@ -1,11 +1,5 @@
 describe('blego.Store.count', () => {
-  const Blego = require('Blego.js');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
 
   it('Gets a count of Records in the store', () => {
     const store = new blego.Store([

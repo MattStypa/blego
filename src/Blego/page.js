@@ -18,9 +18,9 @@ function page(path, templatePath, context) {
 
   path = this.tools.jailPath(path);
   templatePath = this.tools.jailPath(templatePath);
-  path = nodePath.resolve(this.internal.paths.dest, path);
-  templatePath = nodePath.resolve(this.internal.paths.template, templatePath);
-  this.tools.exists(path) && this.errors.pathExists(path);
+  path = nodePath.resolve(this.paths.dest, path);
+  templatePath = nodePath.resolve(this.paths.template, templatePath);
+  this.tools.exists(path) && this.tools.errors.pathExists(path);
 
   const templateSource = this.tools.readFile(templatePath);
   const templateCompiled = this.handlebars.compile(templateSource);

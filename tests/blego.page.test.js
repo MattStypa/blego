@@ -2,14 +2,10 @@ describe('blego.page', () => {
   const nodePath = require('path');
   const fs = require('fs-extra');
   const tempDir = require('../jest/tempDir.js');
-  const Blego = require('Blego.js');
-  const errors = require('errors.js');
-  const pathExistsSpy = jest.spyOn(errors, 'pathExists');
-  let blego;
+  const blego = require('Blego.js');
+  const pathExistsSpy = jest.spyOn(blego.tools.errors, 'pathExists');
 
   beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
     tempDir({
       'template/testTemplate.html': 'Hello {{data}}',
     });

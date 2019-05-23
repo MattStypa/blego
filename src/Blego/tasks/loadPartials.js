@@ -6,7 +6,7 @@
  */
 function loadPartials() {
   this.task('Load partials', () => {
-    this.tools.parseDataDir(this.internal.paths.partials).forEach((file) => this.handlebars.registerPartial(file.key, file.props.body));
+    this.tools.parseDataDir(this.paths.partials).forEach((file) => this.handlebars.registerPartial(file.key, file.props.body));
   });
 }
 

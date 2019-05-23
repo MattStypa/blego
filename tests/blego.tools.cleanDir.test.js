@@ -9,7 +9,6 @@ describe('blego.tools.cleanDir', () => {
   const cantCleanSpy = jest.spyOn(blego.tools.errors, 'cantClean');
 
   beforeEach(() => {
-    console.log = jest.fn();
     pathDoesNotExistSpy.mockClear();
     notDirSpy.mockClear();
     cantCleanSpy.mockClear();

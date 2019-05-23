@@ -1,11 +1,5 @@
 describe('blego.task', () => {
-  const Blego = require('Blego.js');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
 
   it('Runs a task', () => {
     const task = jest.fn();

@@ -1,17 +1,10 @@
 describe('blego.tasks.setCoreMacros', () => {
-  const handlebars = require('handlebars');
-  const Blego = require('Blego.js');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
 
   it('Sets macros', () => {
     blego.tasks.setCoreMacros();
 
-    expect(handlebars.helpers.dump).toEqual(blego.dump);
-    expect(handlebars.helpers.dd).toEqual(blego.dd);
+    expect(blego.handlebars.helpers.dump).toEqual(blego.dump);
+    expect(blego.handlebars.helpers.dd).toEqual(blego.dd);
   });
 });

@@ -1,11 +1,5 @@
 describe('blego.Store.pluck', () => {
-  const Blego = require('Blego.js');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
 
   it('Gets all values in specified prop', () => {
     const store = new blego.Store([

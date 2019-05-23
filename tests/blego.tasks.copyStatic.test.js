@@ -1,12 +1,9 @@
 describe('blego.tasks.copyStatic', () => {
   const fs = require('fs-extra');
   const tempDir = require('../jest/tempDir.js');
-  const Blego = require('Blego.js');
-  let blego;
+  const blego = require('Blego.js');
 
   beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
     tempDir({
       'dist': null,
       'static/file': '',

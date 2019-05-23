@@ -1,11 +1,5 @@
 describe('blego.Store.reverse', () => {
-  const Blego = require('Blego.js');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
 
   it('Reverts the order of Records', () => {
     const store = new blego.Store([

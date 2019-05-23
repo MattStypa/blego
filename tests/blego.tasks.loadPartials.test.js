@@ -1,13 +1,8 @@
 describe('blego.tasks.loadPartials', () => {
-  const handlebars = require('handlebars');
   const tempDir = require('../jest/tempDir.js');
-  const Blego = require('Blego.js');
-  let blego;
+  const blego = require('Blego.js');
 
   beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-    new blego.Store([]);
     tempDir({
       'template/partials/file.html': 'file content',
     });
@@ -20,6 +15,6 @@ describe('blego.tasks.loadPartials', () => {
   it('Loads partials', () => {
     blego.tasks.loadPartials();
 
-    expect(handlebars.partials.file).toEqual('file content');
+    expect(blego.handlebars.partials.file).toEqual('file content');
   });
 });

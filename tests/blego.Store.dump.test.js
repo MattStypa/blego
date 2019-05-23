@@ -1,12 +1,5 @@
 describe('blego.Store.dump', () => {
-  const Blego = require('Blego.js');
-  let blego;
-  let consoleLog;
-
-  beforeEach(() => {
-    consoleLog = console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
 
   it('Writes the Records to console', () => {
     const store = new blego.Store([
@@ -17,6 +10,6 @@ describe('blego.Store.dump', () => {
 
     store.dump();
 
-    expect(consoleLog.mock.calls.pop().pop().items.length).toEqual(3);
+    expect(console.log.mock.calls.pop().pop().items.length).toEqual(3);
   });
 });

@@ -5,7 +5,7 @@ const tools = require('./tools.js');
 /**
  * Creates a Store object. All records must have a unique key.
  *
- * @constructor
+ * @class
  * @param {array} records Records to be added to the store.
  */
 function Store(records) {

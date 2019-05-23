@@ -1,12 +1,8 @@
 describe('blego.partial', () => {
-  const handlebars = require('handlebars');
   const tempDir = require('../jest/tempDir.js');
-  const Blego = require('Blego.js');
-  let blego;
+  const blego = require('Blego.js');
 
   beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
     tempDir({
       'template/partials/file.html': 'file content',
     });
@@ -19,6 +15,6 @@ describe('blego.partial', () => {
   it('Registers a partial', () => {
     blego.partial('testPartial', 'file.html');
 
-    expect(handlebars.partials.testPartial).toEqual('file content');
+    expect(blego.handlebars.partials.testPartial).toEqual('file content');
   });
 });

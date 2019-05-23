@@ -1,13 +1,6 @@
 describe('blego.Record', () => {
-  const Blego = require('Blego.js');
-  const errors = require('errors.js');
-  const keyRequiredSpy = jest.spyOn(errors, 'keyRequired');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
+  const keyRequiredSpy = jest.spyOn(blego.tools.errors, 'keyRequired');
 
   it('Creates a Record with key and props', () => {
     const record = new blego.Record('key', {

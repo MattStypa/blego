@@ -3,19 +3,12 @@ describe('blego.tasks.loadData', () => {
   const tempDir = require('../jest/tempDir.js');
   const mockExit = require('../jest/mockExit.js');
   const throwingMock = require('../jest/throwingMock.js');
-  const Blego = require('Blego.js');
-  const errors = require('errors.js');
-  const parsers = require('parsers.js');
-  const noTypeSpy = jest.spyOn(errors, 'noType');
-  const noParserSpy = jest.spyOn(errors, 'noParser');
-  const cantParseSpy = jest.spyOn(errors, 'cantParse');
-  let blego;
+  const blego = require('Blego.js');
+  const noTypeSpy = jest.spyOn(blego.tools.errors, 'noType');
+  const noParserSpy = jest.spyOn(blego.tools.errors, 'noParser');
+  const cantParseSpy = jest.spyOn(blego.tools.errors, 'cantParse');
 
   beforeEach(() => {
-    console.log = jest.fn();
-    console.error = jest.fn();
-    blego = new Blego();
-    new blego.Store([]);
     tempDir({
       'data/authors/joe.json': '{"name": "joe"}',
       'data/authors/bob.yaml': 'name: bob',
@@ -99,14 +92,14 @@ describe('blego.tasks.loadData', () => {
   });
 
   it('Dies if parsing fails', () => {
-    const original = parsers.json;
-    parsers.json = throwingMock
+    const original = blego.parsers.json;
+    blego.parsers.json = throwingMock
 
     const mock = mockExit(() => {
       blego.tasks.loadData();
     });
 
-    parsers.json = original
+    blego.parsers.json = original
 
     expect(mock).toHaveBeenCalled();
     expect(cantParseSpy).toHaveBeenCalledWith(nodePath.resolve('data/authors/joe.json'));

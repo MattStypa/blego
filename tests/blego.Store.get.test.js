@@ -1,11 +1,5 @@
 describe('blego.Store.get', () => {
-  const Blego = require('Blego.js');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
 
   it('Gets the record with specified key', () => {
     const store = new blego.Store([

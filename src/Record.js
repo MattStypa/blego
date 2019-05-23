@@ -4,7 +4,7 @@ const tools = require('./tools.js');
 /**
  * Creates a Record object.
  *
- * @constructor
+ * @class
  * @param {string} key Identifier of the Record.
  * @param {object} props Properites of the Record.
  */

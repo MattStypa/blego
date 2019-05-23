@@ -1,11 +1,5 @@
 describe('blego.Store.sortBy', () => {
-  const Blego = require('Blego.js');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('Blego.js');
 
   it('Gets Store sorted by prop', () => {
     const store = new blego.Store([

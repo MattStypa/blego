@@ -1,13 +1,8 @@
 describe('blego.Store.dd', () => {
-  const Blego = require('Blego.js');
-  let blego;
-  let consoleLog;
-  let processExit;
+  const blego = require('Blego.js');
 
   beforeEach(() => {
-    consoleLog = console.log = jest.fn();
-    process.exit = processExit = jest.fn();
-    blego = new Blego();
+    process.exit = jest.fn();
   });
 
   it('Writes the Records to console', () => {
@@ -19,7 +14,7 @@ describe('blego.Store.dd', () => {
 
     store.dd();
 
-    expect(consoleLog.mock.calls.pop().pop().items.length).toEqual(3);
+    expect(console.log.mock.calls.pop().pop().items.length).toEqual(3);
   });
 
   it('Stops the process', () => {
@@ -27,6 +22,6 @@ describe('blego.Store.dd', () => {
 
     store.dd();
 
-    expect(processExit).toHaveBeenCalledWith(1);
+    expect(process.exit).toHaveBeenCalledWith(1);
   });
 });

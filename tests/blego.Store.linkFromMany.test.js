@@ -1,13 +1,11 @@
 describe('blego.Store.linkFromMany', () => {
-  const Blego = require('Blego.js');
-  const errors = require('errors.js');
-  const recordNotFoundSpy = jest.spyOn(errors, 'recordNotFound');
-  const invalidTypeInArraySpy = jest.spyOn(errors, 'invalidTypeInArray');
-  let blego;
+  const blego = require('Blego.js');
+  const recordNotFoundSpy = jest.spyOn(blego.tools.errors, 'recordNotFound');
+  const invalidTypeInArraySpy = jest.spyOn(blego.tools.errors, 'invalidTypeInArray');
 
   beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
+    recordNotFoundSpy.mockClear();
+    invalidTypeInArraySpy.mockClear();
   });
 
   it('Creates a links to many Records from a different Store', () => {
