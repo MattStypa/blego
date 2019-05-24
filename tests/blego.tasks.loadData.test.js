@@ -1,5 +1,6 @@
 describe('blego.tasks.loadData', () => {
   const nodePath = require('path');
+  const fs = require('fs-extra');
   const tempDir = require('../jest/tempDir.js');
   const mockExit = require('../jest/mockExit.js');
   const throwingMock = require('../jest/throwingMock.js');
