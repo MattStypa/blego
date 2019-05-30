@@ -1,10 +1,11 @@
 describe('blego.macro', () => {
-  const blego = require('Blego.js');
+  const blego = require('core.js');
+  const handlebars = require('lib/handlebars.js');
 
   it('Registers a helper', () => {
     const macro = jest.fn();
     blego.macro('macro', macro);
 
-    expect(blego.handlebars.helpers.macro).toEqual(macro);
+    expect(handlebars.helpers.macro).toEqual(macro);
   });
 });

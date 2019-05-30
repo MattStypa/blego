@@ -1,5 +1,5 @@
 describe('blego.dump', () => {
-  const blego = require('Blego.js');
+  const blego = require('core.js');
 
   it('Writes to console', () => {
     blego.dump('message');

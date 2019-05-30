@@ -1,5 +1,5 @@
 describe('blego.dd', () => {
-  const blego = require('Blego.js');
+  const blego = require('core.js');
 
   beforeEach(() => {
     process.exit = jest.fn();
@@ -12,7 +12,7 @@ describe('blego.dd', () => {
   });
 
   it('Stops the process', () => {
-    blego.dd('');
+    blego.dd('message');
 
     expect(process.exit).toHaveBeenCalledWith(1);
   })

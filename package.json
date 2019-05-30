@@ -60,7 +60,7 @@
       "<rootDir>/jest/setup.js"
     ],
     "modulePaths": [
-      "<rootDir>/lib/"
+      "<rootDir>/"
     ],
     "testMatch": [
       "<rootDir>/tests/**/*.test.js"

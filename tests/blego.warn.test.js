@@ -1,6 +1,6 @@
 describe('blego.warn', () => {
   const stripAnsi = require('strip-ansi');
-  const blego = require('Blego.js');
+  const blego = require('core.js');
 
   it('Writes to console', () => {
     blego.warn('message');

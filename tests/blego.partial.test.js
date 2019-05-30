@@ -1,6 +1,8 @@
+const tempDir = require('jest/tempDir.js');
+
 describe('blego.partial', () => {
-  const tempDir = require('../jest/tempDir.js');
-  const blego = require('Blego.js');
+  const blego = require('core.js');
+  const handlebars = require('lib/handlebars.js');
 
   beforeEach(() => {
     tempDir({
@@ -15,6 +17,6 @@ describe('blego.partial', () => {
   it('Registers a partial', () => {
     blego.partial('testPartial', 'file.html');
 
-    expect(blego.handlebars.partials.testPartial).toEqual('file content');
+    expect(handlebars.partials.testPartial).toEqual('file content');
   });
 });

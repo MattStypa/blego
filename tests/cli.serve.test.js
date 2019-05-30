@@ -1,12 +1,14 @@
-describe('cli.serve', () => {
-  jest.mock('open');
+jest.mock('open');
 
-  const openMock = require('open');
-  const request = require('request-promise');
-  const tempDir = require('../jest/tempDir.js');
-  const mockExit = require('../jest/mockExit.js');
-  const serve = require('cli/serve.js');
-  const cliUtils = require('cli/utils.js');
+const openMock = require('open');
+const request = require('request-promise');
+const tempDir = require('jest/tempDir.js');
+const mockExit = require('jest/mockExit.js');
+
+describe('cli.serve', () => {
+  const serve = require('lib/cli/serve.js');
+  const cliUtils = require('lib/cli/utils.js');
+
   const cliErrorSpy = jest.spyOn(cliUtils, 'error');
 
   beforeEach(() => {
@@ -24,7 +26,7 @@ describe('cli.serve', () => {
     return serve(undefined, {port: undefined}).then((server) => {
       return request('http://localhost:3000/test.txt').then((body) => {
         server.close();
-        expect(body).toBe('1');
+        expect(body).toEqual('1');
       });
     });
   });
@@ -33,7 +35,7 @@ describe('cli.serve', () => {
     return serve('web', {port: undefined}).then((server) => {
       return request('http://localhost:3000/test.txt').then((body) => {
         server.close();
-        expect(body).toBe('2');
+        expect(body).toEqual('2');
       });
     });
   });
@@ -42,7 +44,7 @@ describe('cli.serve', () => {
     return serve('web', {port: 1234}).then((server) => {
       return request('http://localhost:1234/test.txt').then((body) => {
         server.close();
-        expect(body).toBe('2');
+        expect(body).toEqual('2');
       });
     });
   });

@@ -1,10 +1,14 @@
+const nodePath = require('path');
+const tempDir = require('jest/tempDir.js');
+const mockExit = require('jest/mockExit.js');
+
 describe('cli.build', () => {
-  const nodePath = require('path');
-  const tempDir = require('../jest/tempDir.js');
-  const mockExit = require('../jest/mockExit.js');
-  const build = require('cli/build.js');
-  const cliUtils = require('cli/utils.js');
-  const cliErrorSpy = jest.spyOn(cliUtils, 'error');
+  const build = require('lib/cli/build.js');
+  const cliUtils = require('lib/cli/utils.js');
+
+  const errorSpy = jest.spyOn(cliUtils, 'error');
+  const printTraceAndDieSpy = jest.spyOn(cliUtils, 'printTraceAndDie');
+
   let blegoJsMock;
   let buildJsMock;
 
@@ -12,9 +16,12 @@ describe('cli.build', () => {
     tempDir({
       'blego.js': '',
       'build.js': '',
+      'fail.js': 'invalid syntax',
     });
+
     blegoJsMock = jest.fn();
     buildJsMock = jest.fn();
+
     jest.doMock(nodePath.resolve('blego.js'), blegoJsMock, {virtual: true});
     jest.doMock(nodePath.resolve('build.js'), buildJsMock, {virtual: true});
   });
@@ -42,10 +49,20 @@ describe('cli.build', () => {
   });
 
   it('Dies if the given file does not exist', () => {
-    mockExit(() => {
+    const exitMock = mockExit(() => {
       build('test');
     });
 
-    expect(cliErrorSpy).toHaveBeenCalled();
+    expect(errorSpy).toHaveBeenCalled();
+    expect(exitMock).toHaveBeenCalledWith(1);
+  });
+
+  it('Parsers trace if the build fails', () => {
+    const exitMock = mockExit(() => {
+      build('fail');
+    });
+
+    expect(printTraceAndDieSpy).toHaveBeenCalled();
+    expect(exitMock).toHaveBeenCalledWith(1);
   });
 });

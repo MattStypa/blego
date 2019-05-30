@@ -1,14 +1,24 @@
+const nodePath = require('path');
+const fs = require('fs-extra');
+const tempDir = require('jest/tempDir.js');
+
 describe('blego.page', () => {
-  const nodePath = require('path');
-  const fs = require('fs-extra');
-  const tempDir = require('../jest/tempDir.js');
-  const blego = require('Blego.js');
-  const pathExistsSpy = jest.spyOn(blego.tools.errors, 'pathExists');
+  const blego = require('core.js');
+  const errors = require('lib/errors.js');
+
+  const pathExistsSpy = jest.spyOn(errors, 'pathExists');
 
   beforeEach(() => {
     tempDir({
-      'template/testTemplate.html': 'Hello {{data}}',
+      'globals': {},
+      'data': {},
+      'static': {},
+      'template/partials': {},
+      'template/file.html': 'Hello {{data}}',
+      'dist': {},
     });
+
+    blego.init();
   });
 
   afterEach(() => {
@@ -16,16 +26,16 @@ describe('blego.page', () => {
   });
 
   it('Creates a file from template and context', () => {
-    blego.page('testPage.html', 'testTemplate.html', {data: 'World'});
+    blego.page('testPage.html', 'file.html', {data: 'World'});
 
     expect(fs.readFileSync('dist/testPage.html').toString()).toEqual('Hello World');
   });
 
   it('Throws if file already exists', () => {
-    blego.page('testPage.html', 'testTemplate.html', {data: 'World'});
+    blego.page('testPage.html', 'file.html', {data: 'World'});
 
     expect(() => {
-      blego.page('testPage.html', 'testTemplate.html', {data: 'World'});
+      blego.page('testPage.html', 'file.html', {data: 'World'});
     }).toThrow();
 
     expect(pathExistsSpy).toHaveBeenCalledWith(nodePath.resolve('dist/testPage.html'));
