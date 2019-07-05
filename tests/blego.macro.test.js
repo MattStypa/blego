@@ -1,12 +1,6 @@
 describe('blego.macro', () => {
-  const handlebars = require('handlebars');
-  const Blego = require('Blego.js');
-  let blego;
-
-  beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-  });
+  const blego = require('core.js');
+  const handlebars = require('lib/handlebars.js');
 
   it('Registers a helper', () => {
     const macro = jest.fn();

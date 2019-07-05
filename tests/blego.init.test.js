@@ -1,26 +1,57 @@
-describe('blego.init', () => {
-  const Blego = require('Blego.js');
-  let blego;
+const fs = require('fs-extra');
+const tempDir = require('jest/tempDir.js');
+
+describe('Blego', () => {
+  const blego = require('core.js');
+  const handlebars = require('lib/handlebars.js');
 
   beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
-    blego.tasks.setCoreMacros = jest.fn();
-    blego.tasks.loadGlobals = jest.fn();
-    blego.tasks.loadPartials = jest.fn();
-    blego.tasks.loadData = jest.fn();
-    blego.tasks.cleanUp = jest.fn();
-    blego.tasks.copyStatic = jest.fn();
+    tempDir({
+      'globals/config.json': '{"siteName": "test"}',
+      'data/authors/a.json': '{"name": "a"}',
+      'data/authors/b.yaml': 'name: b',
+      'data/posts/c.md': '# C',
+      'data/posts/d.html': '<h1>D</h1>',
+      'static/file': '',
+      'static/directory/file': '',
+      'template/partials/file.html': 'file content',
+      'template/file.html': 'Hello {{data}}',
+      'dist/old_file': 'file content',
+    });
+
+    blego.init();
   });
 
-  it('Runs common tasks', () => {
-    blego.init();
+  afterEach(() => {
+    tempDir.restore();
+  });
 
-    expect(blego.tasks.setCoreMacros).toHaveBeenCalled();
-    expect(blego.tasks.loadGlobals).toHaveBeenCalled();
-    expect(blego.tasks.loadPartials).toHaveBeenCalled();
-    expect(blego.tasks.loadData).toHaveBeenCalled();
-    expect(blego.tasks.cleanUp).toHaveBeenCalled();
-    expect(blego.tasks.copyStatic).toHaveBeenCalled();
+  it('Sets macros', () => {
+    expect(handlebars.helpers.dump).toEqual(blego.dump);
+    expect(handlebars.helpers.dd).toEqual(blego.dd);
+  });
+
+  it('Loads partials', () => {
+    expect(handlebars.partials.file).toEqual('file content');
+  });
+
+  it('Loads globals', () => {
+    expect(blego.global.config.siteName).toEqual('test');
+  });
+
+  it('Cleans up the destination directory', () => {
+    expect(fs.readdirSync('dist')).toEqual(expect.not.arrayContaining(['old_file']));
+  });
+
+  it('Copies static directory to destination directory', () => {
+    expect(fs.readdirSync('dist')).toEqual(['directory', 'file']);
+    expect(fs.readdirSync('dist/directory')).toEqual(['file']);
+  });
+
+  it('Loads data into stores', () => {
+    expect(blego.data.authors.get('a').name).toEqual('a');
+    expect(blego.data.authors.get('b').name).toEqual('b');
+    expect(blego.data.posts.get('c').body).toEqual(expect.stringMatching(/<h1.*>C<\/h1>/));
+    expect(blego.data.posts.get('d').body).toEqual(expect.stringMatching(/<h1>D<\/h1>/));
   });
 });

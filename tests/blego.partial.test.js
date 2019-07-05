@@ -1,12 +1,10 @@
+const tempDir = require('jest/tempDir.js');
+
 describe('blego.partial', () => {
-  const handlebars = require('handlebars');
-  const tempDir = require('../jest/tempDir.js');
-  const Blego = require('Blego.js');
-  let blego;
+  const blego = require('core.js');
+  const handlebars = require('lib/handlebars.js');
 
   beforeEach(() => {
-    console.log = jest.fn();
-    blego = new Blego();
     tempDir({
       'template/partials/file.html': 'file content',
     });

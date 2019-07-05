@@ -1,25 +1,19 @@
 describe('blego.dd', () => {
-  const stripAnsi = require('strip-ansi');
-  const Blego = require('Blego.js');
-  let blego;
-  let consoleLog;
-  let processExit;
+  const blego = require('core.js');
 
   beforeEach(() => {
-    console.log = consoleLog = jest.fn();
-    process.exit = processExit = jest.fn();
-    blego = new Blego();
+    process.exit = jest.fn();
   });
 
   it('Writes to console', () => {
     blego.dd('message');
 
-    expect(consoleLog).toHaveBeenLastCalledWith('message');
+    expect(console.log).toHaveBeenLastCalledWith('message');
   });
 
   it('Stops the process', () => {
-    blego.dd('');
+    blego.dd('message');
 
-    expect(processExit).toHaveBeenCalledWith(1);
+    expect(process.exit).toHaveBeenCalledWith(1);
   })
 });
