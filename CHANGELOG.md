@@ -1,6 +1,6 @@
 # Release Notes
 
-## v0.4. (WIP)
+## v0.4.0 (2019-07-17)
 
 ### Changed
 - Breaking changes to API.
