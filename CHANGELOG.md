@@ -1,5 +1,11 @@
 # Release Notes
 
+## v0.5.0 (WIP)
+
+### Changed
+- Breaking API changes.
+- All template files are now partials.
+
 ## v0.4.2 (2019-07-17)
 
 ### Changed

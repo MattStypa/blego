@@ -14,8 +14,7 @@ describe('Blego', () => {
       'data/posts/d.html': '<h1>D</h1>',
       'static/file': '',
       'static/directory/file': '',
-      'template/partials/file.html': 'file content',
-      'template/file.html': 'Hello {{data}}',
+      'template/file.html': 'file content',
       'dist/old_file': 'file content',
     });
 
@@ -31,8 +30,8 @@ describe('Blego', () => {
     expect(handlebars.helpers.dd).toEqual(blego.dd);
   });
 
-  it('Loads partials', () => {
-    expect(handlebars.partials.file).toEqual('file content');
+  it('Loads templates', () => {
+    expect(handlebars.partials['file.html']).toEqual('file content');
   });
 
   it('Loads globals', () => {

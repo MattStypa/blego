@@ -7,13 +7,13 @@ describe('blego.page', () => {
   const errors = require('lib/errors.js');
 
   const pathExistsSpy = jest.spyOn(errors, 'pathExists');
+  const handlebarsSpy = jest.spyOn(errors, 'handlebars');
 
   beforeEach(() => {
     tempDir({
       'globals': {},
       'data': {},
       'static': {},
-      'template/partials': {},
       'template/file.html': 'Hello {{data}}',
       'dist': {},
     });
@@ -39,5 +39,13 @@ describe('blego.page', () => {
     }).toThrow();
 
     expect(pathExistsSpy).toHaveBeenCalledWith(nodePath.resolve('dist/testPage.html'));
+  });
+
+  it('Translates Handlebars errors', () => {
+    expect(() => {
+      blego.page('testPage.html', 'no-template', {});
+    }).toThrow();
+
+    expect(handlebarsSpy).toHaveBeenCalledWith(expect.not.stringContaining('partial'));
   });
 });

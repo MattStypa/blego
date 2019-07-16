@@ -11,7 +11,6 @@ describe('Blego', () => {
     expect(typeof blego.log).toEqual('function');
     expect(typeof blego.macro).toEqual('function');
     expect(typeof blego.page).toEqual('function');
-    expect(typeof blego.partial).toEqual('function');
     expect(typeof blego.warn).toEqual('function');
   });
 });
