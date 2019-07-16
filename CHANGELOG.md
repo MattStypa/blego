@@ -1,6 +1,6 @@
 # Release Notes
 
-## v0.4.1 (2019-07-17)
+## v0.4.2 (2019-07-17)
 
 ### Changed
 - Fixed `lib/main.js` error.
