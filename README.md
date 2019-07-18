@@ -1,7 +1,6 @@
 <p align="center"><img src="https://raw.githubusercontent.com/MattStypa/assets/master/blego/blego.png"></p>
 
 
-
 # Blego
 Blego is an exceptionally powerful and easy to use static site generator. It's a great choice for beginners AND veterans.
 
@@ -17,7 +16,7 @@ Blego is flexible enough to generate any type of a website like Blogs, Stores or
 
 
 # Using Blego
-### Requirements
+## Requirements
 Blego requires [Node.js 8.0](https://nodejs.org) or newer. Visit [https://nodejs.org](https://nodejs.org/) for more information.
 
 ## Creating a project
@@ -25,14 +24,14 @@ Blego requires [Node.js 8.0](https://nodejs.org) or newer. Visit [https://nodejs
 npx blego new my-project
 ```
 
-This will create a new directory with a basic Blego project already set up. You can replace `my-project` with any directory name you would like.
+This will create a new directory with a simple Blego project already set up. You can replace `my-project` with any directory name you like.
 
 ## Building a project
 ```sh
 npx blego build
 ```
 
-This will build your project and save the output to the `dist` directory.
+This will build your project and save it to the `dist` directory.
 
 ## Serving a project
 ```sh
@@ -42,9 +41,9 @@ npx serve
 This will start a web server from the `dist` directory. Visit [http://localhost:3000](http://localhost:3000) to see your generated project.
 
 ## File system
-Standard Blego project comes preconfigured with the following files and directories.
+Standard Blego project is preconfigured with the following files and directories.
 
-`data`: Contains data files parsed by Blego.
+`data`: Contains data files parsed into Stores.
 
 `globals`: Contains data files available globally.
 
@@ -52,7 +51,7 @@ Standard Blego project comes preconfigured with the following files and director
 
 `template`: Contains [Handlebars.js](https://handlebarsjs.com/) templates used to generate files.
 
-`blego.js`: This is the brain of your Blego project. This file contains definitions of all relationships and instructions on how your project will be built.
+`blego.js`: This is the brain of your Blego project. This file contains definitions of all relationships and instructions on how to built your project.
 
 ## Building pages
 To build a page add the following code to the `blego.js` file.
@@ -61,7 +60,7 @@ To build a page add the following code to the `blego.js` file.
 blego.page('page.html', 'welcome.html', { title: 'Hello World' });
 ```
 
-This will populate the `welcome.html` template with data passed in the last argument and save it as `page.html`.
+This will create `page.html` using the `welcome.html` template populated with data passed in the last argument.
 
 ## Templates
 Template files use [Handlebars.js](https://handlebarsjs.com/) to fill in static markup with dynamic content.
@@ -115,12 +114,12 @@ blego.macro('getUserAge', (user) => user.age || 'Age not available');
 Macros use [Handlebars.js helpers](https://handlebarsjs.com/#helpers). Visit [https://handlebarsjs.com/#helpers](https://handlebarsjs.com/#helpers) to learn more.
 
 ## Static files
-Not all files used by a website are dynamically generated. Move your static files like images, CSS, etc. to the `static` directory and Blego will automatically copy them to the `dist` directory when building.
+Not all files used by a website are dynamically generated. Put your static files like images, CSS, etc. in the `static` directory and Blego will automatically copy them to the `dist` directory when building.
 
 ## Data
-Blego creates data Stores by parsing variety of files from the `data` directory.
+Blego creates data Stores by parsing files from the `data` directory.
 
-First tier subdirectories represent the Store name while the remaining file path represents the Record key. File extensions are omitted from the Record key.
+First tier subdirectories represent the Store name while the remaining file path represents the Record key. File extension is omitted from the Record key.
 
 ```
 .
@@ -132,7 +131,7 @@ First tier subdirectories represent the Store name while the remaining file path
          +- contact.md
 ```
 
-Given this file structure, Blego will create a data Store called `Pages` with 3 Records. The Records will have the following keys.
+Given this file structure, Blego will create a Store called `Pages` with 3 Records. The Records will have the following keys.
 
 ```
 - home
@@ -140,39 +139,67 @@ Given this file structure, Blego will create a data Store called `Pages` with 3 
 - about/contact
 ```
 
-### Stores
-Stores provide many ways of accessing and manipulating the Records. See the Store API reference to learn more.
+## Stores
+Stores provide many ways of accessing and manipulating the Records.
 
-### Data file types
-Blego can parse different data file types and each offers different behavior.
+For example, you may want to get twitter handles for the five newest users.
 
-#### Markdown
-Markdown data files use `.md` file extension and support Front Matter. 
+```js
+blego.data.Users.sortBy('joinedAt').reverse().pluck('twitter').take(5);
+```
 
-#### HTML
+See the Store API reference to learn more.
 
-#### JSON
+## Data file types
+Blego can parse many different data file types.
 
-#### JS
+- **Markdown** files use `.md` file extension.
+- **HTML** files use `.html` file extension.
+- **Javascript** files use `.js` file extension.
+- **JSON** files use `.json` file extension.
+- **YAML** files use `.yaml` file extension.
 
-#### YAML
+Markdown and HTML data files support [Front Matter](https://github.com/jxson/front-matter). Meta data provided is exposed as parameters of the Record while the content is available via the `body` parameter.
 
+Visit [https://github.com/jxson/front-matter](https://github.com/jxson/front-matter) to learn more about [Front Matter](https://github.com/jxson/front-matter).
 
-#### Globals
+Javascript data files must export an object which will be merged into the Record.
 
-[ todo ]
+JSON and YAML files are parsed into Javascript object and merged into the Record.
 
-#### Relationships
+## Globals
 
-[ todo ]
+Some data may need to be available globally. Data files in the `globals` directory will  be automatically made available in every template.
 
-#### Collections
+Note, that global data is a Javascript object and not a Store.
 
-[ todo ]
+Below is a simple `config.json` file placed in the `globals` directory.
 
-# Learn More
-- API reference
-- Blego for absolute beginners
-- Debugging
-- Advanced topics
-- Tutorials
+```json
+{
+  "site_name": "My Project"
+}
+```
+
+The data can be accessed in any template.
+
+```html
+<h1>{{ config.site_name }}</h1>
+```
+
+## Relationships
+
+Blego must be told how the data models relate to each other. You may be used to thinking about relationships as one-to-one or one-to-many. It is important to also understand the direction of the relationship.
+
+When creating a relationship between Books and Authors it makes a lot more sense to define the Authors in the Book model. But, this relationship must work both ways.
+
+To define bidirectional relationship between Books and Authors you need to add the following code to the `blego.js` file.
+
+```
+blego.data.Books.linkToMany(blego.data.Authors, 'authors');
+blego.data.Authors.linkFromMany(blego.data.Books, 'authors', 'books');
+```
+
+This will replace the Author keys in `authors` property of Book Records with actual Author Records. And, add `books` property to the Author Records containing related Book Records.
+
+See the API reference for more details.

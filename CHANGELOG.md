@@ -5,6 +5,8 @@
 ### Changed
 - Breaking API changes.
 - All template files are now partials.
+- Data file extensions are now case insensitive.
+- Revised argument order of the relationship methods. 
 
 ## v0.4.2 (2019-07-17)
 
