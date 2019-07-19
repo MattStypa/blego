@@ -148,7 +148,7 @@ For example, you may want to get twitter handles for the five newest users.
 blego.data.Users.sortBy('joinedAt').reverse().take(5).pluck('twitter');
 ```
 
-See the Store API reference to learn more.
+See the [API reference](API.md#blegodatastorelinktoonerelatedstore-prop) to learn more.
 
 ## Data file types
 Blego can parse many different data file types.
@@ -202,4 +202,4 @@ blego.data.Authors.linkFromMany(blego.data.Books, 'authors', 'books');
 
 This will replace the Author keys in `authors` property of Book Records with actual Author Records. And, add `books` property to the Author Records containing related Book Records.
 
-See the API reference to learn more.
+See the [API reference](API.md#blegodatastorelinktoonerelatedstore-prop) to learn more.
