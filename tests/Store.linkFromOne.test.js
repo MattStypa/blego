@@ -2,7 +2,7 @@ describe('Store.linkFromOne', () => {
   const Record = require('lib/Record.js');
   const Store = require('lib/Store.js');
   const errors = require('lib/errors.js');
-  
+
   const recordNotFoundSpy = jest.spyOn(errors, 'recordNotFound');
   const invalidTypeInArraySpy = jest.spyOn(errors, 'invalidTypeInArray');
   const recordLinkedSpy = jest.spyOn(errors, 'recordLinked');
@@ -23,7 +23,7 @@ describe('Store.linkFromOne', () => {
       new Record('e', {}),
     ]);
 
-    toStore.linkFromOne('link', fromStore, 'link');
+    toStore.linkFromOne(fromStore, 'link', 'link');
 
     expect(toStore.get('a').link.key).toEqual('3');
     expect(toStore.get('b').link.key).toEqual('2');
@@ -40,8 +40,8 @@ describe('Store.linkFromOne', () => {
       new Record('a', {}),
     ]);
 
-    fromStore.linkToOne('link', toStore);
-    toStore.linkFromOne('link', fromStore, 'link');
+    fromStore.linkToOne(toStore, 'link');
+    toStore.linkFromOne(fromStore, 'link', 'link');
 
     expect(fromStore.get('1').link.key).toEqual('a');
     expect(toStore.get('a').link.key).toEqual('1');
@@ -56,7 +56,7 @@ describe('Store.linkFromOne', () => {
     ]);
 
     expect(() => {
-      toStore.linkFromOne('link', fromStore, 'link');
+      toStore.linkFromOne(fromStore, 'link', 'link');
     }).toThrow();
 
     expect(recordNotFoundSpy).toHaveBeenCalledWith('b', 'link', '1');
@@ -71,7 +71,7 @@ describe('Store.linkFromOne', () => {
     ]);
 
     expect(() => {
-      toStore.linkFromOne('link', fromStore, 'link');
+      toStore.linkFromOne(fromStore, 'link', 'link');
     }).toThrow();
 
     expect(invalidTypeInArraySpy).toHaveBeenCalledWith('link', 'string', '1');
@@ -87,7 +87,7 @@ describe('Store.linkFromOne', () => {
     ]);
 
     expect(() => {
-      toStore.linkFromOne('link', fromStore, 'link');
+      toStore.linkFromOne(fromStore, 'link', 'link');
     }).toThrow();
 
     expect(recordLinkedSpy).toHaveBeenCalledWith('a', 'link', '2', '1');

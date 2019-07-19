@@ -2,7 +2,7 @@ describe('Store.linkToMany', () => {
   const Record = require('lib/Record.js');
   const Store = require('lib/Store.js');
   const errors = require('lib/errors.js');
-  
+
   const recordNotFoundSpy = jest.spyOn(errors, 'recordNotFound');
 
   it('Creates a links to many Records from a different Store', () => {
@@ -18,7 +18,7 @@ describe('Store.linkToMany', () => {
       new Record('c', {}),
     ]);
 
-    fromStore.linkToMany('links', toStore);
+    fromStore.linkToMany(toStore, 'links');
 
     expect(fromStore.get('1').links[0].key).toEqual('a');
     expect(fromStore.get('1').links[1].key).toEqual('b');
@@ -38,7 +38,7 @@ describe('Store.linkToMany', () => {
     ]);
 
     expect(() => {
-      fromStore.linkToMany('links', toStore);
+      fromStore.linkToMany(toStore, 'links');
     }).toThrow();
 
     expect(recordNotFoundSpy).toHaveBeenCalledWith('b', 'links', '1');

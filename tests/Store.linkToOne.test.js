@@ -2,7 +2,7 @@ describe('Store.linkToOne', () => {
   const Record = require('lib/Record.js');
   const Store = require('lib/Store.js');
   const errors = require('lib/errors.js');
-  
+
   const recordNotFoundSpy = jest.spyOn(errors, 'recordNotFound');
 
   it('Creates a link to one Record from a different Store', () => {
@@ -18,7 +18,7 @@ describe('Store.linkToOne', () => {
       new Record('c', {}),
     ]);
 
-    fromStore.linkToOne('link', toStore);
+    fromStore.linkToOne(toStore, 'link');
 
     expect(fromStore.get('1').link.key).toEqual('c');
     expect(fromStore.get('2').link.key).toEqual('b');
@@ -35,7 +35,7 @@ describe('Store.linkToOne', () => {
     ]);
 
     expect(() => {
-      fromStore.linkToOne('link', toStore);
+      fromStore.linkToOne(toStore, 'link');
     }).toThrow();
 
     expect(recordNotFoundSpy).toHaveBeenCalledWith('b', 'link', '1');

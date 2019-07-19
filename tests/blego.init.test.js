@@ -18,6 +18,9 @@ describe('Blego', () => {
       'dist/old_file': 'file content',
     });
 
+    blego.dump = jest.fn();
+    blego.dd = jest.fn();
+
     blego.init();
   });
 
@@ -26,8 +29,11 @@ describe('Blego', () => {
   });
 
   it('Sets macros', () => {
-    expect(handlebars.helpers.dump).toEqual(blego.dump);
-    expect(handlebars.helpers.dd).toEqual(blego.dd);
+    handlebars.helpers.dump();
+    handlebars.helpers.dd();
+
+    expect(blego.dump).toHaveBeenCalled();
+    expect(blego.dd).toHaveBeenCalled();
   });
 
   it('Loads templates', () => {

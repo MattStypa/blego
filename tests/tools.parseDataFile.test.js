@@ -14,6 +14,7 @@ describe('tools.parseDataFile', () => {
   beforeEach(() => {
     tempDir({
       'a.json': '{"name": "a"}',
+      'b.YAML': 'name: b',
     });
   });
 
@@ -26,6 +27,10 @@ describe('tools.parseDataFile', () => {
 
     expect(data.name).toEqual('a');
   });
+
+  it('accepts uppercase data file extensions', () => {
+    parseDataFile('b.YAML');
+  })
 
   it('Throws if data file has no type', () => {
     tempDir({

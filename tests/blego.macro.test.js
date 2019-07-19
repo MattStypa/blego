@@ -5,7 +5,8 @@ describe('blego.macro', () => {
   it('Registers a helper', () => {
     const macro = jest.fn();
     blego.macro('macro', macro);
+    handlebars.helpers.macro();
 
-    expect(handlebars.helpers.macro).toEqual(macro);
+    expect(macro).toHaveBeenCalled();
   });
 });
