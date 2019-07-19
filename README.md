@@ -17,7 +17,7 @@ Blego is flexible enough to generate any type of a website like Blogs, Stores or
 
 # Using Blego
 ## Requirements
-Blego requires [Node.js 8.0](https://nodejs.org) or newer. Visit [https://nodejs.org](https://nodejs.org/) for more information.
+Blego requires [Node.js 8.0](https://nodejs.org) or newer. Visit [https://nodejs.org](https://nodejs.org/) to learn more.
 
 ## Creating a project
 ```sh
@@ -51,7 +51,7 @@ Standard Blego project is preconfigured with the following files and directories
 
 `template`: Contains [Handlebars.js](https://handlebarsjs.com/) templates used to generate files.
 
-`blego.js`: This is the brain of your Blego project. This file contains definitions of all relationships and instructions on how to built your project.
+`blego.js`: This is the brain of your Blego project. This file contains definitions of all relationships and instructions on how to build your project.
 
 ## Building pages
 To build a page add the following code to the `blego.js` file.
@@ -145,7 +145,7 @@ Stores provide many ways of accessing and manipulating the Records.
 For example, you may want to get twitter handles for the five newest users.
 
 ```js
-blego.data.Users.sortBy('joinedAt').reverse().pluck('twitter').take(5);
+blego.data.Users.sortBy('joinedAt').reverse().take(5).pluck('twitter');
 ```
 
 See the Store API reference to learn more.
@@ -202,4 +202,4 @@ blego.data.Authors.linkFromMany(blego.data.Books, 'authors', 'books');
 
 This will replace the Author keys in `authors` property of Book Records with actual Author Records. And, add `books` property to the Author Records containing related Book Records.
 
-See the API reference for more details.
+See the API reference to learn more.
