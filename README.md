@@ -148,7 +148,7 @@ For example, you may want to get twitter handles for the five newest users.
 blego.data.Users.sortBy('joinedAt').reverse().take(5).pluck('twitter');
 ```
 
-See the [API reference](API.md#blegodatastorelinktoonerelatedstore-prop) to learn more.
+See the [API reference](API.md#store) to learn more.
 
 ## Data file types
 Blego can parse many different data file types.
