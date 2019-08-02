@@ -1,5 +1,10 @@
 # Release Notes
 
+## v0.5.1 (2019-08-02)
+
+### Changed
+- Updates URL of the project.
+
 ## v0.5.0 (2019-07-19)
 
 ### Changed

@@ -1,3 +1,3 @@
 # Welcome
 
-https://github.com/MattStypa/blego
+https://blego.js.org
