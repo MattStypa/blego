@@ -43,13 +43,13 @@ This will start a web server from the `dist` directory. Visit [http://localhost:
 ## File system
 Standard Blego project is preconfigured with the following files and directories.
 
-`data`: Contains data files parsed into Stores.
+`data`: Contains data files parsed into Stores. [Learn more](#Data).
 
-`globals`: Contains data files available globally.
+`globals`: Contains data files available globally. [Learn more](#Globals).
 
-`static`: Contains files copied directly to the `dist` directory.
+`static`: Contains files copied directly to the `dist` directory. [Learn more](#Static files).
 
-`template`: Contains [Handlebars.js](https://handlebarsjs.com/) templates used to generate files.
+`template`: Contains [Handlebars.js](https://handlebarsjs.com/) template files. [Learn more](#Template)
 
 `blego.js`: This is the brain of your Blego project. This file contains definitions of all relationships and instructions on how to build your project.
 
@@ -62,7 +62,7 @@ blego.page('page.html', 'welcome.html', { title: 'Hello World' });
 
 This will create `page.html` using the `welcome.html` template populated with data passed in the last argument.
 
-## Templates
+## Template
 Template files use [Handlebars.js](https://handlebarsjs.com/) to fill in static markup with dynamic content.
 
 ```html
@@ -85,7 +85,7 @@ Hello World
 There is a lot more that [Handlebars.js](https://handlebarsjs.com/) can do. Visit [https://handlebarsjs.com](https://handlebarsjs.com/) to learn more.
 
 ## Macros
-Macros allow you to call Javascript functions from your templates.
+Macros allow you to call Javascript functions from your template.
 
 For example, you may want to report when the page was generated.
 
@@ -169,9 +169,9 @@ JSON and YAML files are parsed into Javascript object and merged into the Record
 
 ## Globals
 
-Some data may need to be available globally. Data files in the `globals` directory will  be automatically made available in every template.
+Some data may need to be available globally. Data files in the `globals` directory will  be automatically made available in every template file.
 
-Note, that global data is a Javascript object and not a Store.
+**Note**: Global data is a Javascript object and not a Store.
 
 Below is a simple `config.json` file placed in the `globals` directory.
 
@@ -189,7 +189,9 @@ The data can be accessed in any template.
 
 ## Relationships
 
-Blego must be told how the data models relate to each other. You may be used to thinking about relationships as one-to-one or one-to-many. It is important to also understand the direction of the relationship.
+Blego must be told how the data models relate to each other. You may be used to thinking about relationships as one-to-one or one-to-many. However, it is important to also understand the direction of the relationship.
+
+For example; A team has many players but a player has one team.
 
 When creating a relationship between Books and Authors it makes a lot more sense to define the Authors in the Book model. But, this relationship must work both ways.
 

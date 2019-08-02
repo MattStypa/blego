@@ -63,12 +63,12 @@
   - #### `blego.data.Store.filter(fn)`
     Gets a new Store with Records that pass the test.
     ##### arguments
-      - `fn` Sorting function.
+      - `fn` Filtering function.
     ##### returns
       - `Store`
 
   - #### `blego.data.Store.where(prop, value)`
-    Gets a new Store with Records with specified prop equal to provided value.
+    Gets a new Store with Records where specified prop equals the provided value.
     ##### arguments
       - `prop` Name of the prop.
       - `value` Desired value.
@@ -105,7 +105,7 @@
       - `boolean`
 
   - #### `blego.data.Store.sort(fn)`
-    Gets a new Store sorted using the provided compare function.
+    Gets a new Store sorted using the provided comparing function.
     ##### arguments
       - `fn` Comparing function.
     ##### returns
