@@ -1,6 +1,6 @@
 # Release Notes
 
-## v0.6.0 (beta)
+## v0.6.0 (2019-11-19)
 - Stores are now iterable.
 
 ## v0.5.1 (2019-08-02)
