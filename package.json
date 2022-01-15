@@ -39,7 +39,7 @@
     "handlebars": "^4.5.3",
     "js-yaml": "^3.13.1",
     "lodash.merge": "^4.6.2",
-    "marked": "^0.7.0",
+    "marked": "^4.0.10",
     "node-emoji": "^1.10.0",
     "open": "^7.0.0",
     "stack-trace": "^0.0.10"
