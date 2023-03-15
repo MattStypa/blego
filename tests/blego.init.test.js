@@ -1,5 +1,5 @@
 const fs = require('fs-extra');
-const tempDir = require('jest/tempDir.js');
+const tempDir = require('jest_utils/tempDir.js');
 
 describe('Blego', () => {
   const blego = require('core.js');

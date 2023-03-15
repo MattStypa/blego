@@ -1,9 +1,9 @@
 jest.mock('open');
 
 const openMock = require('open');
-const request = require('request-promise');
-const tempDir = require('jest/tempDir.js');
-const mockExit = require('jest/mockExit.js');
+const fetch = require('node-fetch');
+const tempDir = require('jest_utils/tempDir.js');
+const mockExit = require('jest_utils/mockExit.js');
 
 describe('cli.serve', () => {
   const serve = require('lib/cli/serve.js');
@@ -22,31 +22,31 @@ describe('cli.serve', () => {
     tempDir.restore();
   });
 
-  it('Serves from default directory', () => {
-    return serve(undefined, {port: undefined}).then((server) => {
-      return request('http://localhost:3000/test.txt').then((body) => {
-        server.close();
-        expect(body).toEqual('1');
-      });
-    });
+  it('Serves from default directory', async () => {
+    const server = await serve(undefined, {port: undefined});
+    const response = await fetch('http://localhost:3000/test.txt');
+    const responseText = await response.text();
+    server.close();
+
+    expect(responseText).toEqual('1');
   });
 
-  it('Serves from given directory', () => {
-    return serve('web', {port: undefined}).then((server) => {
-      return request('http://localhost:3000/test.txt').then((body) => {
-        server.close();
-        expect(body).toEqual('2');
-      });
-    });
+  it('Serves from given directory', async () => {
+    const server = await serve('web', {port: undefined});
+    const response = await fetch('http://localhost:3000/test.txt');
+    const responseText = await response.text();
+    server.close();
+
+    expect(responseText).toEqual('2');
   });
 
-  it('Serves on a given port', () => {
-    return serve('web', {port: 1234}).then((server) => {
-      return request('http://localhost:1234/test.txt').then((body) => {
-        server.close();
-        expect(body).toEqual('2');
-      });
-    });
+  it('Serves on a given port', async () => {
+    const server = await serve('web', {port: 1234});
+    const response = await fetch('http://localhost:1234/test.txt');
+    const responseText = await response.text();
+    server.close();
+
+    expect(responseText).toEqual('2');
   });
 
   it('Opens the browser', () => {
@@ -56,11 +56,11 @@ describe('cli.serve', () => {
     });
   });
 
-  it('Opens the browser on port 80', () => {
-    return serve('web', {port: 80}).then((server) => {
-      server.close();
-      expect(openMock).toHaveBeenCalledWith(`http://localhost`);
-    });
+  it('Opens the browser on port 80', async () => {
+    const server = await serve('web', {port: 80});
+    server.close();
+
+    expect(openMock).toHaveBeenCalledWith(`http://localhost`);
   });
 
   it('Dies if the given path does not exist', () => {
@@ -71,7 +71,7 @@ describe('cli.serve', () => {
     expect(cliErrorSpy).toHaveBeenCalled();
   });
 
-  it('Dies if it cannot serve', () => {
+  it('Dies if it cannot serve', async () => {
     let server;
     let resolve;
     const original = cliUtils.error;
@@ -82,14 +82,13 @@ describe('cli.serve', () => {
       resolve();
     })
 
-    serve('web', {port: 1234}).then((newServer) => {
-        server = newServer;
-        serve('web', {port: 1234});
-    });
+    server = await serve('web', {port: 1234});
+    await serve('web', {port: 1234});
+    await promise;
 
-    return promise.then(() => {
-      expect(cliUtils.error).toHaveBeenCalled();
-      cliUtils.error = original;
-    });
+    const error = cliUtils.error;
+    cliUtils.error = original;
+
+    expect(error).toHaveBeenCalled();
   });
 });

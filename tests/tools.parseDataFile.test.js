@@ -1,6 +1,6 @@
 const nodePath = require('path');
-const tempDir = require('jest/tempDir.js');
-const throwingMock = require('jest/throwingMock.js');
+const tempDir = require('jest_utils/tempDir.js');
+const throwingMock = require('jest_utils/throwingMock.js');
 
 describe('tools.parseDataFile', () => {
   const errors = require('lib/errors.js');

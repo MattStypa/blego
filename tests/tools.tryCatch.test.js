@@ -1,4 +1,4 @@
-const throwingMock = require('jest/throwingMock.js');
+const throwingMock = require('jest_utils/throwingMock.js');
 
 describe('tools.tryCatch', () => {
   const tryCatch = require('lib/tools/tryCatch.js');

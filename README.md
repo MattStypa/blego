@@ -17,7 +17,7 @@ Blego is flexible enough to generate any type of a website like Blogs, Stores or
 
 # Using Blego
 ## Requirements
-Blego requires [Node.js 8.0](https://nodejs.org) or newer. Visit [https://nodejs.org](https://nodejs.org/) to learn more.
+Blego requires [Node.js 18](https://nodejs.org) or newer. Visit [https://nodejs.org](https://nodejs.org/) to learn more.
 
 ## Creating a project
 ```sh

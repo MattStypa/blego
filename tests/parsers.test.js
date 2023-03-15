@@ -1,4 +1,4 @@
-const tempDir = require('jest/tempDir.js');
+const tempDir = require('jest_utils/tempDir.js');
 
 describe('parsers', () => {
   const parsers = require('lib/parsers.js');

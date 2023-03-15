@@ -1,7 +1,7 @@
 const childProcess = require('child_process');
 const fs = require('fs-extra');
-const tempDir = require('jest/tempDir.js');
-const mockExit = require('jest/mockExit.js');
+const tempDir = require('jest_utils/tempDir.js');
+const mockExit = require('jest_utils/mockExit.js');
 
 describe('cli.new', () => {
   const cliNew = require('lib/cli/new.js');
@@ -11,7 +11,7 @@ describe('cli.new', () => {
 
   beforeEach(() => {
     childProcess.spawnSync = jest.fn();
-    
+
     tempDir({
       'exists': null,
     });

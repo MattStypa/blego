@@ -1,6 +1,6 @@
 const nodePath = require('path');
-const tempDir = require('jest/tempDir.js');
-const mockExit = require('jest/mockExit.js');
+const tempDir = require('jest_utils/tempDir.js');
+const mockExit = require('jest_utils/mockExit.js');
 
 describe('cli.build', () => {
   const build = require('lib/cli/build.js');
@@ -22,6 +22,7 @@ describe('cli.build', () => {
     blegoJsMock = jest.fn();
     buildJsMock = jest.fn();
 
+    jest.resetModules();
     jest.doMock(nodePath.resolve('blego.js'), blegoJsMock, {virtual: true});
     jest.doMock(nodePath.resolve('build.js'), buildJsMock, {virtual: true});
   });
