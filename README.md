@@ -47,7 +47,7 @@ Standard Blego project is preconfigured with the following files and directories
 
 `globals`: Contains data files available globally. [Learn more](#Globals).
 
-`static`: Contains files copied directly to the `dist` directory. [Learn more](#Static files).
+`static`: Contains files copied directly to the `dist` directory. [Learn more](#static-files).
 
 `template`: Contains [Handlebars.js](https://handlebarsjs.com/) template files. [Learn more](#Template)
 
