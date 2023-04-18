@@ -35,7 +35,7 @@ This will build your project and save it to the `dist` directory.
 
 ## Serving a project
 ```sh
-npx serve
+npx blego serve
 ```
 
 This will start a web server from the `dist` directory. Visit [http://localhost:3000](http://localhost:3000) to see your generated project.
