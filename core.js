@@ -1,3 +1,5 @@
 import Blego from './lib/Blego';
 
-export default new Blego();
+const blego = new Blego();
+
+export default blego;
