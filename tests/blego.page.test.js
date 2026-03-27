@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import nodePath from 'path';
 import fs from 'fs-extra';
 import tempDir from '../test_utils/tempDir.js';
@@ -11,7 +11,7 @@ describe('blego.page', () => {
   const handlebarsSpy = vi.spyOn(errors, 'handlebars');
 
   beforeEach(() => {
-    tempDir({
+    tempDir('blego.page', {
       'globals': {},
       'data': {},
       'static': {},

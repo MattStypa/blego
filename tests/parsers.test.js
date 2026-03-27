@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import tempDir from '../test_utils/tempDir';
 import parsers from '../lib/parsers';
 
@@ -9,7 +9,7 @@ vi.mock('../lib/tools/importSync.cjs', () => ({
 describe('parsers', () => {
 
   beforeEach(() => {
-    tempDir({
+    tempDir('parsers', {
       'a.json': '{"name": "a"}',
       'b.yaml': 'name: b',
       'c.md': '# C',

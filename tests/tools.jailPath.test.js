@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import jailPath from '../lib/tools/jailPath.js';
 
 describe('tools.jailPath', () => {

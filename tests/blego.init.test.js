@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import fs from 'fs-extra';
 import tempDir from '../test_utils/tempDir.js';
 import blego from '../core.js';
@@ -7,7 +7,7 @@ import handlebars from '../lib/handlebars.js';
 describe('Blego', () => {
 
   beforeEach(() => {
-    tempDir({
+    tempDir('blego.init', {
       'globals/config.json': '{"siteName": "test"}',
       'data/authors/a.json': '{"name": "a"}',
       'data/authors/b.yaml': 'name: b',

@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import nodePath from 'path';
 import tempDir from '../test_utils/tempDir.js';
 import throwingMock from '../test_utils/throwingMock.js';
@@ -13,7 +13,7 @@ describe('tools.parseDataFile', () => {
   const cantParseSpy = vi.spyOn(errors, 'cantParse');
 
   beforeEach(() => {
-    tempDir({
+    tempDir('tools.parseDataFile', {
       'a.json': '{"name": "a"}',
       'b.YAML': 'name: b',
     });
@@ -34,7 +34,7 @@ describe('tools.parseDataFile', () => {
   })
 
   it('Throws if data file has no type', () => {
-    tempDir({
+    tempDir('tools.parseDataFile', {
       'a': '',
     });
 
@@ -46,7 +46,7 @@ describe('tools.parseDataFile', () => {
   });
 
   it('Throws if data file has unknown type', () => {
-    tempDir({
+    tempDir('tools.parseDataFile', {
       'a.data': '',
     });
 

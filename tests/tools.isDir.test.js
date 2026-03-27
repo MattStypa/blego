@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import nodePath from 'path';
 import fs from 'fs-extra';
 import tempDir from '../test_utils/tempDir.js';
@@ -11,7 +11,7 @@ describe('tools.isDir', () => {
   const cantReadPathSpy = vi.spyOn(errors, 'cantReadPath');
 
   beforeEach(() => {
-    tempDir({
+    tempDir('tools.isDir', {
       'fake/directory/file': '',
     });
   });

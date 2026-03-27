@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import stripAnsi from 'strip-ansi';
 import blego from '../core.js';
 

@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import openMock from 'open';
 import tempDir from '../test_utils/tempDir.js';
 import mockExit from '../test_utils/mockExit.js';
@@ -13,7 +13,7 @@ describe('cli.serve', () => {
   const cliErrorSpy = vi.spyOn(cliUtils, 'error');
 
   beforeEach(() => {
-    tempDir({
+    tempDir('cli.serve', {
       'dist/test.txt': '1',
       'web/test.txt': '2',
     });

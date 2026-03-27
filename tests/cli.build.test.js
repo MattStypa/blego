@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import tempDir from '../test_utils/tempDir.js';
 import mockExit from '../test_utils/mockExit.js';
 import build from '../lib/cli/build.js';
@@ -14,7 +14,7 @@ describe('cli.build', () => {
   beforeEach(() => {
     vi.resetAllMocks();
 
-    tempDir({
+    tempDir('cli.build', {
       'blego.js': '',
       'build.js': '',
       'fail.js': '',

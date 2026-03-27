@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import Record from '../lib/Record.js';
 import errors from '../lib/errors.js';
 

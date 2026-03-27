@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import Record from '../lib/Record.js';
 import Store from '../lib/Store.js';
 

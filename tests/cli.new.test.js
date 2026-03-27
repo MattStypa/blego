@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import childProcess from 'child_process';
 import fs from 'fs-extra';
 import tempDir from '../test_utils/tempDir.js';
@@ -13,7 +13,7 @@ describe('cli.new', () => {
   beforeEach(() => {
     childProcess.spawnSync = vi.fn();
 
-    tempDir({
+    tempDir('cli.new', {
       'exists': null,
     });
   });

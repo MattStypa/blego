@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import nodePath from 'path';
 import fs from 'fs-extra';
 import tempDir from '../test_utils/tempDir.js';
@@ -13,7 +13,7 @@ describe('tools.copy', () => {
   const cantCopySpy = vi.spyOn(errors, 'cantCopy');
 
   beforeEach(() => {
-    tempDir({
+    tempDir('tools.copy', {
       'fake/directory1/file1': 'file content',
       'fake/directory1/file2': '',
       'fake/directory1/directory2': null,

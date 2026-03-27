@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import throwingMock from '../test_utils/throwingMock.js';
 import tryCatch from '../lib/tools/tryCatch.js';
 
