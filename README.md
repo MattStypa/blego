@@ -1,5 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/MattStypa/assets/master/blego/blego.png"></p>
-
+<p align="center"><img src="./logo.svg"></p>
 
 # Blego
 Blego is an exceptionally powerful and easy to use static site generator. It's a great choice for beginners AND veterans.
@@ -13,11 +12,9 @@ Blego is powered by an unopinionated data model that supports multiple types of 
 ## Flexibility
 Blego is flexible enough to generate any type of a website like Blogs, Stores or Wikis. In fact, it can handle a lot more than just websites. It can generate XMLs, PDFs or even images.
 
-
-
 # Using Blego
 ## Requirements
-Blego requires [Node.js 18](https://nodejs.org) or newer. Visit [https://nodejs.org](https://nodejs.org/) to learn more.
+Blego requires [Node.js 21](https://nodejs.org) or newer. Visit [https://nodejs.org](https://nodejs.org/) to learn more.
 
 ## Creating a project
 ```sh

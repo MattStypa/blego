@@ -1,7 +1,6 @@
 jest.mock('open');
 
 const openMock = require('open');
-const fetch = require('node-fetch');
 const tempDir = require('jest_utils/tempDir.js');
 const mockExit = require('jest_utils/mockExit.js');
 
