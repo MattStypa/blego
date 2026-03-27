@@ -13,7 +13,7 @@ describe('tools.readDir', () => {
   const cantReadPathSpy = vi.spyOn(errors, 'cantReadPath');
 
   beforeEach(() => {
-    tempDir('tools.readDir', {
+    tempDir({
       'fake/directory1/.hidden': '',
       'fake/directory1/file1': '',
       'fake/directory1/file2': '',

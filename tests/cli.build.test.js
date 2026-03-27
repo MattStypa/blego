@@ -14,7 +14,7 @@ describe('cli.build', () => {
   beforeEach(() => {
     vi.resetAllMocks();
 
-    tempDir('cli.build', {
+    tempDir({
       'blego.js': '',
       'build.js': '',
       'fail.js': '',

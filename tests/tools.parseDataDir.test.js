@@ -5,7 +5,7 @@ import parseDataDir from '../lib/tools/parseDataDir.js';
 describe('tools.parseDataDir', () => {
 
   beforeEach(() => {
-    tempDir('tools.parseDataDir', {
+    tempDir({
       'data/a.json': '{}',
       'data/b.json': '{}',
       'data/c/d.json': '{}',

@@ -13,7 +13,7 @@ describe('cli.serve', () => {
   const cliErrorSpy = vi.spyOn(cliUtils, 'error');
 
   beforeEach(() => {
-    tempDir('cli.serve', {
+    tempDir({
       'dist/test.txt': '1',
       'web/test.txt': '2',
     });

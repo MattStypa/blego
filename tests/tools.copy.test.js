@@ -13,7 +13,7 @@ describe('tools.copy', () => {
   const cantCopySpy = vi.spyOn(errors, 'cantCopy');
 
   beforeEach(() => {
-    tempDir('tools.copy', {
+    tempDir({
       'fake/directory1/file1': 'file content',
       'fake/directory1/file2': '',
       'fake/directory1/directory2': null,

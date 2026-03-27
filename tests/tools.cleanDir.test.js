@@ -13,7 +13,7 @@ describe('tools.cleanDir', () => {
   const cantCleanSpy = vi.spyOn(errors, 'cantClean');
 
   beforeEach(() => {
-    tempDir('tools.cleanDir', {
+    tempDir({
       'fake/directory/file': '',
     });
   });

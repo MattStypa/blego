@@ -9,7 +9,7 @@ vi.mock('../lib/tools/importSync.cjs', () => ({
 describe('parsers', () => {
 
   beforeEach(() => {
-    tempDir('parsers', {
+    tempDir({
       'a.json': '{"name": "a"}',
       'b.yaml': 'name: b',
       'c.md': '# C',

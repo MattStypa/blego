@@ -13,7 +13,7 @@ describe('tools.parseDataFile', () => {
   const cantParseSpy = vi.spyOn(errors, 'cantParse');
 
   beforeEach(() => {
-    tempDir('tools.parseDataFile', {
+    tempDir({
       'a.json': '{"name": "a"}',
       'b.YAML': 'name: b',
     });
@@ -34,7 +34,7 @@ describe('tools.parseDataFile', () => {
   })
 
   it('Throws if data file has no type', () => {
-    tempDir('tools.parseDataFile', {
+    tempDir({
       'a': '',
     });
 
@@ -46,7 +46,7 @@ describe('tools.parseDataFile', () => {
   });
 
   it('Throws if data file has unknown type', () => {
-    tempDir('tools.parseDataFile', {
+    tempDir({
       'a.data': '',
     });
 

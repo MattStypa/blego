@@ -11,7 +11,7 @@ describe('tools.isDir', () => {
   const cantReadPathSpy = vi.spyOn(errors, 'cantReadPath');
 
   beforeEach(() => {
-    tempDir('tools.isDir', {
+    tempDir({
       'fake/directory/file': '',
     });
   });

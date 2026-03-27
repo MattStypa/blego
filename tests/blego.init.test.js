@@ -7,7 +7,7 @@ import handlebars from '../lib/handlebars.js';
 describe('Blego', () => {
 
   beforeEach(() => {
-    tempDir('blego.init', {
+    tempDir({
       'globals/config.json': '{"siteName": "test"}',
       'data/authors/a.json': '{"name": "a"}',
       'data/authors/b.yaml': 'name: b',

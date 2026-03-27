@@ -13,7 +13,7 @@ describe('cli.new', () => {
   beforeEach(() => {
     childProcess.spawnSync = vi.fn();
 
-    tempDir('cli.new', {
+    tempDir({
       'exists': null,
     });
   });

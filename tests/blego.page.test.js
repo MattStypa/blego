@@ -11,7 +11,7 @@ describe('blego.page', () => {
   const handlebarsSpy = vi.spyOn(errors, 'handlebars');
 
   beforeEach(() => {
-    tempDir('blego.page', {
+    tempDir({
       'globals': {},
       'data': {},
       'static': {},
