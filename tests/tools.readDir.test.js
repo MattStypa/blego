@@ -1,15 +1,16 @@
-const nodePath = require('path');
-const glob = require('glob');
-const tempDir = require('jest_utils/tempDir.js');
-const throwingMock = require('jest_utils/throwingMock.js');
+import { vi } from 'vitest';
+import nodePath from 'path';
+import glob from 'glob';
+import tempDir from '../jest_utils/tempDir.js';
+import throwingMock from '../jest_utils/throwingMock.js';
+import errors from '../lib/errors.js';
+import readDir from '../lib/tools/readDir.js';
 
 describe('tools.readDir', () => {
-  const errors = require('lib/errors.js');
-  const readDir = require('lib/tools/readDir.js');
 
-  const pathDoesNotExistSpy = jest.spyOn(errors, 'pathDoesNotExist');
-  const notDirSpy = jest.spyOn(errors, 'notDir');
-  const cantReadPathSpy = jest.spyOn(errors, 'cantReadPath');
+  const pathDoesNotExistSpy = vi.spyOn(errors, 'pathDoesNotExist');
+  const notDirSpy = vi.spyOn(errors, 'notDir');
+  const cantReadPathSpy = vi.spyOn(errors, 'cantReadPath');
 
   beforeEach(() => {
     tempDir({

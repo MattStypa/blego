@@ -1,11 +1,12 @@
-const throwingMock = require('jest_utils/throwingMock.js');
+import { vi } from 'vitest';
+import throwingMock from '../jest_utils/throwingMock.js';
+import tryCatch from '../lib/tools/tryCatch.js';
 
 describe('tools.tryCatch', () => {
-  const tryCatch = require('lib/tools/tryCatch.js');
 
   it('runs the main function', () => {
-    const func = jest.fn();
-    const errorFunc = jest.fn();
+    const func = vi.fn();
+    const errorFunc = vi.fn();
 
     tryCatch(func, errorFunc);
 
@@ -14,7 +15,7 @@ describe('tools.tryCatch', () => {
   });
 
   it('Runs the error function if the main function throws', () => {
-    const errorFunc = jest.fn();
+    const errorFunc = vi.fn();
 
     tryCatch(throwingMock, errorFunc);
 

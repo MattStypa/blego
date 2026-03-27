@@ -1,6 +1,7 @@
+import Record from '../lib/Record.js';
+import Store from '../lib/Store.js';
+
 describe('Store.where', () => {
-  const Record = require('lib/Record.js');
-  const Store = require('lib/Store.js');
 
   it('Gets Store with Records having prop equal to value', () => {
     const store = new Store([

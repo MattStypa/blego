@@ -1,15 +1,16 @@
-const nodePath = require('path');
-const tempDir = require('jest_utils/tempDir.js');
-const throwingMock = require('jest_utils/throwingMock.js');
+import { vi } from 'vitest';
+import nodePath from 'path';
+import tempDir from '../jest_utils/tempDir.js';
+import throwingMock from '../jest_utils/throwingMock.js';
+import errors from '../lib/errors.js';
+import parsers from '../lib/parsers.js';
+import parseDataFile from '../lib/tools/parseDataFile.js';
 
 describe('tools.parseDataFile', () => {
-  const errors = require('lib/errors.js');
-  const parsers = require('lib/parsers.js');
-  const parseDataFile = require('lib/tools/parseDataFile.js');
 
-  const noTypeSpy = jest.spyOn(errors, 'noType');
-  const noParserSpy = jest.spyOn(errors, 'noParser');
-  const cantParseSpy = jest.spyOn(errors, 'cantParse');
+  const noTypeSpy = vi.spyOn(errors, 'noType');
+  const noParserSpy = vi.spyOn(errors, 'noParser');
+  const cantParseSpy = vi.spyOn(errors, 'cantParse');
 
   beforeEach(() => {
     tempDir({

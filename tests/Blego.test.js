@@ -1,5 +1,6 @@
+import blego from '../core.js';
+
 describe('Blego', () => {
-  const blego = require('core.js');
 
   it('Works', () => {
     expect(typeof blego).toEqual('object');

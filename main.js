@@ -1,4 +1,4 @@
-const blego = require('./core.js');
+import blego from './core.js';
 blego.init();
 
-module.exports = blego;
+export default blego;

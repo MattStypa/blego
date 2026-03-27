@@ -1,7 +1,7 @@
-const nodePath = require('path');
-const fs = require('fs-extra');
+import nodePath from 'path';
+import fs from 'fs-extra';
 
-const tempPath = nodePath.resolve(__dirname, '../__temp');
+const tempPath = nodePath.resolve(import.meta.dirname, '../__temp');
 const currentPath = process.cwd();
 
 function tempDir(paths) {
@@ -27,4 +27,4 @@ function ensurePath(path, content) {
   }
 }
 
-module.exports = tempDir;
+export default tempDir;

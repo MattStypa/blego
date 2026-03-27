@@ -1,15 +1,16 @@
-const nodePath = require('path');
-const fs = require('fs-extra');
-const tempDir = require('jest_utils/tempDir.js');
-const throwingMock = require('jest_utils/throwingMock.js');
+import { vi } from 'vitest';
+import nodePath from 'path';
+import fs from 'fs-extra';
+import tempDir from '../jest_utils/tempDir.js';
+import throwingMock from '../jest_utils/throwingMock.js';
+import errors from '../lib/errors.js';
+import readFile from '../lib/tools/readFile.js';
 
 describe('tools.readFile', () => {
-  const errors = require('lib/errors.js');
-  const readFile = require('lib/tools/readFile.js');
 
-  const pathDoesNotExistSpy = jest.spyOn(errors, 'pathDoesNotExist');
-  const notFileSpy = jest.spyOn(errors, 'notFile');
-  const cantReadPathSpy = jest.spyOn(errors, 'cantReadPath');
+  const pathDoesNotExistSpy = vi.spyOn(errors, 'pathDoesNotExist');
+  const notFileSpy = vi.spyOn(errors, 'notFile');
+  const cantReadPathSpy = vi.spyOn(errors, 'cantReadPath');
 
   beforeEach(() => {
     tempDir({

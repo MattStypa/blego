@@ -1,6 +1,7 @@
+import stripAnsi from 'strip-ansi';
+import blego from '../core.js';
+
 describe('blego.log', () => {
-  const stripAnsi = require('strip-ansi');
-  const blego = require('core.js');
 
   it('Writes to console', () => {
     blego.log('message');

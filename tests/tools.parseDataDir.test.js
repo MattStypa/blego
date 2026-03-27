@@ -1,7 +1,7 @@
-const tempDir = require('jest_utils/tempDir.js');
+import tempDir from '../jest_utils/tempDir.js';
+import parseDataDir from '../lib/tools/parseDataDir.js';
 
 describe('tools.parseDataDir', () => {
-  const parseDataDir = require('lib/tools/parseDataDir.js');
 
   beforeEach(() => {
     tempDir({

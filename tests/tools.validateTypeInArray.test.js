@@ -1,8 +1,10 @@
-describe('tools.validateTypeInArray', () => {
-  const errors = require('lib/errors.js');
-  const validateTypeInArray = require('lib/tools/validateTypeInArray.js');
+import { vi } from 'vitest';
+import errors from '../lib/errors.js';
+import validateTypeInArray from '../lib/tools/validateTypeInArray.js';
 
-  const invalidTypeInArraySpy = jest.spyOn(errors, 'invalidTypeInArray');
+describe('tools.validateTypeInArray', () => {
+
+  const invalidTypeInArraySpy = vi.spyOn(errors, 'invalidTypeInArray');
 
   it('Validates types', () => {
     validateTypeInArray(null, 'null', [null, null]);

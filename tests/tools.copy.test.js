@@ -1,15 +1,16 @@
-const nodePath = require('path');
-const fs = require('fs-extra');
-const tempDir = require('jest_utils/tempDir.js');
-const throwingMock = require('jest_utils/throwingMock.js');
+import { vi } from 'vitest';
+import nodePath from 'path';
+import fs from 'fs-extra';
+import tempDir from '../jest_utils/tempDir.js';
+import throwingMock from '../jest_utils/throwingMock.js';
+import errors from '../lib/errors.js';
+import copy from '../lib/tools/copy.js';
 
 describe('tools.copy', () => {
-  const errors = require('lib/errors.js');
-  const copy = require('lib/tools/copy.js');
 
-  const pathDoesNotExistSpy = jest.spyOn(errors, 'pathDoesNotExist');
-  const pathExistsSpy = jest.spyOn(errors, 'pathExists');
-  const cantCopySpy = jest.spyOn(errors, 'cantCopy');
+  const pathDoesNotExistSpy = vi.spyOn(errors, 'pathDoesNotExist');
+  const pathExistsSpy = vi.spyOn(errors, 'pathExists');
+  const cantCopySpy = vi.spyOn(errors, 'cantCopy');
 
   beforeEach(() => {
     tempDir({

@@ -1,16 +1,17 @@
-const childProcess = require('child_process');
-const fs = require('fs-extra');
-const tempDir = require('jest_utils/tempDir.js');
-const mockExit = require('jest_utils/mockExit.js');
+import { vi } from 'vitest';
+import childProcess from 'child_process';
+import fs from 'fs-extra';
+import tempDir from '../jest_utils/tempDir.js';
+import mockExit from '../jest_utils/mockExit.js';
+import cliNew from '../lib/cli/new.js';
+import cliUtils from '../lib/cli/utils.js';
 
 describe('cli.new', () => {
-  const cliNew = require('lib/cli/new.js');
-  const cliUtils = require('lib/cli/utils.js');
 
-  const cliErrorSpy = jest.spyOn(cliUtils, 'error');
+  const cliErrorSpy = vi.spyOn(cliUtils, 'error');
 
   beforeEach(() => {
-    childProcess.spawnSync = jest.fn();
+    childProcess.spawnSync = vi.fn();
 
     tempDir({
       'exists': null,

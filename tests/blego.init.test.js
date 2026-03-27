@@ -1,9 +1,10 @@
-const fs = require('fs-extra');
-const tempDir = require('jest_utils/tempDir.js');
+import { vi } from 'vitest';
+import fs from 'fs-extra';
+import tempDir from '../jest_utils/tempDir.js';
+import blego from '../core.js';
+import handlebars from '../lib/handlebars.js';
 
 describe('Blego', () => {
-  const blego = require('core.js');
-  const handlebars = require('lib/handlebars.js');
 
   beforeEach(() => {
     tempDir({
@@ -18,8 +19,8 @@ describe('Blego', () => {
       'dist/old_file': 'file content',
     });
 
-    blego.dump = jest.fn();
-    blego.dd = jest.fn();
+    blego.dump = vi.fn();
+    blego.dd = vi.fn();
 
     blego.init();
   });

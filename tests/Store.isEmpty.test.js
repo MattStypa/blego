@@ -1,6 +1,7 @@
+import Record from '../lib/Record.js';
+import Store from '../lib/Store.js';
+
 describe('Store.isEmpty', () => {
-  const Record = require('lib/Record.js');
-  const Store = require('lib/Store.js');
 
   it('Checks if Store is empty', () => {
     const emptyStore = new Store([ ]);

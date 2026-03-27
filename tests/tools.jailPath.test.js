@@ -1,5 +1,6 @@
+import jailPath from '../lib/tools/jailPath.js';
+
 describe('tools.jailPath', () => {
-  const jailPath = require('lib/tools/jailPath.js');
 
   it('Normalizes path to current directory', () => {
     expect(jailPath('a/b/../../c/d/e/..')).toEqual('c/d');

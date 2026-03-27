@@ -1,9 +1,11 @@
+import { vi } from 'vitest';
+import Record from '../lib/Record.js';
+import Store from '../lib/Store.js';
+
 describe('Store.map', () => {
-  const Record = require('lib/Record.js');
-  const Store = require('lib/Store.js');
 
   it('Gets mapped array of the records', () => {
-    const fn = jest.fn((record) => 'key:' + record.key);
+    const fn = vi.fn((record) => 'key:' + record.key);
     const store = new Store([
       new Record('1', {}),
       new Record('2', {}),

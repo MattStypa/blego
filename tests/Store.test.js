@@ -1,10 +1,12 @@
-describe('Store', () => {
-  const Record = require('lib/Record.js');
-  const Store = require('lib/Store.js');
-  const errors = require('lib/errors.js');
+import { vi } from 'vitest';
+import Record from '../lib/Record.js';
+import Store from '../lib/Store.js';
+import errors from '../lib/errors.js';
 
-  const invalidTypeInArraySpy = jest.spyOn(errors, 'invalidTypeInArray');
-  const recordKeyDupeSpy = jest.spyOn(errors, 'recordKeyDupe');
+describe('Store', () => {
+
+  const invalidTypeInArraySpy = vi.spyOn(errors, 'invalidTypeInArray');
+  const recordKeyDupeSpy = vi.spyOn(errors, 'recordKeyDupe');
 
   it('Creates a store from Records', () => {
     const store = new Store([

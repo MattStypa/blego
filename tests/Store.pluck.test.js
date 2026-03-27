@@ -1,6 +1,7 @@
+import Record from '../lib/Record.js';
+import Store from '../lib/Store.js';
+
 describe('Store.pluck', () => {
-  const Record = require('lib/Record.js');
-  const Store = require('lib/Store.js');
 
   it('Gets all values in specified prop', () => {
     const store = new Store([

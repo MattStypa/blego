@@ -1,6 +1,7 @@
+import Record from '../lib/Record.js';
+import Store from '../lib/Store.js';
+
 describe('Store.chunk', () => {
-  const Record = require('lib/Record.js');
-  const Store = require('lib/Store.js');
 
   it('Gets an array of array of specified length', () => {
     const store = new Store([

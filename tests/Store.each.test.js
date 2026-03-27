@@ -1,9 +1,11 @@
+import { vi } from 'vitest';
+import Record from '../lib/Record.js';
+import Store from '../lib/Store.js';
+
 describe('Store.each', () => {
-  const Record = require('lib/Record.js');
-  const Store = require('lib/Store.js');
 
   it('Calls a function on each record', () => {
-    const fn = jest.fn();
+    const fn = vi.fn();
     const store = new Store([
       new Record('1', {}),
       new Record('2', {}),

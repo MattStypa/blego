@@ -1,3 +1,3 @@
-const Blego = require('./lib/Blego.js');
+import Blego from './lib/Blego.js';
 
-module.exports = new Blego();
+export default new Blego();

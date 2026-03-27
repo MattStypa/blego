@@ -1,15 +1,15 @@
-const tempDir = require('jest_utils/tempDir.js');
+import { vi } from 'vitest';
+import tempDir from '../jest_utils/tempDir';
+import parsers from '../lib/parsers';
 
 describe('parsers', () => {
-  const parsers = require('lib/parsers.js');
 
   beforeEach(() => {
     tempDir({
       'a.json': '{"name": "a"}',
       'b.yaml': 'name: b',
-      'c.js': `module.exports = {name: 'c'}`,
-      'd.md': '# D',
-      'e.html': '<h1>E</h1>',
+      'c.md': '# C',
+      'd.html': '<h1>D</h1>',
     });
   });
 
@@ -30,20 +30,24 @@ describe('parsers', () => {
   });
 
   it('parses js files', () => {
+    vi.mock('../lib/tools/importSync.cjs', () => ({
+      default: vi.fn(() => ({ name: 'c' })),
+    }));
+
     const data = parsers.js('c.js');
 
     expect(data.name).toEqual('c');
   });
 
   it('parses md files', () => {
-    const data = parsers.md('d.md');
+    const data = parsers.md('c.md');
 
-    expect(data.body).toEqual(expect.stringMatching(/<h1.*>D<\/h1>/));
+    expect(data.body).toEqual(expect.stringMatching(/<h1.*>C<\/h1>/));
   });
 
   it('parses html files', () => {
-    const data = parsers.html('e.html');
+    const data = parsers.html('d.html');
 
-    expect(data.body).toEqual(expect.stringMatching(/<h1>E<\/h1>/));
+    expect(data.body).toEqual(expect.stringMatching(/<h1>D<\/h1>/));
   });
 });

@@ -1,6 +1,7 @@
+import Record from '../lib/Record.js';
+import Store from '../lib/Store.js';
+
 describe('Store.reverse', () => {
-  const Record = require('lib/Record.js');
-  const Store = require('lib/Store.js');
 
   it('Reverts the order of Records', () => {
     const store = new Store([

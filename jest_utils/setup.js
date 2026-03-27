@@ -1,2 +1,4 @@
-console.log = jest.fn();
-console.error = jest.fn();
+import { vi } from 'vitest';
+
+console.log = vi.fn();
+console.error = vi.fn();

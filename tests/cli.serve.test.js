@@ -1,14 +1,16 @@
-jest.mock('open');
+import { vi } from 'vitest';
+import openMock from 'open';
+import tempDir from '../jest_utils/tempDir.js';
+import mockExit from '../jest_utils/mockExit.js';
+import serve from '../lib/cli/serve.js';
+import cliUtils from '../lib/cli/utils.js';
 
-const openMock = require('open');
-const tempDir = require('jest_utils/tempDir.js');
-const mockExit = require('jest_utils/mockExit.js');
+vi.mock('open');
+
 
 describe('cli.serve', () => {
-  const serve = require('lib/cli/serve.js');
-  const cliUtils = require('lib/cli/utils.js');
 
-  const cliErrorSpy = jest.spyOn(cliUtils, 'error');
+  const cliErrorSpy = vi.spyOn(cliUtils, 'error');
 
   beforeEach(() => {
     tempDir({
@@ -76,7 +78,7 @@ describe('cli.serve', () => {
     const original = cliUtils.error;
     const promise = new Promise((newResolve) => resolve = newResolve);
 
-    cliUtils.error = jest.fn(() => {
+    cliUtils.error = vi.fn(() => {
       server.close();
       resolve();
     })

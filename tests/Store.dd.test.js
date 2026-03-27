@@ -1,9 +1,11 @@
+import { vi } from 'vitest';
+import Record from '../lib/Record.js';
+import Store from '../lib/Store.js';
+
 describe('Store.dd', () => {
-  const Record = require('lib/Record.js');
-  const Store = require('lib/Store.js');
 
   beforeEach(() => {
-    process.exit = jest.fn();
+    process.exit = vi.fn();
   });
 
   it('Writes the Records to console', () => {

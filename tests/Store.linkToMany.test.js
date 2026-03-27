@@ -1,9 +1,11 @@
-describe('Store.linkToMany', () => {
-  const Record = require('lib/Record.js');
-  const Store = require('lib/Store.js');
-  const errors = require('lib/errors.js');
+import { vi } from 'vitest';
+import Record from '../lib/Record.js';
+import Store from '../lib/Store.js';
+import errors from '../lib/errors.js';
 
-  const recordNotFoundSpy = jest.spyOn(errors, 'recordNotFound');
+describe('Store.linkToMany', () => {
+
+  const recordNotFoundSpy = vi.spyOn(errors, 'recordNotFound');
 
   it('Creates a links to many Records from a different Store', () => {
     const fromStore = new Store([

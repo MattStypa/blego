@@ -1,6 +1,7 @@
 {
   "name": "blego",
   "version": "1.0.0",
+  "type": "module",
   "description": "Static site generator powered by colections and relationships.",
   "license": "MIT",
   "keywords": [
@@ -25,7 +26,7 @@
     "node": ">=21.0.0"
   },
   "scripts": {
-    "test": "eslint lib && eslint tests && jest -i --coverage"
+    "test": "eslint lib && eslint tests && vitest run --coverage"
   },
   "dependencies": {
     "chalk": "^4.1.2",
@@ -45,27 +46,10 @@
     "stack-trace": "^0.0.10"
   },
   "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.2",
     "eslint": "^8.36.0",
     "eslint-plugin-jest": "^27.2.1",
-    "jest": "^29.5.0",
-    "strip-ansi": "^6.0.1"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "clearMocks": true,
-    "setupFiles": [
-      "<rootDir>/jest_utils/setup.js"
-    ],
-    "modulePaths": [
-      "<rootDir>/"
-    ],
-    "testMatch": [
-      "<rootDir>/tests/**/*.test.js"
-    ],
-    "collectCoverageFrom": [
-      "lib/**/*.{js,jsx}",
-      "!lib/cli/blueprint/**/*",
-      "!lib/cli.js"
-    ]
+    "strip-ansi": "^6.0.1",
+    "vitest": "^4.1.2"
   }
 }

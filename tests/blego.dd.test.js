@@ -1,8 +1,10 @@
+import { vi } from 'vitest';
+import blego from '../core.js';
+
 describe('blego.dd', () => {
-  const blego = require('core.js');
 
   beforeEach(() => {
-    process.exit = jest.fn();
+    process.exit = vi.fn();
   });
 
   it('Writes to console', () => {

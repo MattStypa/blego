@@ -1,30 +1,24 @@
-const nodePath = require('path');
-const tempDir = require('jest_utils/tempDir.js');
-const mockExit = require('jest_utils/mockExit.js');
+import { vi } from 'vitest';
+import tempDir from '../jest_utils/tempDir.js';
+import mockExit from '../jest_utils/mockExit.js';
+import build from '../lib/cli/build.js';
+import cliUtils from '../lib/cli/utils.js';
 
 describe('cli.build', () => {
-  const build = require('lib/cli/build.js');
-  const cliUtils = require('lib/cli/utils.js');
 
-  const errorSpy = jest.spyOn(cliUtils, 'error');
-  const printTraceAndDieSpy = jest.spyOn(cliUtils, 'printTraceAndDie');
-
-  let blegoJsMock;
-  let buildJsMock;
+  const errorSpy = vi.spyOn(cliUtils, 'error');
+  const printTraceAndDieSpy = vi.spyOn(cliUtils, 'printTraceAndDie');
 
   beforeEach(() => {
     tempDir({
-      'blego.js': '',
-      'build.js': '',
+      'blego.js': 'global.__blegoBuilt = (global.__blegoBuilt || 0) + 1;',
+      'build.js': 'global.__buildBuilt = (global.__buildBuilt || 0) + 1;',
+      'build-alt.js': 'global.__buildAltBuilt = (global.__buildAltBuilt || 0) + 1;',
       'fail.js': 'invalid syntax',
     });
-
-    blegoJsMock = jest.fn();
-    buildJsMock = jest.fn();
-
-    jest.resetModules();
-    jest.doMock(nodePath.resolve('blego.js'), blegoJsMock, {virtual: true});
-    jest.doMock(nodePath.resolve('build.js'), buildJsMock, {virtual: true});
+    global.__blegoBuilt = 0;
+    global.__buildBuilt = 0;
+    global.__buildAltBuilt = 0;
   });
 
   afterEach(() => {
@@ -34,19 +28,19 @@ describe('cli.build', () => {
   it('Builds from default build file', () => {
     build();
 
-    expect(blegoJsMock).toHaveBeenCalled();
+    expect(global.__blegoBuilt).toEqual(1);
   });
 
   it('Builds from given file', () => {
     build('build.js');
 
-    expect(buildJsMock).toHaveBeenCalled();
+    expect(global.__buildBuilt).toEqual(1);
   });
 
   it('Builds from given file without extension', () => {
-    build('build');
+    build('build-alt');
 
-    expect(buildJsMock).toHaveBeenCalled();
+    expect(global.__buildAltBuilt).toEqual(1);
   });
 
   it('Dies if the given file does not exist', () => {

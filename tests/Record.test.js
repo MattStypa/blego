@@ -1,8 +1,10 @@
+import { vi } from 'vitest';
+import Record from '../lib/Record.js';
+import errors from '../lib/errors.js';
+
 describe('Record', () => {
-  const Record = require('lib/Record.js');
-  const errors = require('lib/errors.js');
   
-  const keyRequiredSpy = jest.spyOn(errors, 'keyRequired');
+  const keyRequiredSpy = vi.spyOn(errors, 'keyRequired');
 
   it('Creates a Record with key and props', () => {
     const record = new Record('key', {

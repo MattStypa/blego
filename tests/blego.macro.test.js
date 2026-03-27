@@ -1,9 +1,11 @@
+import { vi } from 'vitest';
+import blego from '../core.js';
+import handlebars from '../lib/handlebars.js';
+
 describe('blego.macro', () => {
-  const blego = require('core.js');
-  const handlebars = require('lib/handlebars.js');
 
   it('Registers a helper', () => {
-    const macro = jest.fn();
+    const macro = vi.fn();
     blego.macro('macro', macro);
     handlebars.helpers.macro();
 

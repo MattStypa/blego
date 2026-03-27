@@ -1,8 +1,10 @@
-describe('tools.validateType', () => {
-  const errors = require('lib/errors.js');
-  const validateType = require('lib/tools/validateType.js');
+import { vi } from 'vitest';
+import errors from '../lib/errors.js';
+import validateType from '../lib/tools/validateType.js';
 
-  const invalidTypeSpy = jest.spyOn(errors, 'invalidType');
+describe('tools.validateType', () => {
+
+  const invalidTypeSpy = vi.spyOn(errors, 'invalidType');
 
   it('Validates types', () => {
     validateType(null, 'null', null);

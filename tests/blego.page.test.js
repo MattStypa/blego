@@ -1,13 +1,14 @@
-const nodePath = require('path');
-const fs = require('fs-extra');
-const tempDir = require('jest_utils/tempDir.js');
+import { vi } from 'vitest';
+import nodePath from 'path';
+import fs from 'fs-extra';
+import tempDir from '../jest_utils/tempDir.js';
+import blego from '../core.js';
+import errors from '../lib/errors.js';
 
 describe('blego.page', () => {
-  const blego = require('core.js');
-  const errors = require('lib/errors.js');
 
-  const pathExistsSpy = jest.spyOn(errors, 'pathExists');
-  const handlebarsSpy = jest.spyOn(errors, 'handlebars');
+  const pathExistsSpy = vi.spyOn(errors, 'pathExists');
+  const handlebarsSpy = vi.spyOn(errors, 'handlebars');
 
   beforeEach(() => {
     tempDir({

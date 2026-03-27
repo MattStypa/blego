@@ -1,11 +1,13 @@
-describe('Store.linkFromOne', () => {
-  const Record = require('lib/Record.js');
-  const Store = require('lib/Store.js');
-  const errors = require('lib/errors.js');
+import { vi } from 'vitest';
+import Record from '../lib/Record.js';
+import Store from '../lib/Store.js';
+import errors from '../lib/errors.js';
 
-  const recordNotFoundSpy = jest.spyOn(errors, 'recordNotFound');
-  const invalidTypeInArraySpy = jest.spyOn(errors, 'invalidTypeInArray');
-  const recordLinkedSpy = jest.spyOn(errors, 'recordLinked');
+describe('Store.linkFromOne', () => {
+
+  const recordNotFoundSpy = vi.spyOn(errors, 'recordNotFound');
+  const invalidTypeInArraySpy = vi.spyOn(errors, 'invalidTypeInArray');
+  const recordLinkedSpy = vi.spyOn(errors, 'recordLinked');
 
   it('Creates a link to one Record from a different Store', () => {
     const fromStore = new Store([

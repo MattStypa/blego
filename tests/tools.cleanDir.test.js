@@ -1,15 +1,16 @@
-const nodePath = require('path');
-const fs = require('fs-extra');
-const tempDir = require('jest_utils/tempDir.js');
-const throwingMock = require('jest_utils/throwingMock.js');
+import { vi } from 'vitest';
+import nodePath from 'path';
+import fs from 'fs-extra';
+import tempDir from '../jest_utils/tempDir.js';
+import throwingMock from '../jest_utils/throwingMock.js';
+import errors from '../lib/errors.js';
+import cleanDir from '../lib/tools/cleanDir.js';
 
 describe('tools.cleanDir', () => {
-  const errors = require('lib/errors.js');
-  const cleanDir = require('lib/tools/cleanDir.js');
 
-  const pathDoesNotExistSpy = jest.spyOn(errors, 'pathDoesNotExist');
-  const notDirSpy = jest.spyOn(errors, 'notDir');
-  const cantCleanSpy = jest.spyOn(errors, 'cantClean');
+  const pathDoesNotExistSpy = vi.spyOn(errors, 'pathDoesNotExist');
+  const notDirSpy = vi.spyOn(errors, 'notDir');
+  const cantCleanSpy = vi.spyOn(errors, 'cantClean');
 
   beforeEach(() => {
     tempDir({
