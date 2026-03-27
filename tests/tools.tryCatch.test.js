@@ -23,6 +23,8 @@ describe('tools.tryCatch', () => {
   });
 
   it('Does not require the error function', () => {
-    tryCatch(throwingMock);
+    expect(() => {
+      tryCatch(throwingMock);
+    }).not.toThrow();
   });
 });

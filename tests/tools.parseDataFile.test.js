@@ -29,7 +29,9 @@ describe('tools.parseDataFile', () => {
   });
 
   it('accepts uppercase data file extensions', () => {
-    parseDataFile('b.YAML');
+    expect(() => {
+      parseDataFile('b.YAML');
+    }).not.toThrow();
   })
 
   it('Throws if data file has no type', () => {

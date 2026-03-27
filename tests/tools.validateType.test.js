@@ -6,20 +6,24 @@ describe('tools.validateType', () => {
   const invalidTypeSpy = vi.spyOn(errors, 'invalidType');
 
   it('Validates types', () => {
-    validateType(null, 'null', null);
-    validateType(null, 'string', 'abc');
-    validateType(null, 'number', 123);
-    validateType(null, 'array', []);
-    validateType(null, 'object', {});
-    validateType(null, 'function', () => {});
-    validateType(null, Array, []);
-    validateType(null, Object, {});
+    expect(() => {
+      validateType(null, 'null', null);
+      validateType(null, 'string', 'abc');
+      validateType(null, 'number', 123);
+      validateType(null, 'array', []);
+      validateType(null, 'object', {});
+      validateType(null, 'function', () => {});
+      validateType(null, Array, []);
+      validateType(null, Object, {});
+    }).not.toThrow();
   });
 
   it('Validates against array of types', () => {
-    validateType(null, ['null', 'string', 'number'], null);
-    validateType(null, ['null', 'string', 'number'], 'abc');
-    validateType(null, ['null', 'string', 'number'], 123);
+    expect(() => {
+      validateType(null, ['null', 'string', 'number'], null);
+      validateType(null, ['null', 'string', 'number'], 'abc');
+      validateType(null, ['null', 'string', 'number'], 123);
+    }).not.toThrow();
   });
 
   it('Throws if the type is invalid', () => {
