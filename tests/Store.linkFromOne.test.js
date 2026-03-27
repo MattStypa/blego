@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
-import Record from '../lib/Record.js';
-import Store from '../lib/Store.js';
-import errors from '../lib/errors.js';
+import Record from '../lib/Record';
+import Store from '../lib/Store';
+import errors from '../lib/errors';
 
 describe('Store.linkFromOne', () => {
   const recordNotFoundSpy = vi.spyOn(errors, 'recordNotFound');

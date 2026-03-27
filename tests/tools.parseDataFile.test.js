@@ -1,10 +1,10 @@
 import nodePath from 'path';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import errors from '../lib/errors.js';
-import parsers from '../lib/parsers.js';
-import parseDataFile from '../lib/tools/parseDataFile.js';
-import tempDir from '../test_utils/tempDir.js';
-import throwingMock from '../test_utils/throwingMock.js';
+import errors from '../lib/errors';
+import parsers from '../lib/parsers';
+import parseDataFile from '../lib/tools/parseDataFile';
+import tempDir from '../test_utils/tempDir';
+import throwingMock from '../test_utils/throwingMock';
 
 describe('tools.parseDataFile', () => {
   const noTypeSpy = vi.spyOn(errors, 'noType');

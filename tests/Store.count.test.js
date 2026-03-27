@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import Record from '../lib/Record.js';
-import Store from '../lib/Store.js';
+import Record from '../lib/Record';
+import Store from '../lib/Store';
 
 describe('Store.count', () => {
   it('Gets a count of Records in the store', () => {

@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import Record from '../lib/Record.js';
-import Store from '../lib/Store.js';
+import Record from '../lib/Record';
+import Store from '../lib/Store';
 
 describe('Store.dd', () => {
   beforeEach(() => {

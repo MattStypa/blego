@@ -1,4 +1,4 @@
-import blego from './core.js';
+import blego from './core';
 
 blego.init();
 

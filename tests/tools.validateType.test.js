@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
-import errors from '../lib/errors.js';
-import validateType from '../lib/tools/validateType.js';
+import errors from '../lib/errors';
+import validateType from '../lib/tools/validateType';
 
 describe('tools.validateType', () => {
   const invalidTypeSpy = vi.spyOn(errors, 'invalidType');

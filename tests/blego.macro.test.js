@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
-import blego from '../core.js';
-import handlebars from '../lib/handlebars.js';
+import blego from '../core';
+import handlebars from '../lib/handlebars';
 
 describe('blego.macro', () => {
   it('Registers a helper', () => {

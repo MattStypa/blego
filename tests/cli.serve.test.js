@@ -1,9 +1,9 @@
 import openMock from 'open';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import serve from '../lib/cli/serve.js';
-import cliUtils from '../lib/cli/utils.js';
-import mockExit from '../test_utils/mockExit.js';
-import tempDir from '../test_utils/tempDir.js';
+import serve from '../lib/cli/serve';
+import cliUtils from '../lib/cli/utils';
+import mockExit from '../test_utils/mockExit';
+import tempDir from '../test_utils/tempDir';
 
 vi.mock('open');
 

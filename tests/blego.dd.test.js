@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import blego from '../core.js';
+import blego from '../core';
 
 describe('blego.dd', () => {
   beforeEach(() => {

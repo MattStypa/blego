@@ -1,3 +1,3 @@
-import Blego from './lib/Blego.js';
+import Blego from './lib/Blego';
 
 export default new Blego();

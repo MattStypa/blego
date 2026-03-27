@@ -1,5 +1,5 @@
 import { expect } from 'vitest';
-import throwingMock from './throwingMock.js';
+import throwingMock from './throwingMock';
 
 export default function mockExit(fn) {
   const original = process.exit;

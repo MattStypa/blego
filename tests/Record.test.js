@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
-import Record from '../lib/Record.js';
-import errors from '../lib/errors.js';
+import Record from '../lib/Record';
+import errors from '../lib/errors';
 
 describe('Record', () => {
   const keyRequiredSpy = vi.spyOn(errors, 'keyRequired');

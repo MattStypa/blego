@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import jailPath from '../lib/tools/jailPath.js';
+import jailPath from '../lib/tools/jailPath';
 
 describe('tools.jailPath', () => {
   it('Normalizes path to current directory', () => {

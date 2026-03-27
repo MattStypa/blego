@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
-import tryCatch from '../lib/tools/tryCatch.js';
-import throwingMock from '../test_utils/throwingMock.js';
+import tryCatch from '../lib/tools/tryCatch';
+import throwingMock from '../test_utils/throwingMock';
 
 describe('tools.tryCatch', () => {
   it('runs the main function', () => {

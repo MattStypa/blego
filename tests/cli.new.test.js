@@ -1,10 +1,10 @@
 import childProcess from 'child_process';
 import fs from 'fs-extra';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import cliNew from '../lib/cli/new.js';
-import cliUtils from '../lib/cli/utils.js';
-import mockExit from '../test_utils/mockExit.js';
-import tempDir from '../test_utils/tempDir.js';
+import cliNew from '../lib/cli/new';
+import cliUtils from '../lib/cli/utils';
+import mockExit from '../test_utils/mockExit';
+import tempDir from '../test_utils/tempDir';
 
 describe('cli.new', () => {
   const cliErrorSpy = vi.spyOn(cliUtils, 'error');

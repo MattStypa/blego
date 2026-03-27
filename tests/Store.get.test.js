@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import Record from '../lib/Record.js';
-import Store from '../lib/Store.js';
+import Record from '../lib/Record';
+import Store from '../lib/Store';
 
 describe('Store.get', () => {
   it('Gets the record with specified key', () => {
