@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
+import handlebars from 'handlebars';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import blego from '../core';
-import handlebars from '../lib/handlebars';
 import tempDir from '../test_utils/tempDir';
 
 describe('Blego', () => {
