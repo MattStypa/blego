@@ -1,9 +1,8 @@
-import { describe, it, expect } from 'vitest';
 import stripAnsi from 'strip-ansi';
+import { describe, it, expect } from 'vitest';
 import blego from '../core.js';
 
 describe('blego.log', () => {
-
   it('Writes to console', () => {
     blego.log('message');
 

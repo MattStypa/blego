@@ -3,7 +3,6 @@ import Record from '../lib/Record.js';
 import Store from '../lib/Store.js';
 
 describe('Store.sort', () => {
-
   it('Gets Store sorted by function', () => {
     const store = new Store([
       new Record('1', {value: 100}),

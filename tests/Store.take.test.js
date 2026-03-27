@@ -3,7 +3,6 @@ import Record from '../lib/Record.js';
 import Store from '../lib/Store.js';
 
 describe('Store.take', () => {
-
   it('Gets an array of specified size from the front of the Store', () => {
     const store = new Store([
       new Record('1', {}),

@@ -3,7 +3,6 @@ import Record from '../lib/Record.js';
 import Store from '../lib/Store.js';
 
 describe('Store.count', () => {
-
   it('Gets a count of Records in the store', () => {
     const store = new Store([
       new Record('1', {}),

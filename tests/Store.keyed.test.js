@@ -3,7 +3,6 @@ import Record from '../lib/Record.js';
 import Store from '../lib/Store.js';
 
 describe('Store.keyed', () => {
-
   it('Gets an object with Record keys as property names', () => {
     const store = new Store([
       new Record('1', {}),

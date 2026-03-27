@@ -1,13 +1,12 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import nodePath from 'path';
 import fs from 'fs-extra';
-import tempDir from '../test_utils/tempDir.js';
-import throwingMock from '../test_utils/throwingMock.js';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import errors from '../lib/errors.js';
 import exists from '../lib/tools/exists.js';
+import tempDir from '../test_utils/tempDir.js';
+import throwingMock from '../test_utils/throwingMock.js';
 
 describe('tools.exists', () => {
-
   const cantReadPathSpy = vi.spyOn(errors, 'cantReadPath');
 
   beforeEach(() => {

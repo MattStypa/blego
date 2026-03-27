@@ -3,7 +3,6 @@ import Record from '../lib/Record.js';
 import Store from '../lib/Store.js';
 
 describe('Store.dd', () => {
-
   beforeEach(() => {
     process.exit = vi.fn();
   });

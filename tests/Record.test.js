@@ -3,7 +3,6 @@ import Record from '../lib/Record.js';
 import errors from '../lib/errors.js';
 
 describe('Record', () => {
-  
   const keyRequiredSpy = vi.spyOn(errors, 'keyRequired');
 
   it('Creates a Record with key and props', () => {

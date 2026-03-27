@@ -3,7 +3,6 @@ import Record from '../lib/Record.js';
 import Store from '../lib/Store.js';
 
 describe('Store.dump', () => {
-
   it('Writes the Records to console', () => {
     const store = new Store([
       new Record('1', {}),

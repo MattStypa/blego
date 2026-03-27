@@ -4,7 +4,6 @@ import Store from '../lib/Store.js';
 import errors from '../lib/errors.js';
 
 describe('Store.linkFromMany', () => {
-
   const recordNotFoundSpy = vi.spyOn(errors, 'recordNotFound');
   const invalidTypeInArraySpy = vi.spyOn(errors, 'invalidTypeInArray');
 

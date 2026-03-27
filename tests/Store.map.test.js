@@ -3,7 +3,6 @@ import Record from '../lib/Record.js';
 import Store from '../lib/Store.js';
 
 describe('Store.map', () => {
-
   it('Gets mapped array of the records', () => {
     const fn = vi.fn((record) => 'key:' + record.key);
     const store = new Store([

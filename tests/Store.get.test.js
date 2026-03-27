@@ -3,7 +3,6 @@ import Record from '../lib/Record.js';
 import Store from '../lib/Store.js';
 
 describe('Store.get', () => {
-
   it('Gets the record with specified key', () => {
     const store = new Store([
       new Record('1', {}),

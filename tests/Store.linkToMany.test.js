@@ -4,7 +4,6 @@ import Store from '../lib/Store.js';
 import errors from '../lib/errors.js';
 
 describe('Store.linkToMany', () => {
-
   const recordNotFoundSpy = vi.spyOn(errors, 'recordNotFound');
 
   it('Creates a links to many Records from a different Store', () => {

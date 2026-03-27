@@ -4,7 +4,6 @@ import Store from '../lib/Store.js';
 import errors from '../lib/errors.js';
 
 describe('Store.linkToOne', () => {
-
   const recordNotFoundSpy = vi.spyOn(errors, 'recordNotFound');
 
   it('Creates a link to one Record from a different Store', () => {

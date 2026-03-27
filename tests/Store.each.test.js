@@ -3,7 +3,6 @@ import Record from '../lib/Record.js';
 import Store from '../lib/Store.js';
 
 describe('Store.each', () => {
-
   it('Calls a function on each record', () => {
     const fn = vi.fn();
     const store = new Store([

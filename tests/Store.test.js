@@ -4,7 +4,6 @@ import Store from '../lib/Store.js';
 import errors from '../lib/errors.js';
 
 describe('Store', () => {
-
   const invalidTypeInArraySpy = vi.spyOn(errors, 'invalidTypeInArray');
   const recordKeyDupeSpy = vi.spyOn(errors, 'recordKeyDupe');
 

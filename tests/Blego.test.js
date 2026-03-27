@@ -2,7 +2,6 @@ import { describe, it, expect } from 'vitest';
 import blego from '../core.js';
 
 describe('Blego', () => {
-
   it('Works', () => {
     expect(typeof blego).toEqual('object');
     expect(typeof blego.data).toEqual('object');

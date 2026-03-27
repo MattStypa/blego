@@ -1,11 +1,10 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import fs from 'fs-extra';
-import tempDir from '../test_utils/tempDir.js';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import blego from '../core.js';
 import handlebars from '../lib/handlebars.js';
+import tempDir from '../test_utils/tempDir.js';
 
 describe('Blego', () => {
-
   beforeEach(() => {
     tempDir({
       'globals/config.json': '{"siteName": "test"}',

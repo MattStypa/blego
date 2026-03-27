@@ -3,7 +3,6 @@ import Record from '../lib/Record.js';
 import Store from '../lib/Store.js';
 
 describe('Store.filter', () => {
-
   it('Gets Store with Records filtered by function', () => {
     const store = new Store([
       new Record('1', {value: 'a'}),

@@ -1,13 +1,12 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import nodePath from 'path';
 import glob from 'glob';
-import tempDir from '../test_utils/tempDir.js';
-import throwingMock from '../test_utils/throwingMock.js';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import errors from '../lib/errors.js';
 import readDir from '../lib/tools/readDir.js';
+import tempDir from '../test_utils/tempDir.js';
+import throwingMock from '../test_utils/throwingMock.js';
 
 describe('tools.readDir', () => {
-
   const pathDoesNotExistSpy = vi.spyOn(errors, 'pathDoesNotExist');
   const notDirSpy = vi.spyOn(errors, 'notDir');
   const cantReadPathSpy = vi.spyOn(errors, 'cantReadPath');

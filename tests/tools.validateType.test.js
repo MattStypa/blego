@@ -3,7 +3,6 @@ import errors from '../lib/errors.js';
 import validateType from '../lib/tools/validateType.js';
 
 describe('tools.validateType', () => {
-
   const invalidTypeSpy = vi.spyOn(errors, 'invalidType');
 
   it('Validates types', () => {

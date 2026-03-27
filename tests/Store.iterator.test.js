@@ -3,7 +3,6 @@ import Record from '../lib/Record.js';
 import Store from '../lib/Store.js';
 
 describe('Store.iterator', () => {
-
   it('Can iterate over the Store', () => {
     const store = new Store([
       new Record('1', {}),

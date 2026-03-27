@@ -3,7 +3,6 @@ import Record from '../lib/Record.js';
 import Store from '../lib/Store.js';
 
 describe('Store.sortBy', () => {
-
   it('Gets Store sorted by prop', () => {
     const store = new Store([
       new Record('1', {value: 100}),

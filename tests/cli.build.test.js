@@ -1,9 +1,9 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import tempDir from '../test_utils/tempDir.js';
-import mockExit from '../test_utils/mockExit.js';
 import build from '../lib/cli/build.js';
 import cliUtils from '../lib/cli/utils.js';
 import importSync from '../lib/tools/importSync.cjs';
+import mockExit from '../test_utils/mockExit.js';
+import tempDir from '../test_utils/tempDir.js';
 
 vi.mock('../lib/tools/importSync.cjs');
 

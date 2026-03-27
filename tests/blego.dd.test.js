@@ -2,7 +2,6 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import blego from '../core.js';
 
 describe('blego.dd', () => {
-
   beforeEach(() => {
     process.exit = vi.fn();
   });

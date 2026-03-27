@@ -1,15 +1,13 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import openMock from 'open';
-import tempDir from '../test_utils/tempDir.js';
-import mockExit from '../test_utils/mockExit.js';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import serve from '../lib/cli/serve.js';
 import cliUtils from '../lib/cli/utils.js';
+import mockExit from '../test_utils/mockExit.js';
+import tempDir from '../test_utils/tempDir.js';
 
 vi.mock('open');
 
-
 describe('cli.serve', () => {
-
   const cliErrorSpy = vi.spyOn(cliUtils, 'error');
 
   beforeEach(() => {
