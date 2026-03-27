@@ -1,24 +1,24 @@
 import { vi } from 'vitest';
-import tempDir from '../jest_utils/tempDir.js';
-import mockExit from '../jest_utils/mockExit.js';
+import tempDir from '../test_utils/tempDir.js';
+import mockExit from '../test_utils/mockExit.js';
 import build from '../lib/cli/build.js';
 import cliUtils from '../lib/cli/utils.js';
+import importSync from '../lib/tools/importSync.cjs';
+
+vi.mock('../lib/tools/importSync.cjs');
 
 describe('cli.build', () => {
-
   const errorSpy = vi.spyOn(cliUtils, 'error');
   const printTraceAndDieSpy = vi.spyOn(cliUtils, 'printTraceAndDie');
 
   beforeEach(() => {
+    vi.resetAllMocks();
+
     tempDir({
-      'blego.js': 'global.__blegoBuilt = (global.__blegoBuilt || 0) + 1;',
-      'build.js': 'global.__buildBuilt = (global.__buildBuilt || 0) + 1;',
-      'build-alt.js': 'global.__buildAltBuilt = (global.__buildAltBuilt || 0) + 1;',
-      'fail.js': 'invalid syntax',
+      'blego.js': '',
+      'build.js': '',
+      'fail.js': '',
     });
-    global.__blegoBuilt = 0;
-    global.__buildBuilt = 0;
-    global.__buildAltBuilt = 0;
   });
 
   afterEach(() => {
@@ -28,19 +28,19 @@ describe('cli.build', () => {
   it('Builds from default build file', () => {
     build();
 
-    expect(global.__blegoBuilt).toEqual(1);
+    expect(importSync).toHaveBeenCalledWith(expect.stringMatching(/\/blego\.js$/));
   });
 
   it('Builds from given file', () => {
     build('build.js');
 
-    expect(global.__buildBuilt).toEqual(1);
+    expect(importSync).toHaveBeenCalledWith(expect.stringMatching(/\/build\.js$/));
   });
 
   it('Builds from given file without extension', () => {
-    build('build-alt');
+    build('build');
 
-    expect(global.__buildAltBuilt).toEqual(1);
+    expect(importSync).toHaveBeenCalledWith(expect.stringMatching(/\/build\.js$/));
   });
 
   it('Dies if the given file does not exist', () => {
@@ -53,6 +53,10 @@ describe('cli.build', () => {
   });
 
   it('Parsers trace if the build fails', () => {
+    importSync.mockImplementation(() => {
+      throw new Error('Build failed');
+    });
+
     const exitMock = mockExit(() => {
       build('fail');
     });

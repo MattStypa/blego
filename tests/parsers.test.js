@@ -1,6 +1,10 @@
 import { vi } from 'vitest';
-import tempDir from '../jest_utils/tempDir';
+import tempDir from '../test_utils/tempDir';
 import parsers from '../lib/parsers';
+
+vi.mock('../lib/tools/importSync.cjs', () => ({
+  default: vi.fn(() => ({ name: 'c' })),
+}));
 
 describe('parsers', () => {
 
@@ -30,10 +34,6 @@ describe('parsers', () => {
   });
 
   it('parses js files', () => {
-    vi.mock('../lib/tools/importSync.cjs', () => ({
-      default: vi.fn(() => ({ name: 'c' })),
-    }));
-
     const data = parsers.js('c.js');
 
     expect(data.name).toEqual('c');

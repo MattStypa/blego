@@ -1,4 +1,4 @@
-import tempDir from '../jest_utils/tempDir.js';
+import tempDir from '../test_utils/tempDir.js';
 import parseDataDir from '../lib/tools/parseDataDir.js';
 
 describe('tools.parseDataDir', () => {

@@ -1,6 +1,6 @@
 import { vi } from 'vitest';
 import fs from 'fs-extra';
-import tempDir from '../jest_utils/tempDir.js';
+import tempDir from '../test_utils/tempDir.js';
 import blego from '../core.js';
 import handlebars from '../lib/handlebars.js';
 

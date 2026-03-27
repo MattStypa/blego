@@ -1,8 +1,8 @@
 import { vi } from 'vitest';
 import nodePath from 'path';
 import fs from 'fs-extra';
-import tempDir from '../jest_utils/tempDir.js';
-import throwingMock from '../jest_utils/throwingMock.js';
+import tempDir from '../test_utils/tempDir.js';
+import throwingMock from '../test_utils/throwingMock.js';
 import errors from '../lib/errors.js';
 import isFile from '../lib/tools/isFile.js';
 

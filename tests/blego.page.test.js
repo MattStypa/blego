@@ -1,7 +1,7 @@
 import { vi } from 'vitest';
 import nodePath from 'path';
 import fs from 'fs-extra';
-import tempDir from '../jest_utils/tempDir.js';
+import tempDir from '../test_utils/tempDir.js';
 import blego from '../core.js';
 import errors from '../lib/errors.js';
 

@@ -1,7 +1,7 @@
 import { vi } from 'vitest';
 import openMock from 'open';
-import tempDir from '../jest_utils/tempDir.js';
-import mockExit from '../jest_utils/mockExit.js';
+import tempDir from '../test_utils/tempDir.js';
+import mockExit from '../test_utils/mockExit.js';
 import serve from '../lib/cli/serve.js';
 import cliUtils from '../lib/cli/utils.js';
 

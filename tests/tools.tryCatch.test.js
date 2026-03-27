@@ -1,5 +1,5 @@
 import { vi } from 'vitest';
-import throwingMock from '../jest_utils/throwingMock.js';
+import throwingMock from '../test_utils/throwingMock.js';
 import tryCatch from '../lib/tools/tryCatch.js';
 
 describe('tools.tryCatch', () => {

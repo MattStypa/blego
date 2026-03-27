@@ -1,8 +1,8 @@
 import { vi } from 'vitest';
 import childProcess from 'child_process';
 import fs from 'fs-extra';
-import tempDir from '../jest_utils/tempDir.js';
-import mockExit from '../jest_utils/mockExit.js';
+import tempDir from '../test_utils/tempDir.js';
+import mockExit from '../test_utils/mockExit.js';
 import cliNew from '../lib/cli/new.js';
 import cliUtils from '../lib/cli/utils.js';
 

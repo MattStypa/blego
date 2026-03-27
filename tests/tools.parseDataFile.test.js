@@ -1,7 +1,7 @@
 import { vi } from 'vitest';
 import nodePath from 'path';
-import tempDir from '../jest_utils/tempDir.js';
-import throwingMock from '../jest_utils/throwingMock.js';
+import tempDir from '../test_utils/tempDir.js';
+import throwingMock from '../test_utils/throwingMock.js';
 import errors from '../lib/errors.js';
 import parsers from '../lib/parsers.js';
 import parseDataFile from '../lib/tools/parseDataFile.js';
