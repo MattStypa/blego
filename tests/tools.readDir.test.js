@@ -1,10 +1,19 @@
 import nodePath from 'path';
-import glob from 'glob';
+import { globSync } from 'glob';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import errors from '../lib/errors';
 import readDir from '../lib/tools/readDir';
 import tempDir from '../test_utils/tempDir';
 import throwingMock from '../test_utils/throwingMock';
+
+vi.mock('glob', async (importActual) => {
+  const actual = await importActual();
+
+  return {
+    ...actual,
+    globSync: vi.fn((...args) => actual.globSync(...args)),
+  };
+});
 
 describe('tools.readDir', () => {
   const pathDoesNotExistSpy = vi.spyOn(errors, 'pathDoesNotExist');
@@ -12,6 +21,8 @@ describe('tools.readDir', () => {
   const cantReadPathSpy = vi.spyOn(errors, 'cantReadPath');
 
   beforeEach(() => {
+    vi.resetAllMocks();
+
     tempDir({
       'fake/directory1/.hidden': '',
       'fake/directory1/file1': '',
@@ -74,14 +85,11 @@ describe('tools.readDir', () => {
   });
 
   it('Throws if path cannot be read', () => {
-    const original = glob.sync;
-    glob.sync = throwingMock;
+    globSync.mockImplementation(throwingMock);
 
     expect(() => {
       readDir('fake/directory1');
     }).toThrow();
-
-    glob.sync = original;
 
     expect(cantReadPathSpy).toHaveBeenCalledWith(nodePath.resolve('fake/directory1'));
   });
