@@ -1,5 +1,12 @@
 # Release Notes
 
+## v2.0.0 (2026-03-27)
+- Dependency update
+- Minimum required Node.js version is now 22.0.0
+
+## v1.0.0 (2023-03-15)
+- Dependency update
+
 ## v0.6.0 (2019-11-19)
 - Stores are now iterable.
 

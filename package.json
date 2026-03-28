@@ -1,6 +1,6 @@
 {
   "name": "blego",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "type": "module",
   "description": "Static site generator powered by colections and relationships.",
   "license": "MIT",

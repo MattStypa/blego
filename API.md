@@ -86,6 +86,8 @@
     Executes a provided function once for every Record.
     ##### arguments
       - `fn` Processing function.
+    ##### returns
+      - `Store`
 
   - #### `blego.data.Store.map(fn)`
     Gets an array with the results of calling provided function on every Record.
@@ -114,7 +116,7 @@
   - #### `blego.data.Store.sortBy(prop)`
     Gets a new Store sorted by the provided prop.
     ##### arguments
-      - `prop` Name of the prop.
+      - `prop` Prop name or function that returns a value to sort by
     ##### returns
       - `Store`
 
@@ -126,19 +128,26 @@
   - #### `blego.data.Store.take(size)`
     Gets an array with the specified amount of Records.
     ##### arguments
-      - `prop` Requested size.
+      - `size` Requested size.
     ##### returns
       - `array`
 
   - #### `blego.data.Store.chunk(size)`
     Gets an array of Records split into groups of the specified size. If the Store can't be split evenly, the final chunk will be the remaining Records.
     ##### arguments
-      - `prop` Requested chunk size.
+      - `size` Requested chunk size.
     ##### returns
       - `array`
 
+  - #### `blego.data.Store.keyed()`
+    Gets an object representation of the Store
+    ##### returns
+      - `object`
+
   - #### `blego.data.Store.dump()`
     Prints Store data to the console.
+    ##### returns
+      - `Store`
 
   - #### `blego.data.Store.dd()`
     Prints Store data to the console and stops the execution.
