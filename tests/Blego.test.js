@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import blego from '../core';
+import blego from '../core.js';
 
 describe('Blego', () => {
   it('Works', () => {

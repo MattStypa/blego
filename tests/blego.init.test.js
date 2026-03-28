@@ -1,8 +1,8 @@
 import fs from 'fs-extra';
 import handlebars from 'handlebars';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import blego from '../core';
-import tempDir from '../test_utils/tempDir';
+import blego from '../core.js';
+import tempDir from '../test_utils/tempDir.js';
 
 describe('Blego', () => {
   beforeEach(() => {

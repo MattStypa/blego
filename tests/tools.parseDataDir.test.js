@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import parseDataDir from '../lib/tools/parseDataDir';
-import tempDir from '../test_utils/tempDir';
+import parseDataDir from '../lib/tools/parseDataDir.js';
+import tempDir from '../test_utils/tempDir.js';
 
 describe('tools.parseDataDir', () => {
   beforeEach(() => {

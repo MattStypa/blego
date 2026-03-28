@@ -23,7 +23,7 @@
     "blego": "lib/cli.js"
   },
   "engines": {
-    "node": ">=21.0.0"
+    "node": ">=22.0.0"
   },
   "scripts": {
     "test": "eslint lib && eslint tests && vitest run --coverage"

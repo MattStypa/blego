@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import parseTrace from '../lib/tools/parseTrace';
+import parseTrace from '../lib/tools/parseTrace.js';
 
 describe('tools.parseTrace', () => {
   it('Parses a trace', () => {

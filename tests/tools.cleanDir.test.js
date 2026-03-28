@@ -1,10 +1,10 @@
 import nodePath from 'path';
 import fs from 'fs-extra';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import errors from '../lib/errors';
-import cleanDir from '../lib/tools/cleanDir';
-import tempDir from '../test_utils/tempDir';
-import throwingMock from '../test_utils/throwingMock';
+import errors from '../lib/errors.js';
+import cleanDir from '../lib/tools/cleanDir.js';
+import tempDir from '../test_utils/tempDir.js';
+import throwingMock from '../test_utils/throwingMock.js';
 
 describe('tools.cleanDir', () => {
   const pathDoesNotExistSpy = vi.spyOn(errors, 'pathDoesNotExist');

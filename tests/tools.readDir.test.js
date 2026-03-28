@@ -1,10 +1,10 @@
 import nodePath from 'path';
 import { globSync } from 'glob';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import errors from '../lib/errors';
-import readDir from '../lib/tools/readDir';
-import tempDir from '../test_utils/tempDir';
-import throwingMock from '../test_utils/throwingMock';
+import errors from '../lib/errors.js';
+import readDir from '../lib/tools/readDir.js';
+import tempDir from '../test_utils/tempDir.js';
+import throwingMock from '../test_utils/throwingMock.js';
 
 vi.mock('glob', async (importActual) => {
   const actual = await importActual();

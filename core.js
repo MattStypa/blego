@@ -1,4 +1,4 @@
-import Blego from './lib/Blego';
+import Blego from './lib/Blego.js';
 
 const blego = new Blego();
 

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import Record from '../lib/Record';
-import Store from '../lib/Store';
+import Record from '../lib/Record.js';
+import Store from '../lib/Store.js';
 
 describe('Store.reverse', () => {
   it('Reverts the order of Records', () => {
