@@ -3,7 +3,7 @@ import tryCatch from '../lib/tools/tryCatch.js';
 import throwingMock from '../test_utils/throwingMock.js';
 
 describe('tools.tryCatch', () => {
-  it('runs the main function', () => {
+  it('Runs the main function', () => {
     const func = vi.fn();
     const errorFunc = vi.fn();
 
