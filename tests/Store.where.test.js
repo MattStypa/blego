@@ -16,7 +16,7 @@ describe('Store.where', () => {
     expect(filtered[1].key).toEqual('3');
   });
 
-  it('Gets Store with Records having prop array that contain value', () => {
+  it('Gets Store with Records having prop array that contains value', () => {
     const store = new Store([
       new Record('1', {value: ['a', 'b']}),
       new Record('2', {value: ['b', 'c']}),

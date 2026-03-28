@@ -38,12 +38,12 @@
   - #### `blego.dump(...data)`
     Prints data to the console.
     ##### arguments
-    - `...data` data that will be printed to the console.
+    - `...data` Data that will be printed to the console.
 
   - #### `blego.dd(...data)`
     Prints data to the console and stops the execution.
     ##### arguments
-    - `...data` data that will be printed to the console.
+    - `...data` Data that will be printed to the console.
 
 ## Store
 
@@ -54,7 +54,7 @@
       - `array`
 
   - #### `blego.data.Store.get(key)`
-    Gets a Record with specified key.
+    Gets a Record with the specified key.
     ##### arguments
       - `key` Key of the requested Record.
     ##### returns
@@ -90,7 +90,7 @@
       - `Store`
 
   - #### `blego.data.Store.map(fn)`
-    Gets an array with the results of calling provided function on every Record.
+    Gets an array with the results of calling the provided function on every Record.
     ##### arguments
       - `fn` Processing function.
     ##### returns
@@ -107,9 +107,9 @@
       - `boolean`
 
   - #### `blego.data.Store.sort(fn)`
-    Gets a new Store sorted using the provided comparing function.
+    Gets a new Store sorted using the provided comparison function.
     ##### arguments
-      - `fn` Comparing function.
+      - `fn` Comparison function.
     ##### returns
       - `Store`
 
@@ -165,14 +165,14 @@
       - `prop` Name of the prop.
 
   - #### `blego.data.Store.linkFromOne(relatedStore, relatedProp, prop)`
-    Adds new prop to Records with a Record from related Store that references this Record in its own specified prop.
+    Adds new prop to Records with a Record from the related Store that references this Record in its own specified prop.
     ##### arguments
       - `relatedStore` Related Store.
       - `relatedProp` Name of the prop containing reference to this Record.
       - `prop` Name of the prop to add to this Record.
 
   - #### `blego.data.Store.linkFromMany(relatedStore, relatedProp, prop)`
-    Adds new prop to Records with Records from related Store that reference this Record in their own specified prop.
+    Adds new prop to Records with Records from the related Store that reference this Record in their own specified prop.
     ##### arguments
       - `relatedStore` Related Store.
       - `relatedProp` Name of the prop containing reference to this Record.

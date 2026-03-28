@@ -10,11 +10,11 @@ Blego makes developing purpose-built templates effortless but it also enables a 
 Blego is powered by an unopinionated data model that supports multiple types of relationships. It is trivial to access related data across multiple levels of hierarchy.
 
 ## Flexibility
-Blego is flexible enough to generate any type of a website like Blogs, Stores or Wikis. In fact, it can handle a lot more than just websites. It can generate XMLs, PDFs or even images.
+Blego is flexible enough to generate any type of website like Blogs, Stores or Wikis. In fact, it can handle a lot more than just websites. It can generate XMLs, PDFs or even images.
 
 # Using Blego
 ## Requirements
-Blego requires [Node.js 21](https://nodejs.org) or newer. Visit [https://nodejs.org](https://nodejs.org/) to learn more.
+Blego requires [Node.js 22](https://nodejs.org) or newer. Visit [https://nodejs.org](https://nodejs.org/) to learn more.
 
 ## Creating a project
 ```sh
@@ -38,7 +38,7 @@ npx blego serve
 This will start a web server from the `dist` directory. Visit [http://localhost:3000](http://localhost:3000) to see your generated project.
 
 ## File system
-Standard Blego project is preconfigured with the following files and directories.
+A standard Blego project is preconfigured with the following files and directories.
 
 `data`: Contains data files parsed into Stores. [Learn more](#Data).
 
@@ -82,7 +82,7 @@ Hello World
 There is a lot more that [Handlebars.js](https://handlebarsjs.com/) can do. Visit [https://handlebarsjs.com](https://handlebarsjs.com/) to learn more.
 
 ## Macros
-Macros allow you to call Javascript functions from your template.
+Macros allow you to call JavaScript functions from your template.
 
 For example, you may want to report when the page was generated.
 
@@ -152,23 +152,23 @@ Blego can parse many different data file types.
 
 - **Markdown** files use `.md` file extension.
 - **HTML** files use `.html` file extension.
-- **Javascript** files use `.js` file extension.
+- **JavaScript** files use `.js` file extension.
 - **JSON** files use `.json` file extension.
 - **YAML** files use `.yaml` file extension.
 
-Markdown and HTML data files support [Front Matter](https://github.com/jxson/front-matter). Meta data provided is exposed as parameters of the Record while the content is available via the `body` parameter.
+Markdown and HTML data files support [Front Matter](https://github.com/jxson/front-matter). Metadata provided is exposed as parameters of the Record while the content is available via the `body` parameter.
 
 Visit [https://github.com/jxson/front-matter](https://github.com/jxson/front-matter) to learn more about [Front Matter](https://github.com/jxson/front-matter).
 
-Javascript data files must export an object which will be merged into the Record.
+JavaScript data files must export an object which will be merged into the Record.
 
-JSON and YAML files are parsed into Javascript object and merged into the Record.
+JSON and YAML files are parsed into a JavaScript object and merged into the Record.
 
 ## Globals
 
 Some data may need to be available globally. Data files in the `globals` directory will be automatically made available in every template file.
 
-**Note**: Global data is a Javascript object and not a Store.
+**Note**: Global data is a JavaScript object and not a Store.
 
 Below is a simple `config.json` file placed in the `globals` directory.
 
@@ -192,7 +192,7 @@ For example; A team has many players but a player has one team.
 
 When creating a relationship between Books and Authors it makes a lot more sense to define the Authors in the Book model. But, this relationship must work both ways.
 
-To define bidirectional relationship between Books and Authors you need to add the following code to the `blego.js` file.
+To define a bidirectional relationship between Books and Authors you need to add the following code to the `blego.js` file.
 
 ```
 blego.data.Books.linkToMany(blego.data.Authors, 'authors');

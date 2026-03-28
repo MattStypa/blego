@@ -29,7 +29,7 @@ describe('Store.linkFromMany', () => {
     expect(toStore.get('c').links[0].key).toEqual('2');
   });
 
-  it('Can create a reverse links', () => {
+  it('Can create a reverse link', () => {
     const fromStore = new Store([
       new Record('1', {links: ['a', 'b']}),
       new Record('2', {links: ['a', 'b']}),
