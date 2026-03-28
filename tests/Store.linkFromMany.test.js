@@ -7,7 +7,7 @@ describe('Store.linkFromMany', () => {
   const recordNotFoundSpy = vi.spyOn(errors, 'recordNotFound');
   const invalidTypeInArraySpy = vi.spyOn(errors, 'invalidTypeInArray');
 
-  it('Creates a links to many Records from a different Store', () => {
+  it('Creates links to many Records from a different Store', () => {
     const fromStore = new Store([
       new Record('1', {links: ['a', 'b']}),
       new Record('2', {links: ['b', 'c']}),
@@ -52,7 +52,7 @@ describe('Store.linkFromMany', () => {
     expect(toStore.get('b').links[1].key).toEqual('2');
   });
 
-  it('Throws if a Record is mising', () => {
+  it('Throws if a Record is missing', () => {
     const fromStore = new Store([
       new Record('1', {links: ['b']}),
     ]);

@@ -33,7 +33,7 @@ describe('Store.linkFromOne', () => {
     expect(toStore.get('e').link.key).toEqual('4');
   });
 
-  it('Can create a reverse links', () => {
+  it('Can create a reverse link', () => {
     const fromStore = new Store([
       new Record('1', {link: 'a'}),
     ]);
@@ -48,7 +48,7 @@ describe('Store.linkFromOne', () => {
     expect(toStore.get('a').link.key).toEqual('1');
   });
 
-  it('Throws if a Record is mising', () => {
+  it('Throws if a Record is missing', () => {
     const fromStore = new Store([
       new Record('1', {link: 'b'}),
     ]);

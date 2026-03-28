@@ -52,7 +52,7 @@ describe('cli.build', () => {
     expect(exitMock).toHaveBeenCalledWith(1);
   });
 
-  it('Parsers trace if the build fails', () => {
+  it('Parses trace if the build fails', () => {
     importSync.mockImplementation(() => {
       throw new Error('Build failed');
     });

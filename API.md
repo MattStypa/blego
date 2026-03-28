@@ -28,12 +28,12 @@
   - #### `blego.log(...messages)`
     Prints log messages to the console.
     ##### arguments
-      - `...messages` Massages that will be printed to the console.
+      - `...messages` Messages that will be printed to the console.
 
   - #### `blego.warn(...messages)`
     Prints warning messages to the console.
     ##### arguments
-    - `...messages` Massages that will be printed to the console.
+    - `...messages` Messages that will be printed to the console.
 
   - #### `blego.dump(...data)`
     Prints data to the console.
@@ -140,7 +140,7 @@
       - `array`
 
   - #### `blego.data.Store.keyed()`
-    Gets an object representation of the Store
+    Gets an object representation of the Store.
     ##### returns
       - `object`
 
@@ -159,7 +159,7 @@
       - `prop` Name of the prop.
 
   - #### `blego.data.Store.linkToMany(relatedStore, prop)`
-    Replaces Record keys in the provided prop with an actual Records from the related Store.
+    Replaces Record keys in the provided prop with actual Records from the related Store.
     ##### arguments
       - `relatedStore` Related Store.
       - `prop` Name of the prop.

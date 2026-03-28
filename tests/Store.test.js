@@ -27,7 +27,7 @@ describe('Store', () => {
     expect(invalidTypeInArraySpy).toHaveBeenCalled();
   });
 
-  it('Thorws if duplicate keys exists', () => {
+  it('Throws if duplicate keys exist', () => {
     expect(() => {
       new Store([
         new Record('1', {}),

@@ -2,7 +2,7 @@
   "name": "blego",
   "version": "2.0.0",
   "type": "module",
-  "description": "Static site generator powered by colections and relationships.",
+  "description": "Static site generator powered by collections and relationships.",
   "license": "MIT",
   "keywords": [
     "static site generator",

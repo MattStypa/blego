@@ -27,7 +27,7 @@ describe('Store.linkToOne', () => {
     expect(fromStore.get('4').link).toEqual(undefined);
   });
 
-  it('Throws if a Record is mising', () => {
+  it('Throws if a Record is missing', () => {
     const fromStore = new Store([
       new Record('1', {link: 'b'}),
     ]);

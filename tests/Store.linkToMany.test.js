@@ -6,7 +6,7 @@ import errors from '../lib/errors.js';
 describe('Store.linkToMany', () => {
   const recordNotFoundSpy = vi.spyOn(errors, 'recordNotFound');
 
-  it('Creates a links to many Records from a different Store', () => {
+  it('Creates links to many Records from a different Store', () => {
     const fromStore = new Store([
       new Record('1', {links: ['a', 'b']}),
       new Record('2', {links: ['b', 'c']}),
@@ -30,7 +30,7 @@ describe('Store.linkToMany', () => {
     expect(fromStore.get('4').links.length).toEqual(0);
   });
 
-  it('Throws if a Record is mising', () => {
+  it('Throws if a Record is missing', () => {
     const fromStore = new Store([
       new Record('1', {links: ['b']}),
     ]);

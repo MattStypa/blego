@@ -166,7 +166,7 @@ JSON and YAML files are parsed into Javascript object and merged into the Record
 
 ## Globals
 
-Some data may need to be available globally. Data files in the `globals` directory will  be automatically made available in every template file.
+Some data may need to be available globally. Data files in the `globals` directory will be automatically made available in every template file.
 
 **Note**: Global data is a Javascript object and not a Store.
 

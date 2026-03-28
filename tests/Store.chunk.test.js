@@ -3,7 +3,7 @@ import Record from '../lib/Record.js';
 import Store from '../lib/Store.js';
 
 describe('Store.chunk', () => {
-  it('Gets an array of array of specified length', () => {
+  it('Gets an array of arrays of specified length', () => {
     const store = new Store([
       new Record('1', {}),
       new Record('2', {}),
