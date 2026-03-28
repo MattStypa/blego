@@ -19,6 +19,7 @@
     "url": "https://github.com/MattStypa/blego"
   },
   "main": "main.js",
+  "types": "main.d.ts",
   "bin": {
     "blego": "lib/cli.js"
   },
