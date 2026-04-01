@@ -5,6 +5,7 @@ import Store from '../lib/Store.js';
 describe('Store.each', () => {
   it('Calls a function on each record', () => {
     const fn = vi.fn();
+
     const store = new Store([
       new Record('1', {}),
       new Record('2', {}),

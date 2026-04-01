@@ -9,11 +9,11 @@ describe('Store.linkFromMany', () => {
 
   it('Creates links to many Records from a different Store', () => {
     const fromStore = new Store([
-      new Record('1', {links: ['a', 'b']}),
-      new Record('2', {links: ['b', 'c']}),
-      new Record('3', {links: 'a'}),
-      new Record('4', {links: null}),
+      new Record('1', {links: 'a'}),
+      new Record('2', {links: ['a', 'b']}),
+      new Record('3', {links: undefined}),
     ]);
+
     const toStore = new Store([
       new Record('a', {}),
       new Record('b', {}),
@@ -22,55 +22,76 @@ describe('Store.linkFromMany', () => {
 
     toStore.linkFromMany(fromStore, 'links', 'links');
 
-    expect(toStore.get('a').links[0].key).toEqual('1');
-    expect(toStore.get('a').links[1].key).toEqual('3');
-    expect(toStore.get('b').links[0].key).toEqual('1');
-    expect(toStore.get('b').links[1].key).toEqual('2');
-    expect(toStore.get('c').links[0].key).toEqual('2');
+    expect(toStore.get('a').links.get('1')).toEqual(fromStore.get('1'));
+    expect(toStore.get('a').links.get('2')).toEqual(fromStore.get('2'));
+    expect(toStore.get('b').links.get('2')).toEqual(fromStore.get('2'));
+    expect(toStore.get('c').links.all().length).toEqual(0);
   });
 
-  it('Can create a reverse link', () => {
+  it('Can create a reverse link from linkToOne', () => {
     const fromStore = new Store([
-      new Record('1', {links: ['a', 'b']}),
-      new Record('2', {links: ['a', 'b']}),
+      new Record('1', {link: 'a'}),
+      new Record('2', {link: 'b'}),
+      new Record('3', {link: 'b'}),
     ]);
+
     const toStore = new Store([
       new Record('a', {}),
       new Record('b', {}),
+      new Record('c', {}),
+    ]);
+
+    fromStore.linkToOne(toStore, 'link');
+    toStore.linkFromMany(fromStore, 'link', 'links');
+
+    expect(toStore.get('a').links.get('1')).toEqual(fromStore.get('1'));
+    expect(toStore.get('b').links.get('2')).toEqual(fromStore.get('2'));
+    expect(toStore.get('b').links.get('3')).toEqual(fromStore.get('3'));
+    expect(toStore.get('c').links.all().length).toEqual(0);
+  });
+
+  it('Can create a reverse link from linkToMany', () => {
+    const fromStore = new Store([
+      new Record('1', {links: ['a']}),
+      new Record('2', {links: ['a', 'b']}),
+    ]);
+
+    const toStore = new Store([
+      new Record('a', {}),
+      new Record('b', {}),
+      new Record('c', {}),
     ]);
 
     fromStore.linkToMany(toStore, 'links');
     toStore.linkFromMany(fromStore, 'links', 'links');
 
-    expect(fromStore.get('1').links[0].key).toEqual('a');
-    expect(fromStore.get('1').links[1].key).toEqual('b');
-    expect(fromStore.get('2').links[0].key).toEqual('a');
-    expect(fromStore.get('2').links[1].key).toEqual('b');
-    expect(toStore.get('a').links[0].key).toEqual('1');
-    expect(toStore.get('a').links[1].key).toEqual('2');
-    expect(toStore.get('b').links[0].key).toEqual('1');
-    expect(toStore.get('b').links[1].key).toEqual('2');
+    expect(toStore.get('a').links.get('1')).toEqual(fromStore.get('1'));
+    expect(toStore.get('a').links.get('2')).toEqual(fromStore.get('2'));
+    expect(toStore.get('b').links.get('2')).toEqual(fromStore.get('2'));
+    expect(toStore.get('c').links.all().length).toEqual(0);
   });
 
   it('Throws if a Record is missing', () => {
     const fromStore = new Store([
-      new Record('1', {links: ['b']}),
+      new Record('1', {links: ['a']}),
     ]);
+
     const toStore = new Store([
-      new Record('a', {}),
+      new Record('b', {}),
     ]);
 
     expect(() => {
       toStore.linkFromMany(fromStore, 'links', 'links');
     }).toThrow();
 
-    expect(recordNotFoundSpy).toHaveBeenCalledWith('b', 'links', '1');
+    expect(recordNotFoundSpy).toHaveBeenCalledWith('a', 'links', '1');
   });
 
   it('Throws if a related Record key is not a string', () => {
     const fromStore = new Store([
       new Record('1', {links: [1]}),
     ]);
+
     const toStore = new Store([
       new Record('a', {}),
     ]);

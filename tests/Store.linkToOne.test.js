@@ -8,37 +8,33 @@ describe('Store.linkToOne', () => {
 
   it('Creates a link to one Record from a different Store', () => {
     const fromStore = new Store([
-      new Record('1', {link: 'c'}),
-      new Record('2', {link: 'b'}),
-      new Record('3', {link: 'a'}),
-      new Record('4', {link: null}),
+      new Record('1', {link: 'a'}),
+      new Record('2', {link: null}),
     ]);
+
     const toStore = new Store([
       new Record('a', {}),
-      new Record('b', {}),
-      new Record('c', {}),
     ]);
 
     fromStore.linkToOne(toStore, 'link');
 
-    expect(fromStore.get('1').link.key).toEqual('c');
-    expect(fromStore.get('2').link.key).toEqual('b');
-    expect(fromStore.get('3').link.key).toEqual('a');
-    expect(fromStore.get('4').link).toEqual(undefined);
+    expect(fromStore.get('1').link).toEqual(toStore.get('a'));
+    expect(fromStore.get('2').link).toEqual(undefined);
   });
 
   it('Throws if a Record is missing', () => {
     const fromStore = new Store([
-      new Record('1', {link: 'b'}),
+      new Record('1', {link: 'a'}),
     ]);
+
     const toStore = new Store([
-      new Record('a', {}),
+      new Record('b', {}),
     ]);
 
     expect(() => {
       fromStore.linkToOne(toStore, 'link');
     }).toThrow();
 
-    expect(recordNotFoundSpy).toHaveBeenCalledWith('b', 'link', '1');
+    expect(recordNotFoundSpy).toHaveBeenCalledWith('a', 'link', '1');
   });
 });

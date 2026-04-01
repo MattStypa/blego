@@ -71,7 +71,7 @@ Template files use [Handlebars.js](https://handlebarsjs.com/) to fill in static 
 </div>
 ```
 
-All templates are treated as [Handlebars.js partials](https://handlebarsjs.com/partials.html). This means that you can compose templates using shared components.
+All templates are treated as [Handlebars.js partials](https://handlebarsjs.com/guide/partials.html). This means that you can compose templates using shared components.
 
 ```html
 {{> header.html }}
@@ -108,7 +108,7 @@ blego.macro('getUserAge', (user) => user.age || 'Age not available');
 <span>{{ getUserAge user }}</span>
 ```
 
-Macros use [Handlebars.js helpers](https://handlebarsjs.com/#helpers). Visit [https://handlebarsjs.com/#helpers](https://handlebarsjs.com/#helpers) to learn more.
+Macros use [Handlebars.js helpers](https://handlebarsjs.com/guide/block-helpers.html). Visit [https://handlebarsjs.com/guide/block-helpers.html](https://handlebarsjs.com/guide/block-helpers.html) to learn more.
 
 ## Static files
 Not all files used by a website are dynamically generated. Put your static files like images, CSS, etc. in the `static` directory and Blego will automatically copy them to the `dist` directory when building.

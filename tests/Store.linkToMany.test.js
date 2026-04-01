@@ -8,40 +8,37 @@ describe('Store.linkToMany', () => {
 
   it('Creates links to many Records from a different Store', () => {
     const fromStore = new Store([
-      new Record('1', {links: ['a', 'b']}),
-      new Record('2', {links: ['b', 'c']}),
-      new Record('3', {links: ['a', 'c']}),
-      new Record('4', {links: null}),
+      new Record('1', {links: ['a']}),
+      new Record('2', {links: ['a', 'b']}),
+      new Record('3', {links: null}),
     ]);
+
     const toStore = new Store([
       new Record('a', {}),
       new Record('b', {}),
-      new Record('c', {}),
     ]);
 
     fromStore.linkToMany(toStore, 'links');
 
-    expect(fromStore.get('1').links[0].key).toEqual('a');
-    expect(fromStore.get('1').links[1].key).toEqual('b');
-    expect(fromStore.get('2').links[0].key).toEqual('b');
-    expect(fromStore.get('2').links[1].key).toEqual('c');
-    expect(fromStore.get('3').links[0].key).toEqual('a');
-    expect(fromStore.get('3').links[1].key).toEqual('c');
-    expect(fromStore.get('4').links.length).toEqual(0);
+    expect(fromStore.get('1').links.get('a')).toEqual(toStore.get('a'));
+    expect(fromStore.get('2').links.get('a')).toEqual(toStore.get('a'));
+    expect(fromStore.get('2').links.get('b')).toEqual(toStore.get('b'));
+    expect(fromStore.get('3').links.all().length).toEqual(0);
   });
 
   it('Throws if a Record is missing', () => {
     const fromStore = new Store([
-      new Record('1', {links: ['b']}),
+      new Record('1', {links: ['a']}),
     ]);
+
     const toStore = new Store([
-      new Record('a', {}),
+      new Record('b', {}),
     ]);
 
     expect(() => {
       fromStore.linkToMany(toStore, 'links');
     }).toThrow();
 
-    expect(recordNotFoundSpy).toHaveBeenCalledWith('b', 'links', '1');
+    expect(recordNotFoundSpy).toHaveBeenCalledWith('a', 'links', '1');
   });
 });

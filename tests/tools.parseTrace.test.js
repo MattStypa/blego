@@ -7,6 +7,6 @@ describe('tools.parseTrace', () => {
 
     expect(trace[0].file).toEqual('tests/tools.parseTrace.test.js');
     expect(trace[0].line).toEqual(6);
-    expect(trace[0].function).toEqual('Anonymous');
+    expect(trace[0].function).toEqual('anonymous');
   });
 });

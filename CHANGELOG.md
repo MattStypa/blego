@@ -1,5 +1,9 @@
 # Release Notes
 
+## v3.0.0 (TBD)
+- Improved error reporting
+- linkToMany and linkFromMany methods now create Stores instead of Arrays for related Records
+
 ## v2.0.0 (2026-03-27)
 - Dependency update
 - Minimum required Node.js version is now 22.0.0
