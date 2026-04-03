@@ -26,16 +26,16 @@ describe('blego.page', () => {
   });
 
   it('Creates a file from template and context', () => {
-    blego.page('testPage.html', 'file.html', {data: 'World'});
+    blego.page('testPage.html', 'file.html', { data: 'World' });
 
     expect(fs.readFileSync('dist/testPage.html').toString()).toEqual('Hello World');
   });
 
   it('Throws if file already exists', () => {
-    blego.page('testPage.html', 'file.html', {data: 'World'});
+    blego.page('testPage.html', 'file.html', { data: 'World' });
 
     expect(() => {
-      blego.page('testPage.html', 'file.html', {data: 'World'});
+      blego.page('testPage.html', 'file.html', { data: 'World' });
     }).toThrow();
 
     expect(pathExistsSpy).toHaveBeenCalledWith(nodePath.resolve('dist/testPage.html'));

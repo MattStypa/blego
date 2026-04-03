@@ -8,8 +8,8 @@ describe('Store.linkToOne', () => {
 
   it('Creates a link to one Record from a different Store', () => {
     const fromStore = new Store([
-      new Record('1', {link: 'a'}),
-      new Record('2', {link: null}),
+      new Record('1', { link: 'a' }),
+      new Record('2', { link: null }),
     ]);
 
     const toStore = new Store([
@@ -24,7 +24,7 @@ describe('Store.linkToOne', () => {
 
   it('Throws if a Record is missing', () => {
     const fromStore = new Store([
-      new Record('1', {link: 'a'}),
+      new Record('1', { link: 'a' }),
     ]);
 
     const toStore = new Store([

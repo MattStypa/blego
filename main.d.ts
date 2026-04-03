@@ -1,5 +1,8 @@
-export interface Record {
+import type { Collection } from 'collect.js';
+
+export declare class Record {
   readonly key: string;
+  constructor(key: string, props?: { [key: string]: unknown });
   [prop: string]: unknown;
 }
 
@@ -13,10 +16,11 @@ export declare class Store {
 
   all(): Record[];
   chunk(size: number): Record[][];
+  collection(): Collection<Record>;
   count(): number;
   each(fn: (record: Record) => void): Store;
   filter(fn: (record: Record) => boolean): Store;
-  get(key: string): Record;
+  get(key: string): Record | undefined;
   isEmpty(): boolean;
   keyed(): { [key: string]: Record };
   map<T>(fn: (record: Record) => T): T[];

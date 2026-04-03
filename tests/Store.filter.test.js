@@ -5,9 +5,9 @@ import Store from '../lib/Store.js';
 describe('Store.filter', () => {
   it('Gets Store with Records filtered by function', () => {
     const store = new Store([
-      new Record('1', {value: 'a'}),
-      new Record('2', {value: 'b'}),
-      new Record('3', {value: 'a'}),
+      new Record('1', { value: 'a' }),
+      new Record('2', { value: 'b' }),
+      new Record('3', { value: 'a' }),
     ]);
 
     const newStore = store.filter((record) => {

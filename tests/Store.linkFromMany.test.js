@@ -9,9 +9,9 @@ describe('Store.linkFromMany', () => {
 
   it('Creates links to many Records from a different Store', () => {
     const fromStore = new Store([
-      new Record('1', {links: 'a'}),
-      new Record('2', {links: ['a', 'b']}),
-      new Record('3', {links: undefined}),
+      new Record('1', { links: 'a' }),
+      new Record('2', { links: ['a', 'b'] }),
+      new Record('3', { links: undefined }),
     ]);
 
     const toStore = new Store([
@@ -30,9 +30,9 @@ describe('Store.linkFromMany', () => {
 
   it('Can create a reverse link from linkToOne', () => {
     const fromStore = new Store([
-      new Record('1', {link: 'a'}),
-      new Record('2', {link: 'b'}),
-      new Record('3', {link: 'b'}),
+      new Record('1', { link: 'a' }),
+      new Record('2', { link: 'b' }),
+      new Record('3', { link: 'b' }),
     ]);
 
     const toStore = new Store([
@@ -52,8 +52,8 @@ describe('Store.linkFromMany', () => {
 
   it('Can create a reverse link from linkToMany', () => {
     const fromStore = new Store([
-      new Record('1', {links: ['a']}),
-      new Record('2', {links: ['a', 'b']}),
+      new Record('1', { links: ['a'] }),
+      new Record('2', { links: ['a', 'b'] }),
     ]);
 
     const toStore = new Store([
@@ -73,7 +73,7 @@ describe('Store.linkFromMany', () => {
 
   it('Throws if a Record is missing', () => {
     const fromStore = new Store([
-      new Record('1', {links: ['a']}),
+      new Record('1', { links: ['a'] }),
     ]);
 
     const toStore = new Store([
@@ -89,7 +89,7 @@ describe('Store.linkFromMany', () => {
 
   it('Throws if a related Record key is not a string', () => {
     const fromStore = new Store([
-      new Record('1', {links: [1]}),
+      new Record('1', { links: [1] }),
     ]);
 
     const toStore = new Store([

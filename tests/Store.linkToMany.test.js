@@ -8,9 +8,9 @@ describe('Store.linkToMany', () => {
 
   it('Creates links to many Records from a different Store', () => {
     const fromStore = new Store([
-      new Record('1', {links: ['a']}),
-      new Record('2', {links: ['a', 'b']}),
-      new Record('3', {links: null}),
+      new Record('1', { links: ['a'] }),
+      new Record('2', { links: ['a', 'b'] }),
+      new Record('3', { links: null }),
     ]);
 
     const toStore = new Store([
@@ -28,7 +28,7 @@ describe('Store.linkToMany', () => {
 
   it('Throws if a Record is missing', () => {
     const fromStore = new Store([
-      new Record('1', {links: ['a']}),
+      new Record('1', { links: ['a'] }),
     ]);
 
     const toStore = new Store([

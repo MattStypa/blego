@@ -5,9 +5,9 @@ import Store from '../lib/Store.js';
 describe('Store.where', () => {
   it('Gets Store with Records having prop equal to value', () => {
     const store = new Store([
-      new Record('1', {value: 'a'}),
-      new Record('2', {value: 'b'}),
-      new Record('3', {value: 'a'}),
+      new Record('1', { value: 'a' }),
+      new Record('2', { value: 'b' }),
+      new Record('3', { value: 'a' }),
     ]);
 
     const newStore = store.where('value', 'a');
@@ -19,9 +19,9 @@ describe('Store.where', () => {
 
   it('Gets Store with Records having prop array that contains value', () => {
     const store = new Store([
-      new Record('1', {value: ['a', 'b']}),
-      new Record('2', {value: ['b', 'c']}),
-      new Record('3', {value: ['a', 'c']}),
+      new Record('1', { value: ['a', 'b'] }),
+      new Record('2', { value: ['b', 'c'] }),
+      new Record('3', { value: ['a', 'c'] }),
     ]);
 
     const newStore = store.where('value', 'a');

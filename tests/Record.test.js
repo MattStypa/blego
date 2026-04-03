@@ -19,7 +19,7 @@ describe('Record', () => {
   it('Creates a Record without props', () => {
     const record = new Record('key');
 
-    expect(record).toEqual({key: 'key'});
+    expect(record).toEqual({ key: 'key' });
   });
 
   it('Throws if key is empty', () => {
