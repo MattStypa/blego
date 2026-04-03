@@ -10,8 +10,8 @@ describe('Store.take', () => {
       new Record('3', {}),
     ]);
 
-    const records = store.take(2);
+    const newStore = store.take(2);
 
-    expect(records.length).toEqual(2);
+    expect(newStore.count()).toEqual(2);
   });
 });

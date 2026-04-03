@@ -30,8 +30,8 @@ describe('Store.map', () => {
       new Record('1', {}),
     ]);
 
-    const mapped = store.map(fn);
+    const newStore = store.map(fn);
 
-    expect(mapped.get('1').key).toEqual('1');
+    expect(newStore.get('1').key).toEqual('1');
   });
 });

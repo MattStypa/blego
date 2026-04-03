@@ -126,14 +126,14 @@
       - `Store`
 
   - #### `blego.data.Store.take(size)`
-    Gets an array with the specified amount of Records.
+    Gets a new Store with the specified amount of Records.
     ##### arguments
       - `size` Requested size.
     ##### returns
-      - `array`
+      - `Store`
 
   - #### `blego.data.Store.chunk(size)`
-    Gets an array of Records split into groups of the specified size. If the Store can't be split evenly, the final chunk will be the remaining Records.
+    Gets an array of Stores of the specified size. If the Store can't be split evenly, the final chunk will be the remaining Records.
     ##### arguments
       - `size` Requested chunk size.
     ##### returns

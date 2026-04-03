@@ -3,7 +3,7 @@ import Record from '../lib/Record.js';
 import Store from '../lib/Store.js';
 
 describe('Store.chunk', () => {
-  it('Gets an array of arrays of specified length', () => {
+  it('Gets an array of Stores of specified size', () => {
     const store = new Store([
       new Record('1', {}),
       new Record('2', {}),
@@ -12,8 +12,9 @@ describe('Store.chunk', () => {
 
     const chunks = store.chunk(2);
 
+    console.log(chunks);
     expect(chunks.length).toEqual(2);
-    expect(chunks[0].length).toEqual(2);
-    expect(chunks[1].length).toEqual(1);
+    expect(chunks[0].count()).toEqual(2);
+    expect(chunks[1].count()).toEqual(1);
   });
 });
