@@ -24,10 +24,10 @@ describe('Store.linkFromOne', () => {
 
     toStore.linkFromOne(fromStore, 'links', 'link');
 
-    expect(toStore.get('a').link).toEqual(fromStore.get('1'));
-    expect(toStore.get('b').link).toEqual(fromStore.get('2'));
-    expect(toStore.get('c').link).toEqual(fromStore.get('2'));
-    expect(toStore.get('d').link).toEqual(undefined);
+    expect(toStore.get('a').link).toBe(fromStore.get('1'));
+    expect(toStore.get('b').link).toBe(fromStore.get('2'));
+    expect(toStore.get('c').link).toBe(fromStore.get('2'));
+    expect(toStore.get('d').link).toBe(undefined);
   });
 
   it('Can create a reverse link from linkToOne', () => {
@@ -43,8 +43,8 @@ describe('Store.linkFromOne', () => {
     fromStore.linkToOne(toStore, 'link');
     toStore.linkFromOne(fromStore, 'link', 'link');
 
-    expect(toStore.get('a').link).toEqual(fromStore.get('1'));
-    expect(toStore.get('b').link).toEqual(undefined);
+    expect(toStore.get('a').link).toBe(fromStore.get('1'));
+    expect(toStore.get('b').link).toBe(undefined);
   });
 
   it('Can create a reverse link from linkToMany', () => {
@@ -63,10 +63,10 @@ describe('Store.linkFromOne', () => {
     fromStore.linkToMany(toStore, 'link');
     toStore.linkFromOne(fromStore, 'link', 'link');
 
-    expect(toStore.get('a').link).toEqual(fromStore.get('1'));
-    expect(toStore.get('b').link).toEqual(fromStore.get('2'));
-    expect(toStore.get('c').link).toEqual(fromStore.get('2'));
-    expect(toStore.get('d').link).toEqual(undefined);
+    expect(toStore.get('a').link).toBe(fromStore.get('1'));
+    expect(toStore.get('b').link).toBe(fromStore.get('2'));
+    expect(toStore.get('c').link).toBe(fromStore.get('2'));
+    expect(toStore.get('d').link).toBe(undefined);
   });
 
   it('Throws if a Record is missing', () => {

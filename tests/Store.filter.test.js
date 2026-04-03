@@ -12,9 +12,10 @@ describe('Store.filter', () => {
 
     const filtered = store.filter((record) => {
       return record.value === 'a';
-    }).all();
+    });
 
-    expect(filtered[0].key).toEqual('1');
-    expect(filtered[1].key).toEqual('3');
+    expect(filtered.count()).toEqual(2);
+    expect(filtered.get('1')).toBe(store.get('1'));
+    expect(filtered.get('3')).toBe(store.get('3'));
   });
 });

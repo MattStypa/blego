@@ -10,10 +10,11 @@ describe('Store.where', () => {
       new Record('3', {value: 'a'}),
     ]);
 
-    const filtered = store.where('value', 'a').all();
+    const filtered = store.where('value', 'a');
 
-    expect(filtered[0].key).toEqual('1');
-    expect(filtered[1].key).toEqual('3');
+    expect(filtered.count()).toEqual(2);
+    expect(filtered.get('1')).toBe(store.get('1'));
+    expect(filtered.get('3')).toBe(store.get('3'));
   });
 
   it('Gets Store with Records having prop array that contains value', () => {
@@ -23,9 +24,10 @@ describe('Store.where', () => {
       new Record('3', {value: ['a', 'c']}),
     ]);
 
-    const filtered = store.where('value', 'a').all();
+    const filtered = store.where('value', 'a');
 
-    expect(filtered[0].key).toEqual('1');
-    expect(filtered[1].key).toEqual('3');
+    expect(filtered.count()).toEqual(2);
+    expect(filtered.get('1')).toBe(store.get('1'));
+    expect(filtered.get('3')).toBe(store.get('3'));
   });
 });

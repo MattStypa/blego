@@ -16,5 +16,5 @@ describe('blego.dd', () => {
     blego.dd('message');
 
     expect(process.exit).toHaveBeenCalledWith(1);
-  })
+  });
 });

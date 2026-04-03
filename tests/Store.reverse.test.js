@@ -12,8 +12,8 @@ describe('Store.reverse', () => {
 
     const reversed = store.reverse().all();
 
-    expect(reversed[0].key).toEqual('3');
-    expect(reversed[1].key).toEqual('2');
-    expect(reversed[2].key).toEqual('1');
+    expect(reversed[0]).toBe(store.get('3'));
+    expect(reversed[1]).toBe(store.get('2'));
+    expect(reversed[2]).toBe(store.get('1'));
   });
 });

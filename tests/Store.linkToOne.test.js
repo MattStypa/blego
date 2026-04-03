@@ -18,8 +18,8 @@ describe('Store.linkToOne', () => {
 
     fromStore.linkToOne(toStore, 'link');
 
-    expect(fromStore.get('1').link).toEqual(toStore.get('a'));
-    expect(fromStore.get('2').link).toEqual(undefined);
+    expect(fromStore.get('1').link).toBe(toStore.get('a'));
+    expect(fromStore.get('2').link).toBe(undefined);
   });
 
   it('Throws if a Record is missing', () => {

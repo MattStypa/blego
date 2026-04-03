@@ -14,8 +14,8 @@ describe('Store.sort', () => {
       return a.value - b.value;
     }).all();
 
-    expect(sorted[0].key).toEqual('3');
-    expect(sorted[1].key).toEqual('2');
-    expect(sorted[2].key).toEqual('1');
+    expect(sorted[0]).toBe(store.get('3'));
+    expect(sorted[1]).toBe(store.get('2'));
+    expect(sorted[2]).toBe(store.get('1'));
   });
 });

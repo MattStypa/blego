@@ -22,7 +22,7 @@ describe('Store.map', () => {
 
   it('Retains keys even if the mapping function modifies it', () => {
     const fn = vi.fn((record) => {
-      record.key = '3';
+      record.key = '2';
       return record;
     });
 

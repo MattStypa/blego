@@ -22,9 +22,9 @@ describe('Store.linkFromMany', () => {
 
     toStore.linkFromMany(fromStore, 'links', 'links');
 
-    expect(toStore.get('a').links.get('1')).toEqual(fromStore.get('1'));
-    expect(toStore.get('a').links.get('2')).toEqual(fromStore.get('2'));
-    expect(toStore.get('b').links.get('2')).toEqual(fromStore.get('2'));
+    expect(toStore.get('a').links.get('1')).toBe(fromStore.get('1'));
+    expect(toStore.get('a').links.get('2')).toBe(fromStore.get('2'));
+    expect(toStore.get('b').links.get('2')).toBe(fromStore.get('2'));
     expect(toStore.get('c').links.count()).toEqual(0);
   });
 
@@ -44,9 +44,9 @@ describe('Store.linkFromMany', () => {
     fromStore.linkToOne(toStore, 'link');
     toStore.linkFromMany(fromStore, 'link', 'links');
 
-    expect(toStore.get('a').links.get('1')).toEqual(fromStore.get('1'));
-    expect(toStore.get('b').links.get('2')).toEqual(fromStore.get('2'));
-    expect(toStore.get('b').links.get('3')).toEqual(fromStore.get('3'));
+    expect(toStore.get('a').links.get('1')).toBe(fromStore.get('1'));
+    expect(toStore.get('b').links.get('2')).toBe(fromStore.get('2'));
+    expect(toStore.get('b').links.get('3')).toBe(fromStore.get('3'));
     expect(toStore.get('c').links.count()).toEqual(0);
   });
 
@@ -65,9 +65,9 @@ describe('Store.linkFromMany', () => {
     fromStore.linkToMany(toStore, 'links');
     toStore.linkFromMany(fromStore, 'links', 'links');
 
-    expect(toStore.get('a').links.get('1')).toEqual(fromStore.get('1'));
-    expect(toStore.get('a').links.get('2')).toEqual(fromStore.get('2'));
-    expect(toStore.get('b').links.get('2')).toEqual(fromStore.get('2'));
+    expect(toStore.get('a').links.get('1')).toBe(fromStore.get('1'));
+    expect(toStore.get('a').links.get('2')).toBe(fromStore.get('2'));
+    expect(toStore.get('b').links.get('2')).toBe(fromStore.get('2'));
     expect(toStore.get('c').links.count()).toEqual(0);
   });
 
