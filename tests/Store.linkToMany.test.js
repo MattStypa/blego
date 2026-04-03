@@ -23,7 +23,7 @@ describe('Store.linkToMany', () => {
     expect(fromStore.get('1').links.get('a')).toEqual(toStore.get('a'));
     expect(fromStore.get('2').links.get('a')).toEqual(toStore.get('a'));
     expect(fromStore.get('2').links.get('b')).toEqual(toStore.get('b'));
-    expect(fromStore.get('3').links.all().length).toEqual(0);
+    expect(fromStore.get('3').links.count()).toEqual(0);
   });
 
   it('Throws if a Record is missing', () => {
