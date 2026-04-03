@@ -90,11 +90,11 @@
       - `Store`
 
   - #### `blego.data.Store.map(fn)`
-    Gets an array with the results of calling the provided function on every Record.
+    Gets a new Store with with Records modified by provided function while retaining the keys.
     ##### arguments
       - `fn` Processing function.
     ##### returns
-      - `array`
+      - `Store`
 
   - #### `blego.data.Store.count()`
     Gets the size of the Store.
