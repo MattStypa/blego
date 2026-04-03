@@ -16,6 +16,6 @@ describe('Store.get', () => {
   it('Gets undefined if the key does not exist', () => {
     const store = new Store([]);
 
-    expect(store.get('2')).toEqual(null);
+    expect(store.get('2')).toEqual(undefined);
   });
 });

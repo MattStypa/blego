@@ -3,43 +3,34 @@
 ## Blego
 
 - ### Properties
-
   - #### `blego.data`
     Contains parsed Stores. See [Store](#store).
-
   - #### `blego.global`
     Contains parsed global data.
-
 - ### Methods
-
   - #### `blego.page(path, templatePath, context)`
     Creates a file in the `dist` directory.
     ##### arguments
-      - `path` Relative path to the generated file.
-      - `templatePath` Relative path to the template file.
-      - `context` Data available in the template.
-
+    - `path` Relative path to the generated file.
+    - `templatePath` Relative path to the template file.
+    - `context` Data available in the template.
   - #### `blego.macro(name, fn)`
     Registers a macro function available in templates. Macro functions may accept parameters. Visit [https://handlebarsjs.com/#helpers](https://handlebarsjs.com/#helpers) to learn more.
     ##### arguments
-      - `name` Name of the macro.
-      - `fn` Macro function.
-
+    - `name` Name of the macro.
+    - `fn` Macro function.
   - #### `blego.log(...messages)`
     Prints log messages to the console.
     ##### arguments
-      - `...messages` Messages that will be printed to the console.
-
+    - `...messages` Messages that will be printed to the console.
   - #### `blego.warn(...messages)`
     Prints warning messages to the console.
     ##### arguments
     - `...messages` Messages that will be printed to the console.
-
   - #### `blego.dump(...data)`
     Prints data to the console.
     ##### arguments
     - `...data` Data that will be printed to the console.
-
   - #### `blego.dd(...data)`
     Prints data to the console and stops the execution.
     ##### arguments
@@ -51,139 +42,122 @@
   - #### `blego.data.Store.all()`
     Gets an array of all Records.
     ##### returns
-      - `array`
-
+    - `array`
   - #### `blego.data.Store.get(key)`
     Gets a Record with the specified key.
     ##### arguments
-      - `key` Key of the requested Record.
+    - `key` Key of the requested Record.
     ##### returns
-      - `Record`
-
+    - `Record`
   - #### `blego.data.Store.filter(fn)`
     Gets a new Store with Records that pass the test.
     ##### arguments
-      - `fn` Filtering function.
+    - `fn` Filtering function.
     ##### returns
-      - `Store`
-
+    - `Store`
   - #### `blego.data.Store.where(prop, value)`
     Gets a new Store with Records where specified prop equals the provided value.
     ##### arguments
-      - `prop` Name of the prop.
-      - `value` Desired value.
+    - `prop` Name of the prop.
+    - `value` Desired value.
     ##### returns
-      - `Store`
-
+    - `Store`
   - #### `blego.data.Store.pluck(prop)`
     Gets an array of values of the specified prop.
     ##### arguments
-      - `prop` Name of the prop.
+    - `prop` Name of the prop.
     ##### returns
-      - `array`
-
+    - `array`
   - #### `blego.data.Store.each(fn)`
     Executes a provided function once for every Record.
     ##### arguments
-      - `fn` Processing function.
+    - `fn` Processing function.
     ##### returns
-      - `Store`
-
+    - `Store`
   - #### `blego.data.Store.map(fn)`
     Gets a new Store with with Records modified by provided function while retaining the keys.
     ##### arguments
-      - `fn` Processing function.
+    - `fn` Processing function.
     ##### returns
-      - `Store`
-
+    - `Store`
   - #### `blego.data.Store.count()`
     Gets the size of the Store.
     ##### returns
-      - `integer`
-
+    - `integer`
   - #### `blego.data.Store.isEmpty()`
     Checks if the Store is empty.
     ##### returns
-      - `boolean`
-
+    - `boolean`
   - #### `blego.data.Store.sort(fn)`
     Gets a new Store sorted using the provided comparison function.
     ##### arguments
-      - `fn` Comparison function.
+    - `fn` Comparison function.
     ##### returns
-      - `Store`
-
+    - `Store`
   - #### `blego.data.Store.sortBy(prop)`
     Gets a new Store sorted by the provided prop.
     ##### arguments
-      - `prop` Prop name or function that returns a value to sort by
+    - `prop` Prop name or function that returns a value to sort by
     ##### returns
-      - `Store`
-
+    - `Store`
   - #### `blego.data.Store.reverse()`
     Gets a new Store with Records in reversed order.
     ##### returns
-      - `Store`
-
+    - `Store`
   - #### `blego.data.Store.take(size)`
     Gets a new Store with the specified amount of Records.
     ##### arguments
-      - `size` Requested size.
+    - `size` Requested size.
     ##### returns
-      - `Store`
-
+    - `Store`
   - #### `blego.data.Store.chunk(size)`
     Gets an array of Stores of the specified size. If the Store can't be split evenly, the final chunk will be the remaining Records.
     ##### arguments
-      - `size` Requested chunk size.
+    - `size` Requested chunk size.
     ##### returns
-      - `array`
-
+    - `array`
   - #### `blego.data.Store.keyed()`
     Gets an object representation of the Store.
     ##### returns
-      - `object`
-
+    - `object`
+  - #### `blego.data.Store.collection()`
+    Gets a [https://collect.js.org/](collection) of Records.
+    ##### returns
+    - `object`
   - #### `blego.data.Store.dump()`
     Prints Store data to the console.
     ##### returns
-      - `Store`
-
+    - `Store`
   - #### `blego.data.Store.dd()`
     Prints Store data to the console and stops the execution.
-
   - #### `blego.data.Store.linkToOne(relatedStore, prop)`
     Replaces Record key in the provided prop with an actual Record from the related Store.
     ##### arguments
-      - `relatedStore` Related Store.
-      - `prop` Name of the prop.
-
+    - `relatedStore` Related Store.
+    - `prop` Name of the prop.
   - #### `blego.data.Store.linkToMany(relatedStore, prop)`
     Replaces Record keys in the provided prop with actual Records from the related Store.
     ##### arguments
-      - `relatedStore` Related Store.
-      - `prop` Name of the prop.
-
+    - `relatedStore` Related Store.
+    - `prop` Name of the prop.
   - #### `blego.data.Store.linkFromOne(relatedStore, relatedProp, prop)`
     Adds new prop to Records with a Record from the related Store that references this Record in its own specified prop.
     ##### arguments
-      - `relatedStore` Related Store.
-      - `relatedProp` Name of the prop containing reference to this Record.
-      - `prop` Name of the prop to add to this Record.
-
+    - `relatedStore` Related Store.
+    - `relatedProp` Name of the prop containing reference to this Record.
+    - `prop` Name of the prop to add to this Record.
   - #### `blego.data.Store.linkFromMany(relatedStore, relatedProp, prop)`
     Adds new prop to Records with Records from the related Store that reference this Record in their own specified prop.
     ##### arguments
-      - `relatedStore` Related Store.
-      - `relatedProp` Name of the prop containing reference to this Record.
-      - `prop` Name of the prop to add to this Record.
+    - `relatedStore` Related Store.
+    - `relatedProp` Name of the prop containing reference to this Record.
+    - `prop` Name of the prop to add to this Record.
 
 ## Record
 
 - ### Properties
   - #### `blego.data.Store.Record.key`
     Unique identifier of the Record.
-
   - #### `blego.data.Store.Record.{property}`
     Property of the Record.
 
@@ -193,9 +167,8 @@
   Creates a new Blego project.
   ##### arguments
   - `project_directory` Directory in which the project will be created.
-
 - #### `npx blego build`
   Builds project in the current directory.
-
 - #### `npx blego serve`
   Starts a web server from the `dist` directory.
+

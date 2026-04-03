@@ -1,5 +1,9 @@
 # Release Notes
 
+## v3.2.0 (TBD)
+- Added collection method to Store
+- Performance improvements
+
 ## v3.1.1 (2026-04-02)
 - Fixed the ES module import
 
