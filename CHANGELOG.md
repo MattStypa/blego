@@ -1,5 +1,8 @@
 # Release Notes
 
+## v3.1.1 (2026-04-02)
+- Fixed the ES module import
+
 ## v3.1.0 (2026-04-02)
 - Improved error reporting
 - Improved performance
