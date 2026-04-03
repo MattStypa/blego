@@ -1,6 +1,6 @@
 # Release Notes
 
-## v3.0.0-preview (2026-04-03)
+## v3.1.0 (2026-04-02)
 - Improved error reporting
 - Improved performance
 - linkToMany and linkFromMany methods now create Stores instead of Arrays for related Records
